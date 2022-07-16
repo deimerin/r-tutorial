@@ -5,11 +5,294 @@ date: '2022-07-16'
 output: html_notebook
 ---
 # 1. Estructuras de Control
+
+## Estructuras basicas
+If : Esta es una estructura que nos permite comparar valores colocandolos dentro de una condición
+
+```{r}
+a <- 20
+b <-10
+if (a<b){
+  print("A es menor que B")
+}else{
+  print("A es mayor que B")
+}
+
+```
+### Los if tienen la caracteristica de que pueden ser anidados es decir poner un if dentro de otro If
+```{r}
+num <- 24
+if(num > 20){
+  print("El numero es mayor que 20")
+  if (num%%2 == 0){
+    print("El numero es par")
+  }else{
+    print("El numero es impar")
+  }
+  
+}else{
+  print("El numero es menor que 20")
+}
+
+```
+
+### Ciclos:
+Es una secuencia de instrucciones de código que se ejecuta repetidas veces, hasta que la condición asignada a dicho bucle deja de cumplirse.
+Para esto hablaremos de 2 tipos de ciclos, For y While
+
+For: Es un ciclo que permite repetir varias instrucciones una cierta cantidad de ocasiones "las veces que el usuario especifique"
+
+```{r}
+x <- 1:10 #Creamos un vecto que va desde 1 hasta 10
+for(i in x){ #Se entra mientas I se encuentre en el rango de X
+  print(i^2)#Se va imprimir I al cuadrado
+}
+
+```
+### While:Es un ciclo en el cual una función se repite siempre y cuando la condicion sea true
+```{r}
+x <-0
+while(x<18){ #Mientras que el valor de X sea menor a 18 se hace las funciones
+  print(x)
+  x <- x+1
+}
+
+```
+### Break y Next
+Estas son funciones que nos permiten parar un bucle o ir a un siguiente bucle
+La funcion break significa deterner el bucle y seguir con el resto del programa
+```{r}
+for(i in 1:10){
+  if(i == 5){#Cuando el numero llega a la condición se salta ese paso del ciclo
+    next
+  }
+if(i==9){# Cuando el numero llega a la condicion se detiene el ciclo
+  break
+}
+print(i)
+}
+  
+```
+
 # 2. Vectores
+## Vectores :Se le denomina vector, formación, matriz, a una zona de almacenamiento contiguo que contiene una serie de elementos del mismo tipo hay 3 tipos de vectores; Numerico,texto y logico
+```{r}
+x <- c(3, 5, 2, 4) #Cada elemento va separado de una coma 
+y <- c("Hugo","Paco","Luis")
+z <- c(TRUE,FALSE,F)
+class(x)#Con este comando vemos la clase del vector 
+class(y)
+class(z)
+length(x)#Con este comando vemos el tamaño del vector
+x[2]#Con esta función observamos que hay en la posicion 2 del vector
+y[c(1,3)]#Posicion 1 y 3
+rev(x)#Revertir el vector
+```
+### Se pueden realizar operaciones con los vectores
+```{r}
+x <- c(3, 4, 5, 6)
+y <- c(1, 2, 3, 5)
+x+y
+x-y
+x*y
+x/y
+x > y
+```
+### Se pueden crear secuencias numericas dentro de los vectores, se pueden crear secuencias siguiendo una distribucion normal y una distribucion uniforme 
+```{r}
+rnorm(10, mean=9, sd=1) #La secuencia va hasta 10 con media 9 y distribucion estandar de 1
+runif(10, min=9, max=15)#10 numeros con un minimo de 9 y un numero maximo de 15
+```
+
 # 3. Listas y Matrices
+```{r}
+matrix(1:12, nrow = 3, ncol=4)#Se crean los datos de la matriz se define el numero de filas y de columnas
+#Operaciones con matrices 
+A <- matrix(c(10,8,5,12),ncol = 2,byrow = TRUE) #La funcion C significa concatenar y el byrow es que se llenan las matrices primero por la columna
+B <- matrix(c(4,1,2,4),ncol = 2,byrow = TRUE)
+A+B
+A-B
+A*B
+#Se puede hacer la transpuesta de una matriz
+t(A)
+```
+### Listas: Una lista es una estructura dinámica de datos que contiene una colección de elementos homogéneos (del mismo tipo) de manera que se establece entre ellos un orden
+```{r}
+#Son los elementos que van a formar parte de la lista
+personajes <- c("Bart","Homero","Lisa","Marge")
+la_matriz <- matrix(c(5,1,2,3),ncol=2, nrow = 2,byrow=TRUE)
+dat <-data.frame(edad=c(25,18,19),nombre=c("David","Jhon","Daniel"),fuma=c(TRUE,FALSE,TRUE))
+#Creamos nuestra lista y la podemos ver con >mi_lista en la consola
+mi_lista <- list(per=personajes,mat=la_matriz,dat=dat)
+
+```
+
 # 4. Dataframes
+Es necesario instalar las siguientes librerias para el manejo de los datos
+```{r}
+install.packages("dplyr")
+install.packages("UsingR")
+library(dplyr)
+```
+
+### Vamos a abrir el siguiente dataset.
+
+```{r}
+datos <- UsingR::nym.2002
+View(datos)
+```
+
+### Para poder seleccionar los datos usamos select()
+
+```{r}
+edades <- select(datos, age)
+
+View(edades)
+
+edades_1 <- edades %>% unlist
+
+mean(edades_1)
+median(edades_1)
+max(edades_1)
+min(edades_1)
+```
+
+### Para poder filtrar los datos usamos filter()
+
+```{r}
+mujeres <- filter(datos, gender=="Female")
+
+View(mujeres)
+```
+
+### Para poder ordenar los datos usamos arrange()
+
+```{r}
+times <- arrange(datos, time)
+
+View(times)
+```
+
+### Para poder crear una nueva columna en el dataframe usamos mutate()
+
+```{r}
+times2 <- mutate(datos, time2 = time*2)
+
+View(times2)
+```
+
+### Para poder agrupar usamos group_by() y usamos summarise() para resumir el dataframe
+
+```{r}
+by_home <- group_by(datos, home)
+n_home <- summarise(by_home, n = n())
+
+View(n_home)
+```
 # 5. Funciones
+### Implementamos una funcion recursiva para poder realizar un factorial y la comparamos con una que ya trae R
+
+```{r}
+Fact <- function(n){
+  if (n == 0)
+    return(1)
+  else
+    return( n * Fact (n-1) )
+}
+Fact(5)
+factorial(5)
+```
+
+### Implementamos una funcion recursiva para poder realizar una sumatoria de numeros naturales
+
+```{r}
+Sumatoria <- function(n){
+  if (n <= 1)
+    return(n)
+  else
+    return( n + Suma(n-1) )
+}
+Sumatoria(5)
+```
+
 # 6. Manejo de Archivos
+### Podemos reallizar lectura de archivos locales en diferentes formatos 
+
+```{r}
+
+datos <- read.csv("C:\\Users\\camil\\Desktop\\ejemplo1.csv")
+datos
+
+
+prueba1 <- read.csv("C:\\Users\\camil\\Desktop\\ejemplo1.xlsx")
+prueba1
+```
+### Así mismo Podemos reallizar la carga de archivos desde una url específica 
+```{r}
+
+
+saber <-load(url('https://www.dropbox.com/s/yzyqmq1bwsito0w/saber_pro.RData?dl=1'))
+
+```
+
+
+```{r}
+
+
+data <-load(url('https://www.dropbox.com/s/yzyqmq1bwsito0w/saber_pro.RData?dl=1'))
+
+
+```
+
+```{r}
+saber_pro
+```
+
 # 7. Visualizacion de Datos
+
+## Histogramas
+
+### Histograma básico
+```{r}
+hist(x = saber_pro$IN)
+```
+### Añadir etiquetas a los ejes
+
+```{r}
+hist(x = saber_pro$RC, main = "Histograma de puntaje en ", 
+     xlab = "Puntaje", ylab = "Frecuencia")
+```
+
+```{r}
+hist(x = saber_pro$RC, main = "Histograma de puntaje", 
+     xlab = "Puntaje", ylab = "Frecuencia",
+     col="green")
+```
+## Diagramas de dispersión
+
+###Utilizados para comparar dos variables continuas y numéricas
+
+
+```{r}
+plot(x = saber_pro$LC, y = saber_pro$IN)
+```
+
+## Diagrama de cajas
+
+### como argumento toma un valor de texto y uno numérico
+
+```{r}
+plot(x = saber_pro$PERIODO, y = saber_pro$IN)
+```
+
+
+### Agregar colores 
+
+```{r}
+plot(x = saber_pro$PERIODO, y = saber_pro$IN, main = "Puntaje por Periodo", 
+     xlab = "Periodo", ylab = "Puntaje", 
+     col = c("grey3", "green3", "yellow3", "blue"))
+```
+
 # 8. Algoritmos de generacion de numeros aleatorios?
 # 9. Distribuciones de probabilidad?
