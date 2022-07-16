@@ -576,5 +576,51 @@ ggplot(iris) +
   geom_violin(aes(x = Species, y = Sepal.Width, color = Species, fill=Species), 
               alpha = 0.25)
 ```
-# 8. Algoritmos de generacion de numeros aleatorios?
-# 9. Distribuciones de probabilidad?
+# 8. Algoritmos de generacion de numeros aleatorios
+
+### Generador Congruencial Lineal
+
+```{r}
+lcg <- function(){
+  
+}
+```
+
+
+### Metodo de los cuadrados medios
+```{r}
+
+```
+
+
+### Wichmann-Hill
+
+### Marsaglia-Multicarry
+
+### Generador Tausworthe
+
+### L'Ecuyer-CMRG
+
+### Mersenne-Twister
+
+### Generador de Fibonacci
+git
+### Generador RANDU
+
+# 9. Distribuciones de probabilidad
+
+### Exponencial
+
+### Multinomial
+
+### Normal
+
+### Geometrica
+
+### Cauchy
+
+### Poisson
+
+### Triangular
+
+### Binomial
