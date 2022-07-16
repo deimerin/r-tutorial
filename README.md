@@ -6,7 +6,7 @@ Contenido
 
 1. Estructuras de control en R. Realice un ejemplo para las estructuras de control que encuentre en R
 
-2.Vectores en R. Creación, indexación, edición. Genere una secuencia de números utilizando un generador congruencial lineal.
+2. Vectores en R. Creación, indexación, edición. Genere una secuencia de números utilizando un generador congruencial lineal.
 
 3. Listas y matrices en R. Explique algunas operaciones matriciales básicas
 
@@ -18,6 +18,8 @@ Contenido
 
 7. Ejemplos de visualización de datos: Gráficas diversas incluyendo dispersión de puntos, histogramas, diagrama de cajas (bloxpots), violinplots, etc.
 
-8. Distribuciones de probabilidad
+8. Algoritmos de generacion de numeros aleatorios?
 
-9. 
+9. Distribuciones de probabilidad?
+
+
