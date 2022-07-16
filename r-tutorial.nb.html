@@ -225,9 +225,70 @@ pre code {
 <!-- rnb-text-begin -->
 <div id="estructuras-de-control" class="section level1">
 <h1>1. Estructuras de Control</h1>
+<!-- rnb-text-end -->
+<!-- rnb-text-begin -->
 </div>
 <div id="vectores" class="section level1">
 <h1>2. Vectores</h1>
+<div id="creación-de-vectores" class="section level3">
+<h3>2.1 Creación de vectores</h3>
+<p>Para crear vectores se utiliza la siguiente sintaxis: ‘<em>nombre_vector &lt;- c(elementos)</em>’ o ‘<em>nombre_vector &lt;- rango</em>’. Los elemnetos deben estar separados por comas y si son cadenas de textos deben ir entre comillas.</p>
+<p>Ejemplos:</p>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxudmVjdG9yMSA8LWMoMTAsIDIxLCAzLCA0LCAxKVxudmVjdG9yMVxuYGBgIn0= -->
+<pre class="r"><code>vector1 &lt;-c(10, 21, 3, 4, 1)
+vector1</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiWzFdIDEwIDIxICAzICA0ICAxXG4ifQ== -->
+<pre><code>[1] 10 21  3  4  1</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxudmVjdG9yMiA8LSAxOjVcbnZlY3RvcjJcbmBgYCJ9 -->
+<pre class="r"><code>vector2 &lt;- 1:5
+vector2</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiWzFdIDEgMiAzIDQgNVxuIn0= -->
+<pre><code>[1] 1 2 3 4 5</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+</div>
+<div id="indexación-de-vectores" class="section level3">
+<h3>2.2 Indexación de vectores</h3>
+<p>La sintaxis para ver elementos de un vector por su posición es la siguiente: ‘<em>nombre_vector[c(indices, indices)]</em>’. Para extraer elementos desde una posición hasta otra se utiliza: ‘<em>nombre_vector[c(indice:indice)]</em>’</p>
+<p>Ejemplo 1: se utiliza el vector ya creado ‘<em>vector1</em>’, para ver los elementos de los indices de la posición 2 a la posición 5:</p>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxudmVjdG9yMVsyOjVdXG5gYGAifQ== -->
+<pre class="r"><code>vector1[2:5]</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<p>Ejemplo 2: se utiliza el vector ya creado ‘<em>vector1</em>’, para ver los elementos de los indices de la posición 2 y la posición 5:</p>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxudmVjdG9yMVtjKDIsNSldXG5gYGAifQ== -->
+<pre class="r"><code>vector1[c(2,5)]</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+</div>
+<div id="edición-de-vectores" class="section level3">
+<h3>2.3 Edición de vectores</h3>
+<p>Para editar un vector se hace muestra en el siguiente ejemplo utilizando el primer vector creado:</p>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxudmVjdG9yX2VkaXRhZG8gPC0gYyh2ZWN0b3IxLCA1KVxudmVjdG9yX2VkaXRhZG9cbmBgYCJ9 -->
+<pre class="r"><code>vector_editado &lt;- c(vector1, 5)
+vector_editado</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+</div>
 </div>
 <div id="listas-y-matrices" class="section level1">
 <h1>3. Listas y Matrices</h1>
@@ -243,6 +304,157 @@ pre code {
 </div>
 <div id="visualizacion-de-datos" class="section level1">
 <h1>7. Visualizacion de Datos</h1>
+<div id="ggplot2" class="section level3">
+<h3>ggplot2</h3>
+<p><strong>ggplot2</strong> es un paquete potente y flexible de R, implementado por Hadley Wickham, para producir gráficos elegantes. El concepto detrás de ggplot2 divide los gráficos en tres partes fundamentales: <strong>Plot = Datos + Estética + Geometría.</strong></p>
+<p>Los componentes principales de cada gráfico pueden definirse de la siguiente manera:</p>
+<ul>
+<li><strong>Datos</strong> es un dataframe</li>
+<li><strong>Estetica</strong> se utiliza para indicar las variables x e y. También se puede utilizar para controlar el color, el tamaño o la forma de los puntos, la altura de las barras, etc…..</li>
+<li><strong>Geometria</strong> define el tipo de gráfico (histograma, diagrama de caja, diagrama de líneas, diagrama de densidad, diagrama de puntos, ….)</li>
+</ul>
+<p>Hay dos funciones principales en el paquete ggplot2: las funciones <strong>qplot()</strong> y <strong>ggplot()</strong>.</p>
+<ul>
+<li><p><strong>qplot()</strong> se refiere a un gráfico rápido, que puede utilizarse para producir fácilmente gráficos sencillos.</p></li>
+<li><p>La función <strong>ggplot()</strong> es más flexible y robusta que <strong>qplot()</strong> para construir un gráfico pieza por pieza.</p></li>
+</ul>
+</div>
+<div id="qplot" class="section level3">
+<h3>qplot()</h3>
+<p>Un formato simplificado de qplot() es el siguiente:</p>
+<pre><code>qplot(x, y=NULL, data, geom=&quot;auto&quot;, xlim = c(NA, NA), ylim =c(NA, NA))</code></pre>
+<ul>
+<li>x : valores de x</li>
+<li>y : valores de y(opcional)</li>
+<li>data : data frame a usar (opcional).</li>
+<li>geom : Vector de caracteres que especifica la geometria(geom) a utilizar. Por defecto es “point” si se especifican x, y, e “histogram” si sólo se especifica x.</li>
+<li>xlim, ylim: limites del eje x, y</li>
+</ul>
+<div id="scatter-plots" class="section level4">
+<h4>Scatter Plots</h4>
+<p>El gráfico puede crearse utilizando datos de vectores numéricos o de un dataframe:</p>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuIyBVc2FuZG8gdmVjdG9yZXMgbnVtZXJpY29zXG54IDwtIDE6MTA7IHkgPSB4KnhcbiMgUGxvdCBiYXNpY29cbnFwbG90KHgseSlcbiMgUGxvdCBiYXNpY28gKyBsaW5lYVxucXBsb3QoeCwgeSwgZ2VvbT1jKFwicG9pbnRcIiwgXCJsaW5lXCIpKVxuIyBVc2FuZG8gZGF0YWZyYW1lc1xucXBsb3QobXBnLCB3dCwgZGF0YT1tdGNhcnMpXG5gYGAifQ== -->
+<pre class="r"><code># Usando vectores numericos
+x &lt;- 1:10; y = x*x
+# Plot basico
+qplot(x,y)
+# Plot basico + linea
+qplot(x, y, geom=c(&quot;point&quot;, &quot;line&quot;))
+# Usando dataframes
+qplot(mpg, wt, data=mtcars)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+</div>
+<div id="box-plot-dot-plot-y-violin-plot" class="section level4">
+<h4>Box plot, dot plot y violin plot</h4>
+<p>Para crear graficos diferentes a un scatter plot con <strong>qplot()</strong> es necesario especificar la geometria de la grafica:</p>
+<ul>
+<li>geom = “boxplot”: dibuja un boxplot</li>
+<li>geom = “dotplot”: dibuja un dot plot. Los argumentos suplementarios stackdir = “center” y binaxis = “y” son necesarios.</li>
+<li>geom = “violin”: dibuja un violin plot. El argumento trim se establece en FALSE.</li>
+</ul>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuIyBCb3hwbG90IGJhc2ljbyBhIHBhcnRpciBkZSB2ZWN0b3JlcyBudW1lcmljb3NcbnggPC0gXCIxXCJcbnkgPC0gcm5vcm0oMTAwKVxucXBsb3QoeCwgeSwgZ2VvbT1cImJveHBsb3RcIilcblxuIyBCb3hwbG90IGJhc2ljbyBhIHBhcnRpciBkZSB1biBkYXRhZnJhbWVcbnFwbG90KGdyb3VwLCB3ZWlnaHQsIGRhdGEgPSBQbGFudEdyb3d0aCwgXG4gICAgICBnZW9tPWMoXCJib3hwbG90XCIpKVxuXG4jIERvdCBwbG90XG5xcGxvdChncm91cCwgd2VpZ2h0LCBkYXRhID0gUGxhbnRHcm93dGgsIFxuICAgICAgZ2VvbT1jKFwiZG90cGxvdFwiKSwgXG4gICAgICBzdGFja2RpciA9IFwiY2VudGVyXCIsIGJpbmF4aXMgPSBcInlcIixcbiAgICAgIGJpbndpZHRoID0gMC4wOSlcblxuIyBWaW9saW4gcGxvdFxucXBsb3QoZ3JvdXAsIHdlaWdodCwgZGF0YSA9IFBsYW50R3Jvd3RoLCBcbiAgICAgIGdlb209YyhcInZpb2xpblwiKSwgdHJpbSA9IEZBTFNFKVxuYGBgIn0= -->
+<pre class="r"><code># Boxplot basico a partir de vectores numericos
+x &lt;- &quot;1&quot;
+y &lt;- rnorm(100)
+qplot(x, y, geom=&quot;boxplot&quot;)
+
+# Boxplot basico a partir de un dataframe
+qplot(group, weight, data = PlantGrowth, 
+      geom=c(&quot;boxplot&quot;))
+
+# Dot plot
+qplot(group, weight, data = PlantGrowth, 
+      geom=c(&quot;dotplot&quot;), 
+      stackdir = &quot;center&quot;, binaxis = &quot;y&quot;,
+      binwidth = 0.09)
+
+# Violin plot
+qplot(group, weight, data = PlantGrowth, 
+      geom=c(&quot;violin&quot;), trim = FALSE)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+</div>
+<div id="histogramas-y-gráficos-de-densidad" class="section level4">
+<h4>Histogramas y gráficos de densidad</h4>
+<p>De la misma manera que los graficos anteriores, para dibujar histogramas y graficos de densidad necesitamos definir la geometria de la grafica.</p>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuIyBCYXNpYyBoaXN0b2dyYW1cbnFwbG90KG1wZyRod3ksIGdlb20gPSBcImhpc3RvZ3JhbVwiLCBiaW5zID0gMTApXG4jIEJhc2ljIGRlbnNpdHkgcGxvdFxucXBsb3QoeCA9IG1wZyRod3ksIGdlb20gPSBcImRlbnNpdHlcIilcbmBgYCJ9 -->
+<pre class="r"><code># Basic histogram
+qplot(mpg$hwy, geom = &quot;histogram&quot;, bins = 10)
+# Basic density plot
+qplot(x = mpg$hwy, geom = &quot;density&quot;)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+</div>
+</div>
+<div id="ggplot" class="section level3">
+<h3>ggplot()</h3>
+<p>El punto de partida para crear un gráfico es utilizar la función ggplot con la siguiente estructura básica:</p>
+<pre><code>plot &lt;- ggplot(data, aes(x_variable, y_variable)) + geom_graph.type()
+print(plot)</code></pre>
+<ul>
+<li><strong>data</strong> es un dataframe que contiene las variables que se quieren graficar</li>
+<li><strong>aes</strong> especifica que variables se van a graficar. Aunque la palabra <em>aes</em> se refiere a la estética, en ggplot no se relaciona con el aspecto visual del gráfico, sino con los datos que se quieren ver en el gráfico. Especifica lo que el gráfico presenta en lugar de cómo se presenta.</li>
+<li><strong>geom_graph.type</strong> especifica que tipo de grafico se quiere hacer. Los graficos mas comunes son:
+<ul>
+<li><em>geom_point()</em> scatterplot</li>
+<li><em>geom_boxplot()</em> boxplot</li>
+<li><em>geom_histogram()</em> histograma</li>
+<li><em>geom_bar()</em> bar plot</li>
+</ul></li>
+</ul>
+<p>El tipo de gráfico que se quiere hacer tiene que coincidir con las clases de las entradas de la funcion. Por ejemplo, un scatterplot requiere que ambas variables sean numéricas. Un boxplot requiere que la variable <em>x</em> sea un factor y la variable <em>y</em> sea numérica.</p>
+<p>Una práctica útil al hacer ggplots es asignar el gráfico a un objeto y luego ‘imprimirlo’ por separado. A medida que un ggplot se complica, esto lo hará mucho más fácil de construir.</p>
+<div id="ejemplos-con-ggplot" class="section level5">
+<h5>Ejemplos con ggplot()</h5>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuIyAgRGF0YSBsb2FkXG5kYXRhKGlyaXMpXG5cbiMgQm94cGxvdFxucGxvdDEgPC0gZ2dwbG90KGlyaXMsIGFlcyhTcGVjaWVzLCBQZXRhbC5MZW5ndGgpKSArXG4gIGdlb21fYm94cGxvdCgpXG5wcmludChwbG90MSlcblxuIyBIaXN0b2dyYW1cbnBsb3QyIDwtIGdncGxvdChpcmlzLCBhZXMoUGV0YWwuTGVuZ3RoKSkgK1xuICBnZW9tX2hpc3RvZ3JhbShiaW53aWR0aCA9IDAuMjUpXG5wcmludChwbG90MilcblxuIyBTY2F0dGVyIFBsb3RcbnBsb3QzIDwtIGdncGxvdChpcmlzLCBhZXMoU2VwYWwuTGVuZ3RoLCBQZXRhbC5MZW5ndGgpKSArXG4gIGdlb21fcG9pbnQoKVxucHJpbnQocGxvdDMpXG5cbiMgU2NhdHRlciBQbG90ICsgQ2F0ZWdvcmljYWwgdmFyaWFibGVzXG5wbG90NCA8LSBnZ3Bsb3QoaXJpcywgYWVzKFNlcGFsLkxlbmd0aCwgUGV0YWwuTGVuZ3RoLCBjb2xvdXIgPSBTcGVjaWVzKSkgK1xuICBnZW9tX3BvaW50KClcbnByaW50KHBsb3Q0KVxuXG4jIFZpb2xpbiBQbG90XG5wbG90NSA8LSBnZ3Bsb3QoaXJpcywgYWVzKHggPSBTcGVjaWVzLCB5ID0gU2VwYWwuV2lkdGgpLCBjb2xvciA9IFNwZWNpZXMsIGZpbGw9U3BlY2llcywgYWxwaGEgPSAwLjI1KSArXG4gIGdlb21fdmlvbGluKClcbnByaW50KHBsb3Q1KVxuIyMgVjJcbmdncGxvdChpcmlzKSArIFxuICBnZW9tX3Zpb2xpbihhZXMoeCA9IFNwZWNpZXMsIHkgPSBTZXBhbC5XaWR0aCwgY29sb3IgPSBTcGVjaWVzLCBmaWxsPVNwZWNpZXMpLCBcbiAgICAgICAgICAgICAgYWxwaGEgPSAwLjI1KVxuYGBgIn0= -->
+<pre class="r"><code>#  Data load
+data(iris)
+
+# Boxplot
+plot1 &lt;- ggplot(iris, aes(Species, Petal.Length)) +
+  geom_boxplot()
+print(plot1)
+
+# Histogram
+plot2 &lt;- ggplot(iris, aes(Petal.Length)) +
+  geom_histogram(binwidth = 0.25)
+print(plot2)
+
+# Scatter Plot
+plot3 &lt;- ggplot(iris, aes(Sepal.Length, Petal.Length)) +
+  geom_point()
+print(plot3)
+
+# Scatter Plot + Categorical variables
+plot4 &lt;- ggplot(iris, aes(Sepal.Length, Petal.Length, colour = Species)) +
+  geom_point()
+print(plot4)
+
+# Violin Plot
+plot5 &lt;- ggplot(iris, aes(x = Species, y = Sepal.Width), color = Species, fill=Species, alpha = 0.25) +
+  geom_violin()
+print(plot5)
+## V2
+ggplot(iris) + 
+  geom_violin(aes(x = Species, y = Sepal.Width, color = Species, fill=Species), 
+              alpha = 0.25)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+</div>
+</div>
 </div>
 <div id="algoritmos-de-generacion-de-numeros-aleatorios" class="section level1">
 <h1>8. Algoritmos de generacion de numeros aleatorios?</h1>
@@ -252,7 +464,7 @@ pre code {
 <!-- rnb-text-end -->
 </div>
 
-<div id="rmd-source-code">LS0tCnRpdGxlOiAiUiBUdXRvcmlhbCIKYXV0aG9yOiAiR3J1cG8gSjEiCmRhdGU6ICcyMDIyLTA3LTE2JwpvdXRwdXQ6IGh0bWxfbm90ZWJvb2sKLS0tCiMgMS4gRXN0cnVjdHVyYXMgZGUgQ29udHJvbAojIDIuIFZlY3RvcmVzCiMgMy4gTGlzdGFzIHkgTWF0cmljZXMKIyA0LiBEYXRhZnJhbWVzCiMgNS4gRnVuY2lvbmVzCiMgNi4gTWFuZWpvIGRlIEFyY2hpdm9zCiMgNy4gVmlzdWFsaXphY2lvbiBkZSBEYXRvcwojIDguIEFsZ29yaXRtb3MgZGUgZ2VuZXJhY2lvbiBkZSBudW1lcm9zIGFsZWF0b3Jpb3M/CiMgOS4gRGlzdHJpYnVjaW9uZXMgZGUgcHJvYmFiaWxpZGFkPw==</div>
+<div id="rmd-source-code">LS0tCnRpdGxlOiAiUiBUdXRvcmlhbCIKYXV0aG9yOiAiR3J1cG8gSjEiCmRhdGU6ICcyMDIyLTA3LTE2JwpvdXRwdXQ6IGh0bWxfbm90ZWJvb2sKLS0tCiMgMS4gRXN0cnVjdHVyYXMgZGUgQ29udHJvbApgYGB7ciBpbmNsdWRlPUZBTFNFfQpsaWJyYXJ5KHRpZHl2ZXJzZSkKYGBgCiMgMi4gVmVjdG9yZXMKIyMjIDIuMSBDcmVhY2nDs24gZGUgdmVjdG9yZXMKUGFyYSBjcmVhciB2ZWN0b3JlcyBzZSB1dGlsaXphIGxhIHNpZ3VpZW50ZSBzaW50YXhpczogJypub21icmVfdmVjdG9yIDwtIGMoZWxlbWVudG9zKSonIG8gJypub21icmVfdmVjdG9yIDwtIHJhbmdvKicuIExvcyBlbGVtbmV0b3MgZGViZW4gZXN0YXIgc2VwYXJhZG9zIHBvciBjb21hcyB5IHNpIHNvbiBjYWRlbmFzIGRlIHRleHRvcyBkZWJlbiBpciBlbnRyZSBjb21pbGxhcy4KCkVqZW1wbG9zOgoKYGBge3IgY3JlYWNpb24gdjF9CnZlY3RvcjEgPC1jKDEwLCAyMSwgMywgNCwgMSkKdmVjdG9yMQpgYGAKCmBgYHtyIGNyZWFjaW9uIHYyfQp2ZWN0b3IyIDwtIDE6NQp2ZWN0b3IyCmBgYAoKIyMjIDIuMiBJbmRleGFjacOzbiBkZSB2ZWN0b3JlcwpMYSBzaW50YXhpcyBwYXJhIHZlciBlbGVtZW50b3MgZGUgdW4gdmVjdG9yIHBvciBzdSBwb3NpY2nDs24gZXMgbGEgc2lndWllbnRlOiAnKm5vbWJyZV92ZWN0b3JbYyhpbmRpY2VzLCBpbmRpY2VzKV0qJy4gUGFyYSBleHRyYWVyIGVsZW1lbnRvcyBkZXNkZSB1bmEgcG9zaWNpw7NuIGhhc3RhIG90cmEgc2UgdXRpbGl6YTogJypub21icmVfdmVjdG9yW2MoaW5kaWNlOmluZGljZSldKicKCkVqZW1wbG8gMTogc2UgdXRpbGl6YSBlbCB2ZWN0b3IgeWEgY3JlYWRvICcqdmVjdG9yMSonLCBwYXJhIHZlciBsb3MgZWxlbWVudG9zIGRlIGxvcyBpbmRpY2VzIGRlIGxhIHBvc2ljacOzbiAyIGEgbGEgcG9zaWNpw7NuIDU6CgpgYGB7ciBpbmRpY2VzMX0KdmVjdG9yMVsyOjVdCmBgYAoKRWplbXBsbyAyOiBzZSB1dGlsaXphIGVsIHZlY3RvciB5YSBjcmVhZG8gJyp2ZWN0b3IxKicsIHBhcmEgdmVyIGxvcyBlbGVtZW50b3MgZGUgbG9zIGluZGljZXMgZGUgbGEgcG9zaWNpw7NuIDIgeSBsYSBwb3NpY2nDs24gNToKCmBgYHtyIGluZGljZXN9CnZlY3RvcjFbYygyLDUpXQpgYGAKCiMjIyAyLjMgRWRpY2nDs24gZGUgdmVjdG9yZXMKUGFyYSBlZGl0YXIgdW4gdmVjdG9yIHNlIGhhY2UgbXVlc3RyYSBlbiBlbCBzaWd1aWVudGUgZWplbXBsbyB1dGlsaXphbmRvIGVsIHByaW1lciB2ZWN0b3IgY3JlYWRvOgoKYGBge3IgY3JlYWNpb24gZWRpdGFyX3ZlY3Rvcn0KdmVjdG9yX2VkaXRhZG8gPC0gYyh2ZWN0b3IxLCA1KQp2ZWN0b3JfZWRpdGFkbwpgYGAKCiMgMy4gTGlzdGFzIHkgTWF0cmljZXMKIyA0LiBEYXRhZnJhbWVzCiMgNS4gRnVuY2lvbmVzCiMgNi4gTWFuZWpvIGRlIEFyY2hpdm9zCiMgNy4gVmlzdWFsaXphY2lvbiBkZSBEYXRvcwojIyMgZ2dwbG90MgoKKipnZ3Bsb3QyKiogZXMgdW4gcGFxdWV0ZSBwb3RlbnRlIHkgZmxleGlibGUgZGUgUiwgaW1wbGVtZW50YWRvIHBvciBIYWRsZXkgV2lja2hhbSwgcGFyYSBwcm9kdWNpciBncsOhZmljb3MgZWxlZ2FudGVzLiBFbCBjb25jZXB0byBkZXRyw6FzIGRlIGdncGxvdDIgZGl2aWRlIGxvcyBncsOhZmljb3MgZW4gdHJlcyBwYXJ0ZXMgZnVuZGFtZW50YWxlczogKipQbG90ID0gRGF0b3MgKyBFc3TDqXRpY2EgKyBHZW9tZXRyw61hLioqCgpMb3MgY29tcG9uZW50ZXMgcHJpbmNpcGFsZXMgZGUgY2FkYSBncsOhZmljbyBwdWVkZW4gZGVmaW5pcnNlIGRlIGxhIHNpZ3VpZW50ZSBtYW5lcmE6CgotICoqRGF0b3MqKiBlcyB1biBkYXRhZnJhbWUKLSAqKkVzdGV0aWNhKiogc2UgdXRpbGl6YSBwYXJhIGluZGljYXIgbGFzIHZhcmlhYmxlcyB4IGUgeS4gVGFtYmnDqW4gc2UgcHVlZGUgdXRpbGl6YXIgcGFyYSBjb250cm9sYXIgZWwgY29sb3IsIGVsIHRhbWHDsW8gbyBsYSBmb3JtYSBkZSBsb3MgcHVudG9zLCBsYSBhbHR1cmEgZGUgbGFzIGJhcnJhcywgZXRjLi4uLi4gCi0gKipHZW9tZXRyaWEqKiBkZWZpbmUgZWwgdGlwbyBkZSBncsOhZmljbyAoaGlzdG9ncmFtYSwgZGlhZ3JhbWEgZGUgY2FqYSwgZGlhZ3JhbWEgZGUgbMOtbmVhcywgZGlhZ3JhbWEgZGUgZGVuc2lkYWQsIGRpYWdyYW1hIGRlIHB1bnRvcywgLi4uLikKCkhheSBkb3MgZnVuY2lvbmVzIHByaW5jaXBhbGVzIGVuIGVsIHBhcXVldGUgZ2dwbG90MjogbGFzIGZ1bmNpb25lcyAqKnFwbG90KCkqKiB5ICoqZ2dwbG90KCkqKi4KCi0gKipxcGxvdCgpKiogc2UgcmVmaWVyZSBhIHVuIGdyw6FmaWNvIHLDoXBpZG8sIHF1ZSBwdWVkZSB1dGlsaXphcnNlIHBhcmEgcHJvZHVjaXIgZsOhY2lsbWVudGUgZ3LDoWZpY29zIHNlbmNpbGxvcy4KCi0gTGEgZnVuY2nDs24gKipnZ3Bsb3QoKSoqIGVzIG3DoXMgZmxleGlibGUgeSByb2J1c3RhIHF1ZSAqKnFwbG90KCkqKiBwYXJhIGNvbnN0cnVpciB1biBncsOhZmljbyBwaWV6YSBwb3IgcGllemEuCgojIyMgcXBsb3QoKQpVbiBmb3JtYXRvIHNpbXBsaWZpY2FkbyBkZSBxcGxvdCgpIGVzIGVsIHNpZ3VpZW50ZToKYGBgCnFwbG90KHgsIHk9TlVMTCwgZGF0YSwgZ2VvbT0iYXV0byIsIHhsaW0gPSBjKE5BLCBOQSksIHlsaW0gPWMoTkEsIE5BKSkKYGBgCi0geCA6IHZhbG9yZXMgZGUgeAotIHkgOiB2YWxvcmVzIGRlIHkob3BjaW9uYWwpCi0gZGF0YSA6IGRhdGEgZnJhbWUgYSB1c2FyIChvcGNpb25hbCkuCi0gZ2VvbSA6IFZlY3RvciBkZSBjYXJhY3RlcmVzIHF1ZSBlc3BlY2lmaWNhIGxhIGdlb21ldHJpYShnZW9tKSBhIHV0aWxpemFyLiBQb3IgZGVmZWN0byBlcyAicG9pbnQiIHNpIHNlIGVzcGVjaWZpY2FuIHgsIHksIGUgImhpc3RvZ3JhbSIgc2kgc8OzbG8gc2UgZXNwZWNpZmljYSB4LgotIHhsaW0sIHlsaW06IGxpbWl0ZXMgZGVsIGVqZSB4LCB5CgojIyMjIFNjYXR0ZXIgUGxvdHMKRWwgZ3LDoWZpY28gcHVlZGUgY3JlYXJzZSB1dGlsaXphbmRvIGRhdG9zIGRlIHZlY3RvcmVzIG51bcOpcmljb3MgbyBkZSB1biBkYXRhZnJhbWU6CmBgYHtyfQojIFVzYW5kbyB2ZWN0b3JlcyBudW1lcmljb3MKeCA8LSAxOjEwOyB5ID0geCp4CiMgUGxvdCBiYXNpY28KcXBsb3QoeCx5KQojIFBsb3QgYmFzaWNvICsgbGluZWEKcXBsb3QoeCwgeSwgZ2VvbT1jKCJwb2ludCIsICJsaW5lIikpCiMgVXNhbmRvIGRhdGFmcmFtZXMKcXBsb3QobXBnLCB3dCwgZGF0YT1tdGNhcnMpCmBgYAoKIyMjIyBCb3ggcGxvdCwgZG90IHBsb3QgeSB2aW9saW4gcGxvdApQYXJhIGNyZWFyIGdyYWZpY29zIGRpZmVyZW50ZXMgYSB1biAgc2NhdHRlciBwbG90IGNvbiAqKnFwbG90KCkqKiBlcyBuZWNlc2FyaW8gZXNwZWNpZmljYXIgbGEgZ2VvbWV0cmlhIGRlIGxhIGdyYWZpY2E6CgotIGdlb20gPSDigJxib3hwbG904oCdOiBkaWJ1amEgdW4gYm94cGxvdAotIGdlb20gPSDigJxkb3RwbG904oCdOiBkaWJ1amEgdW4gZG90IHBsb3QuIExvcyBhcmd1bWVudG9zIHN1cGxlbWVudGFyaW9zIHN0YWNrZGlyID0gImNlbnRlciIgeSBiaW5heGlzID0gInkiIHNvbiBuZWNlc2FyaW9zLgotIGdlb20gPSDigJx2aW9saW7igJ06IGRpYnVqYSB1biB2aW9saW4gcGxvdC4gRWwgYXJndW1lbnRvIHRyaW0gc2UgZXN0YWJsZWNlIGVuIEZBTFNFLgpgYGB7cn0KIyBCb3hwbG90IGJhc2ljbyBhIHBhcnRpciBkZSB2ZWN0b3JlcyBudW1lcmljb3MKeCA8LSAiMSIKeSA8LSBybm9ybSgxMDApCnFwbG90KHgsIHksIGdlb209ImJveHBsb3QiKQoKIyBCb3hwbG90IGJhc2ljbyBhIHBhcnRpciBkZSB1biBkYXRhZnJhbWUKcXBsb3QoZ3JvdXAsIHdlaWdodCwgZGF0YSA9IFBsYW50R3Jvd3RoLCAKICAgICAgZ2VvbT1jKCJib3hwbG90IikpCgojIERvdCBwbG90CnFwbG90KGdyb3VwLCB3ZWlnaHQsIGRhdGEgPSBQbGFudEdyb3d0aCwgCiAgICAgIGdlb209YygiZG90cGxvdCIpLCAKICAgICAgc3RhY2tkaXIgPSAiY2VudGVyIiwgYmluYXhpcyA9ICJ5IiwKICAgICAgYmlud2lkdGggPSAwLjA5KQoKIyBWaW9saW4gcGxvdApxcGxvdChncm91cCwgd2VpZ2h0LCBkYXRhID0gUGxhbnRHcm93dGgsIAogICAgICBnZW9tPWMoInZpb2xpbiIpLCB0cmltID0gRkFMU0UpCmBgYAoKIyMjIyBIaXN0b2dyYW1hcyB5IGdyw6FmaWNvcyBkZSBkZW5zaWRhZApEZSBsYSBtaXNtYSBtYW5lcmEgcXVlIGxvcyBncmFmaWNvcyBhbnRlcmlvcmVzLCBwYXJhIGRpYnVqYXIgaGlzdG9ncmFtYXMgeSBncmFmaWNvcyBkZSBkZW5zaWRhZCBuZWNlc2l0YW1vcyBkZWZpbmlyIGxhIGdlb21ldHJpYSBkZSBsYSBncmFmaWNhLgpgYGB7cn0KIyBCYXNpYyBoaXN0b2dyYW0KcXBsb3QobXBnJGh3eSwgZ2VvbSA9ICJoaXN0b2dyYW0iLCBiaW5zID0gMTApCiMgQmFzaWMgZGVuc2l0eSBwbG90CnFwbG90KHggPSBtcGckaHd5LCBnZW9tID0gImRlbnNpdHkiKQpgYGAKCiMjIyBnZ3Bsb3QoKQpFbCBwdW50byBkZSBwYXJ0aWRhIHBhcmEgY3JlYXIgdW4gZ3LDoWZpY28gZXMgdXRpbGl6YXIgbGEgZnVuY2nDs24gZ2dwbG90IGNvbiBsYSBzaWd1aWVudGUgZXN0cnVjdHVyYSBiw6FzaWNhOgpgYGAKcGxvdCA8LSBnZ3Bsb3QoZGF0YSwgYWVzKHhfdmFyaWFibGUsIHlfdmFyaWFibGUpKSArIGdlb21fZ3JhcGgudHlwZSgpCnByaW50KHBsb3QpCmBgYAotICoqZGF0YSoqIGVzIHVuIGRhdGFmcmFtZSBxdWUgY29udGllbmUgbGFzIHZhcmlhYmxlcyBxdWUgc2UgcXVpZXJlbiBncmFmaWNhcgotICoqYWVzKiogZXNwZWNpZmljYSBxdWUgdmFyaWFibGVzIHNlIHZhbiBhIGdyYWZpY2FyLiBBdW5xdWUgbGEgcGFsYWJyYSAqYWVzKiBzZSByZWZpZXJlIGEgbGEgZXN0w6l0aWNhLCBlbiBnZ3Bsb3Qgbm8gc2UgcmVsYWNpb25hIGNvbiBlbCBhc3BlY3RvIHZpc3VhbCBkZWwgZ3LDoWZpY28sIHNpbm8gY29uIGxvcyBkYXRvcyBxdWUgc2UgcXVpZXJlbiB2ZXIgZW4gZWwgZ3LDoWZpY28uIEVzcGVjaWZpY2EgbG8gcXVlIGVsIGdyw6FmaWNvIHByZXNlbnRhIGVuIGx1Z2FyIGRlIGPDs21vIHNlIHByZXNlbnRhLgotICoqZ2VvbV9ncmFwaC50eXBlKiogZXNwZWNpZmljYSBxdWUgdGlwbyBkZSBncmFmaWNvIHNlIHF1aWVyZSBoYWNlci4gTG9zIGdyYWZpY29zIG1hcyBjb211bmVzIHNvbjoKICAtICpnZW9tX3BvaW50KCkqIHNjYXR0ZXJwbG90CiAgLSAqZ2VvbV9ib3hwbG90KCkqIGJveHBsb3QKICAtICpnZW9tX2hpc3RvZ3JhbSgpKiBoaXN0b2dyYW1hCiAgLSAqZ2VvbV9iYXIoKSogYmFyIHBsb3QKCkVsIHRpcG8gZGUgZ3LDoWZpY28gcXVlIHNlIHF1aWVyZSBoYWNlciB0aWVuZSBxdWUgY29pbmNpZGlyIGNvbiBsYXMgY2xhc2VzIGRlIGxhcyBlbnRyYWRhcyBkZSBsYSBmdW5jaW9uLiBQb3IgZWplbXBsbywgdW4gc2NhdHRlcnBsb3QgcmVxdWllcmUgcXVlIGFtYmFzIHZhcmlhYmxlcyBzZWFuIG51bcOpcmljYXMuIFVuIGJveHBsb3QgcmVxdWllcmUgcXVlIGxhIHZhcmlhYmxlICp4KiBzZWEgdW4gZmFjdG9yIHkgbGEgdmFyaWFibGUgKnkqIHNlYSBudW3DqXJpY2EuCgpVbmEgcHLDoWN0aWNhIMO6dGlsIGFsIGhhY2VyIGdncGxvdHMgZXMgYXNpZ25hciBlbCBncsOhZmljbyBhIHVuIG9iamV0byB5IGx1ZWdvICdpbXByaW1pcmxvJyBwb3Igc2VwYXJhZG8uIEEgbWVkaWRhIHF1ZSB1biBnZ3Bsb3Qgc2UgY29tcGxpY2EsIGVzdG8gbG8gaGFyw6EgbXVjaG8gbcOhcyBmw6FjaWwgZGUgY29uc3RydWlyLgoKIyMjIyMgRWplbXBsb3MgY29uIGdncGxvdCgpCmBgYHtyfQojICBEYXRhIGxvYWQKZGF0YShpcmlzKQoKIyBCb3hwbG90CnBsb3QxIDwtIGdncGxvdChpcmlzLCBhZXMoU3BlY2llcywgUGV0YWwuTGVuZ3RoKSkgKwogIGdlb21fYm94cGxvdCgpCnByaW50KHBsb3QxKQoKIyBIaXN0b2dyYW0KcGxvdDIgPC0gZ2dwbG90KGlyaXMsIGFlcyhQZXRhbC5MZW5ndGgpKSArCiAgZ2VvbV9oaXN0b2dyYW0oYmlud2lkdGggPSAwLjI1KQpwcmludChwbG90MikKCiMgU2NhdHRlciBQbG90CnBsb3QzIDwtIGdncGxvdChpcmlzLCBhZXMoU2VwYWwuTGVuZ3RoLCBQZXRhbC5MZW5ndGgpKSArCiAgZ2VvbV9wb2ludCgpCnByaW50KHBsb3QzKQoKIyBTY2F0dGVyIFBsb3QgKyBDYXRlZ29yaWNhbCB2YXJpYWJsZXMKcGxvdDQgPC0gZ2dwbG90KGlyaXMsIGFlcyhTZXBhbC5MZW5ndGgsIFBldGFsLkxlbmd0aCwgY29sb3VyID0gU3BlY2llcykpICsKICBnZW9tX3BvaW50KCkKcHJpbnQocGxvdDQpCgojIFZpb2xpbiBQbG90CnBsb3Q1IDwtIGdncGxvdChpcmlzLCBhZXMoeCA9IFNwZWNpZXMsIHkgPSBTZXBhbC5XaWR0aCksIGNvbG9yID0gU3BlY2llcywgZmlsbD1TcGVjaWVzLCBhbHBoYSA9IDAuMjUpICsKICBnZW9tX3Zpb2xpbigpCnByaW50KHBsb3Q1KQojIyBWMgpnZ3Bsb3QoaXJpcykgKyAKICBnZW9tX3Zpb2xpbihhZXMoeCA9IFNwZWNpZXMsIHkgPSBTZXBhbC5XaWR0aCwgY29sb3IgPSBTcGVjaWVzLCBmaWxsPVNwZWNpZXMpLCAKICAgICAgICAgICAgICBhbHBoYSA9IDAuMjUpCmBgYAojIDguIEFsZ29yaXRtb3MgZGUgZ2VuZXJhY2lvbiBkZSBudW1lcm9zIGFsZWF0b3Jpb3M/CiMgOS4gRGlzdHJpYnVjaW9uZXMgZGUgcHJvYmFiaWxpZGFkPw==</div>
 
 
 

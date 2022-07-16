@@ -5,11 +5,180 @@ date: '2022-07-16'
 output: html_notebook
 ---
 # 1. Estructuras de Control
+```{r include=FALSE}
+library(tidyverse)
+```
 # 2. Vectores
+### 2.1 Creación de vectores
+Para crear vectores se utiliza la siguiente sintaxis: '*nombre_vector <- c(elementos)*' o '*nombre_vector <- rango*'. Los elemnetos deben estar separados por comas y si son cadenas de textos deben ir entre comillas.
+
+Ejemplos:
+
+```{r creacion v1}
+vector1 <-c(10, 21, 3, 4, 1)
+vector1
+```
+
+```{r creacion v2}
+vector2 <- 1:5
+vector2
+```
+
+### 2.2 Indexación de vectores
+La sintaxis para ver elementos de un vector por su posición es la siguiente: '*nombre_vector[c(indices, indices)]*'. Para extraer elementos desde una posición hasta otra se utiliza: '*nombre_vector[c(indice:indice)]*'
+
+Ejemplo 1: se utiliza el vector ya creado '*vector1*', para ver los elementos de los indices de la posición 2 a la posición 5:
+
+```{r indices1}
+vector1[2:5]
+```
+
+Ejemplo 2: se utiliza el vector ya creado '*vector1*', para ver los elementos de los indices de la posición 2 y la posición 5:
+
+```{r indices}
+vector1[c(2,5)]
+```
+
+### 2.3 Edición de vectores
+Para editar un vector se hace muestra en el siguiente ejemplo utilizando el primer vector creado:
+
+```{r creacion editar_vector}
+vector_editado <- c(vector1, 5)
+vector_editado
+```
+
 # 3. Listas y Matrices
 # 4. Dataframes
 # 5. Funciones
 # 6. Manejo de Archivos
 # 7. Visualizacion de Datos
+### ggplot2
+
+**ggplot2** es un paquete potente y flexible de R, implementado por Hadley Wickham, para producir gráficos elegantes. El concepto detrás de ggplot2 divide los gráficos en tres partes fundamentales: **Plot = Datos + Estética + Geometría.**
+
+Los componentes principales de cada gráfico pueden definirse de la siguiente manera:
+
+- **Datos** es un dataframe
+- **Estetica** se utiliza para indicar las variables x e y. También se puede utilizar para controlar el color, el tamaño o la forma de los puntos, la altura de las barras, etc..... 
+- **Geometria** define el tipo de gráfico (histograma, diagrama de caja, diagrama de líneas, diagrama de densidad, diagrama de puntos, ....)
+
+Hay dos funciones principales en el paquete ggplot2: las funciones **qplot()** y **ggplot()**.
+
+- **qplot()** se refiere a un gráfico rápido, que puede utilizarse para producir fácilmente gráficos sencillos.
+
+- La función **ggplot()** es más flexible y robusta que **qplot()** para construir un gráfico pieza por pieza.
+
+### qplot()
+Un formato simplificado de qplot() es el siguiente:
+```
+qplot(x, y=NULL, data, geom="auto", xlim = c(NA, NA), ylim =c(NA, NA))
+```
+- x : valores de x
+- y : valores de y(opcional)
+- data : data frame a usar (opcional).
+- geom : Vector de caracteres que especifica la geometria(geom) a utilizar. Por defecto es "point" si se especifican x, y, e "histogram" si sólo se especifica x.
+- xlim, ylim: limites del eje x, y
+
+#### Scatter Plots
+El gráfico puede crearse utilizando datos de vectores numéricos o de un dataframe:
+```{r}
+# Usando vectores numericos
+x <- 1:10; y = x*x
+# Plot basico
+qplot(x,y)
+# Plot basico + linea
+qplot(x, y, geom=c("point", "line"))
+# Usando dataframes
+qplot(mpg, wt, data=mtcars)
+```
+
+#### Box plot, dot plot y violin plot
+Para crear graficos diferentes a un  scatter plot con **qplot()** es necesario especificar la geometria de la grafica:
+
+- geom = “boxplot”: dibuja un boxplot
+- geom = “dotplot”: dibuja un dot plot. Los argumentos suplementarios stackdir = "center" y binaxis = "y" son necesarios.
+- geom = “violin”: dibuja un violin plot. El argumento trim se establece en FALSE.
+```{r}
+# Boxplot basico a partir de vectores numericos
+x <- "1"
+y <- rnorm(100)
+qplot(x, y, geom="boxplot")
+
+# Boxplot basico a partir de un dataframe
+qplot(group, weight, data = PlantGrowth, 
+      geom=c("boxplot"))
+
+# Dot plot
+qplot(group, weight, data = PlantGrowth, 
+      geom=c("dotplot"), 
+      stackdir = "center", binaxis = "y",
+      binwidth = 0.09)
+
+# Violin plot
+qplot(group, weight, data = PlantGrowth, 
+      geom=c("violin"), trim = FALSE)
+```
+
+#### Histogramas y gráficos de densidad
+De la misma manera que los graficos anteriores, para dibujar histogramas y graficos de densidad necesitamos definir la geometria de la grafica.
+```{r}
+# Basic histogram
+qplot(mpg$hwy, geom = "histogram", bins = 10)
+# Basic density plot
+qplot(x = mpg$hwy, geom = "density")
+```
+
+### ggplot()
+El punto de partida para crear un gráfico es utilizar la función ggplot con la siguiente estructura básica:
+```
+plot <- ggplot(data, aes(x_variable, y_variable)) + geom_graph.type()
+print(plot)
+```
+- **data** es un dataframe que contiene las variables que se quieren graficar
+- **aes** especifica que variables se van a graficar. Aunque la palabra *aes* se refiere a la estética, en ggplot no se relaciona con el aspecto visual del gráfico, sino con los datos que se quieren ver en el gráfico. Especifica lo que el gráfico presenta en lugar de cómo se presenta.
+- **geom_graph.type** especifica que tipo de grafico se quiere hacer. Los graficos mas comunes son:
+  - *geom_point()* scatterplot
+  - *geom_boxplot()* boxplot
+  - *geom_histogram()* histograma
+  - *geom_bar()* bar plot
+
+El tipo de gráfico que se quiere hacer tiene que coincidir con las clases de las entradas de la funcion. Por ejemplo, un scatterplot requiere que ambas variables sean numéricas. Un boxplot requiere que la variable *x* sea un factor y la variable *y* sea numérica.
+
+Una práctica útil al hacer ggplots es asignar el gráfico a un objeto y luego 'imprimirlo' por separado. A medida que un ggplot se complica, esto lo hará mucho más fácil de construir.
+
+##### Ejemplos con ggplot()
+```{r}
+#  Data load
+data(iris)
+
+# Boxplot
+plot1 <- ggplot(iris, aes(Species, Petal.Length)) +
+  geom_boxplot()
+print(plot1)
+
+# Histogram
+plot2 <- ggplot(iris, aes(Petal.Length)) +
+  geom_histogram(binwidth = 0.25)
+print(plot2)
+
+# Scatter Plot
+plot3 <- ggplot(iris, aes(Sepal.Length, Petal.Length)) +
+  geom_point()
+print(plot3)
+
+# Scatter Plot + Categorical variables
+plot4 <- ggplot(iris, aes(Sepal.Length, Petal.Length, colour = Species)) +
+  geom_point()
+print(plot4)
+
+# Violin Plot
+plot5 <- ggplot(iris, aes(x = Species, y = Sepal.Width), color = Species, fill=Species, alpha = 0.25) +
+  geom_violin()
+print(plot5)
+## V2
+ggplot(iris) + 
+  geom_violin(aes(x = Species, y = Sepal.Width, color = Species, fill=Species), 
+              alpha = 0.25)
+```
 # 8. Algoritmos de generacion de numeros aleatorios?
 # 9. Distribuciones de probabilidad?
