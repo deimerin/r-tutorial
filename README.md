@@ -1,22 +1,20 @@
 # r-tutorial
 
-Descripcion...autores...etc
-
 Contenido
 
-1. Estructuras de control en R. Realice un ejemplo para las estructuras de control que encuentre en R
+1. Estructuras de control.
 
-2. Vectores en R. Creación, indexación, edición. Genere una secuencia de números utilizando un generador congruencial lineal.
+2. Vectores.
 
-3. Listas y matrices en R. Explique algunas operaciones matriciales básicas
+3. Listas y matrices.
 
-4. Dataframes. Visualización y manipulación. Ejemplo utilización dataframe. Encuentro un dataset en internet o que se encuentre disponible en alguna librería en R y utilice la funcionalidad del dataframe para extraer información del dataset. Utilice las funciones promedio, desviación estándar, varianza para resumir la información en el dataframe.
+4. Dataframes.
 
-5. Funciones en R. Ejemplos de utilización. Implemente una función en R de su elección. Explique paso a paso la función y la manera en que retorna los valores finales. Explique también como invocar la función
+5. Funciones.
 
-6. Manejo de archivos con R
+6. Manejo de archivos.
 
-7. Ejemplos de visualización de datos: Gráficas diversas incluyendo dispersión de puntos, histogramas, diagrama de cajas (bloxpots), violinplots, etc.
+7. Visualización de datos.
 
 8. Algoritmos de generacion de numeros aleatorios?
 
