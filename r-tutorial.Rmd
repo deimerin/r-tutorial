@@ -309,6 +309,129 @@ m1
 solve(m1)
 ``` 
 # 4. Dataframes
+Un dataframe es una tabla o una estructura bidimensional tipo array en la que cada columna contiene valores de una variable y cada fila contiene un conjunto de valores de cada columna.
+Son características de un dataframe:
+
+- Los nombres de las columnas no deben ser vacíos.
+- Los nombres de las filas deben ser únicos.
+- Los datos almacenados en un data frame pueden ser de tipo numérico, factor o carácter.
+- Cada columna debe contener el mismo número de datos.
+
+Para crear un dataframe utilizamos la funcion *data.frame()*
+
+Ejemplo:
+```{r}
+# Create a data frame
+df <- data.frame (
+  Training = c("Strength", "Stamina", "Other"),
+  Pulse = c(100, 150, 120),
+  Duration = c(60, 30, 45)
+)
+
+# Print the data frame
+df 
+```
+
+### **dplyr**
+El paquete *dplyr* es una gramática de la manipulación de datos, que proporciona un conjunto de funciones para manipulacion de datos.
+```{r include=FALSE}
+library(dplyr)
+```
+
+Para demostrar las funciones de este paquete se usa el dataset mammals sleep, el cual contiene los tiempos de sueño y los pesos de un conjunto de mamíferos.
+```{r}
+df <- read_csv('https://raw.githubusercontent.com/genomicsclass/dagdata/master/inst/extdata/msleep_ggplot2.csv')
+```
+
+#### **select()**
+
+Seleccionar un conjunto de columnas
+```{r}
+sel1 <- select(df, name, sleep_total)
+head(sel1)
+```
+Selecciona todas las columnas excepto una columna especifica
+```{r}
+sel2 <- select(df, -name)
+head(sel2)
+```
+Selecciona un rango de columnas por nombre
+```{r}
+sel3 <- select(df, name:order)
+head(sel3)
+```
+
+Selecciona todas las columnas que comienzan con el string 'sl'
+```{r}
+sel4 <- select(df, starts_with('sl'))
+head(sel4)
+```
+
+#### **filter()**
+
+Filtra las filas donde un valor cumpla una condicion especifica.
+```{r}
+filter(df, sleep_total >= 16)
+```
+```{r}
+filter(df, sleep_total >= 16, bodywt >= 1)
+```
+```{r}
+filter(df, order %in% c("Perissodactyla", "Primates"))
+```
+#### **arrange()**
+
+Ordena filas por una columna especifica.
+```{r}
+df %>% arrange(order) %>% head
+```
+```{r}
+# Selecciona columnas, luego ordenas las filas
+df %>% 
+    select(name, order, sleep_total) %>%
+    arrange(order, sleep_total) %>% 
+    head
+```
+```{r}
+# Selecciona columnas, las reordenas y las filtra bajo un criterio
+df %>% 
+    select(name, order, sleep_total) %>%
+    arrange(order, sleep_total) %>% 
+    filter(sleep_total >= 16)
+```
+
+#### **mutate()**
+
+Crea nuevas columnas en un data frame.
+```{r}
+# Crea una nueva columna rem_proportion
+df %>% 
+    mutate(rem_proportion = sleep_rem / sleep_total) %>%
+    head
+```
+
+#### **summarize()**
+
+La función *summarise()* crea estadísticas de resumen para una columna dada en el data frame, como por ejemplo encontrar la media, la desviación estándar, o la varianza.
+```{r}
+df %>% 
+    summarise(avg_sleep = mean(sleep_total), 
+              sd_sleep = sd(sleep_total),
+              var_sleep = var(sleep_total))
+```
+#### **group_by()**
+
+Divide el data frame por una variable, aplica una funcion a los data frames y combina el resultado.
+
+```{r}
+df %>% 
+    group_by(order) %>%
+    summarise(avg_sleep = mean(sleep_total), 
+              min_sleep = min(sleep_total), 
+              max_sleep = max(sleep_total),
+              total = n())
+```
+
 # 5. Funciones
 Una función es un conjunto de instrucciones organizadas para realizar una tarea específica. R tiene un gran número de funciones incorporadas y un usuario puede crear sus propias funciones.
 
@@ -535,7 +658,6 @@ read_csv("a,b,c\n1,2,.", na = ".")
 ```
 
 # 7. Visualizacion de Datos
-### Funciones integradas en R
 ### ggplot2
 ```{r include=FALSE}
 library(tidyverse)
@@ -694,7 +816,7 @@ lcg <- function(){
 ### Mersenne-Twister
 
 ### Generador de Fibonacci
-git
+
 ### Generador RANDU
 
 # 9. Distribuciones de probabilidad
