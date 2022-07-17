@@ -225,34 +225,1231 @@ pre code {
 <!-- rnb-text-begin -->
 <div id="estructuras-de-control" class="section level1">
 <h1>1. Estructuras de Control</h1>
+<div id="if-else" class="section level3">
+<h3>1.1 If-else</h3>
+<p>Esta es una estructura que nos permite evaluar si una condicion se cumple o no. La estructura para este condicional es la siguiente:</p>
+<pre><code>if(condicion){
+    operaciones_si_se_cumple
+  } else {
+    operaciones_no_se_cumple
+  }</code></pre>
+<p>Ejemplo básico usando la estructura, comparando dos números:</p>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuaWYoND4zKXtcbiAgXCJ2ZXJkYWRlcm9cIlxufWVsc2V7XG4gIFwiRmFsc29cIlxufVxuYGBgIn0= -->
+<pre class="r"><code>if(4&gt;3){
+  &quot;verdadero&quot;
+}else{
+  &quot;Falso&quot;
+}</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+</div>
+<div id="for" class="section level3">
+<h3>1.2 For</h3>
+<p>Es una estructura de control que permite repetir instrucciones un numero especifico de veces.</p>
+<pre><code>for(valor in vector){
+  operaciones_para_bucle
+  }</code></pre>
+<p>Ejemplo sencillo, donde se elevan al cuadrado los números del 1 al 5:</p>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuZm9yKG51bWVybyBpbiAxOjUpe1xuICBwcmludChudW1lcm9eMilcbn1cbmBgYCJ9 -->
+<pre class="r"><code>for(numero in 1:5){
+  print(numero^2)
+}</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+</div>
+<div id="while" class="section level3">
+<h3>1.3 While</h3>
+<p>El bucle While ejecuta el mismo código una y otra vez hasta que se deje de cumplir la condición definida.</p>
+<pre><code>while(condicion){
+  operaciones_para_bucle
+  }</code></pre>
+<p>Ejemplo, en este ejercicio se busca comparar si un número es menor a 5, si lo es imprime verdadero y aumenta 1, el bucle termina cuando esto ya no se cumple:</p>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubnVtZXJvIDwtIDBcbndoaWxlKG51bWVybyA8IDUpe1xuICBwcmludChcIlZlcmRhZGVyb1wiKVxuICBudW1lcm8gPC0gbnVtZXJvKzFcbn1cbmBgYCJ9 -->
+<pre class="r"><code>numero &lt;- 0
+while(numero &lt; 5){
+  print(&quot;Verdadero&quot;)
+  numero &lt;- numero+1
+}</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+</div>
+<div id="repeat" class="section level3">
+<h3>1.4 Repeat</h3>
+<p>El bucle Repeat ejecuta el mismo código una y otra vez hasta que se cumple una condición de parada.</p>
+<pre><code>repeat { 
+   commands 
+   if(condition) {
+      break
+   }
+}</code></pre>
+<p>Ejemplo:</p>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxudiA8LSBjKFwiSGVsbG9cIixcIldvcmxkXCIpXG5jbnQgPC0gMlxuXG5yZXBlYXQge1xuICAgcHJpbnQodilcbiAgIGNudCA8LSBjbnQrMVxuICAgXG4gICBpZihjbnQgPiA1KSB7XG4gICAgICBicmVha1xuICAgfVxufVxuYGBgIn0= -->
+<pre class="r"><code>v &lt;- c(&quot;Hello&quot;,&quot;World&quot;)
+cnt &lt;- 2
+
+repeat {
+   print(v)
+   cnt &lt;- cnt+1
+   
+   if(cnt &gt; 5) {
+      break
+   }
+}</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiWzFdIFwiSGVsbG9cIiBcIldvcmxkXCJcblsxXSBcIkhlbGxvXCIgXCJXb3JsZFwiXG5bMV0gXCJIZWxsb1wiIFwiV29ybGRcIlxuWzFdIFwiSGVsbG9cIiBcIldvcmxkXCJcbiJ9 -->
+<pre><code>[1] &quot;Hello&quot; &quot;World&quot;
+[1] &quot;Hello&quot; &quot;World&quot;
+[1] &quot;Hello&quot; &quot;World&quot;
+[1] &quot;Hello&quot; &quot;World&quot;</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+</div>
+<div id="breaknext" class="section level3">
+<h3>1.5 Break/Next</h3>
+<p>Estas son instrucciones que nos permiten parar completamente un bucle o ir a una siguiente iteracion.</p>
+<ul>
+<li>Cuando se encuentra la instrucción <strong>break</strong> dentro de un bucle, éste se termina inmediatamente y el control del programa se reanuda en la siguiente instrucción que sigue al bucle.</li>
+<li>La instrucción <strong>next</strong> en el lenguaje de programación R es útil cuando queremos saltar la iteración actual de un bucle sin terminarlo.</li>
+</ul>
+<p>Ejemplo:</p>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuZm9yKGkgaW4gMTo3KXtcbiAgaWYoaSA9PSAzKXsjQ3VhbmRvIGVsIG51bWVybyBsbGVnYSBhIGxhIGNvbmRpY2nDs24gc2Ugc2FsdGEgZXNlIHBhc28gZGVsIGNpY2xvXG4gICAgbmV4dFxuICAgIH1cbiAgaWYoaT09NSl7IyBDdWFuZG8gZWwgbnVtZXJvIGxsZWdhIGEgbGEgY29uZGljaW9uIHNlIGRldGllbmUgZWwgY2ljbG9cbiAgYnJlYWtcbiAgICB9XG5wcmludChpKVxufVxuYGBgIn0= -->
+<pre class="r"><code>for(i in 1:7){
+  if(i == 3){#Cuando el numero llega a la condición se salta ese paso del ciclo
+    next
+    }
+  if(i==5){# Cuando el numero llega a la condicion se detiene el ciclo
+  break
+    }
+print(i)
+}</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiWzFdIDFcblsxXSAyXG5bMV0gNFxuIn0= -->
+<pre><code>[1] 1
+[1] 2
+[1] 4</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuICBcbmBgYCJ9 -->
+<pre class="r"><code>  </code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+</div>
 </div>
 <div id="vectores" class="section level1">
 <h1>2. Vectores</h1>
+<p>El vector es una estructura de datos básica en R. Contiene elementos del mismo tipo. Los tipos de datos pueden ser logical, integer, double, character, complex o raw. El tipo de dato de un vector se puede comprobar con la funcion <em>typeof()</em></p>
+<div id="creación-de-vectores" class="section level3">
+<h3>2.1 Creación de vectores</h3>
+<p>Para crear vectores se utiliza la siguiente sintaxis:</p>
+<pre><code>nombre_vector &lt;- c(elementos)
+nombre_vector &lt;- rango</code></pre>
+<p>Los elementos deben estar separados por comas y si son cadenas de textos deben ir entre comillas.</p>
+<p>Ejemplos:</p>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxudmVjdG9yMSA8LWMoMTAsIDIxLCAzLCA0LCAxKVxudmVjdG9yMiA8LSAxOjVcbnZlY3RvcjFcbnZlY3RvcjJcbmBgYCJ9 -->
+<pre class="r"><code>vector1 &lt;-c(10, 21, 3, 4, 1)
+vector2 &lt;- 1:5
+vector1
+vector2</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+</div>
+<div id="indexación-de-vectores" class="section level3">
+<h3>2.2 Indexación de vectores</h3>
+<p>La sintaxis para ver elementos de un vector por su posición es la siguiente:</p>
+<pre><code>nombre_vector[c(indices, indices)]</code></pre>
+<p>Para extraer elementos desde una posición hasta otra se utiliza:</p>
+<pre><code>nombre_vector[c(indice:indice)]</code></pre>
+<p>Ejemplo 1: se utiliza el vector ya creado <em>vector1</em>, para ver los elementos de los indices de la posición 2 a la posición 5:</p>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxudmVjdG9yMVsyOjVdXG5gYGAifQ== -->
+<pre class="r"><code>vector1[2:5]</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<p>Ejemplo 2: se utiliza el vector ya creado <em>vector1</em>, para ver los elementos de los indices de la posición 2 y la posición 5:</p>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxudmVjdG9yMVtjKDIsNSldXG5gYGAifQ== -->
+<pre class="r"><code>vector1[c(2,5)]</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+</div>
+<div id="edición-de-vectores" class="section level3">
+<h3>2.3 Edición de vectores</h3>
+<p>Para editar un vector se hace muestra en el siguiente ejemplo utilizando el primer vector creado:</p>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxudmVjdG9yX2VkaXRhZG8gPC0gYyh2ZWN0b3IxLCA1KVxudmVjdG9yX2VkaXRhZG9cbmBgYCJ9 -->
+<pre class="r"><code>vector_editado &lt;- c(vector1, 5)
+vector_editado</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiWzFdIDEwIDIxICAzICA0ICAxICA1XG4ifQ== -->
+<pre><code>[1] 10 21  3  4  1  5</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<p>Adicionalmente dos vectores de la misma longitud se pueden sumar, restar, multiplicar o dividir dando el resultado como una salida vectorial.</p>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuIyBTdW1hXG5zdW1hIDwtIHZlY3RvcjErdmVjdG9yMlxucHJpbnQoc3VtYSlcbmBgYCJ9 -->
+<pre class="r"><code># Suma
+suma &lt;- vector1+vector2
+print(suma)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiWzFdIDExIDIzICA2ICA4ICA2XG4ifQ== -->
+<pre><code>[1] 11 23  6  8  6</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuIyBSZXN0YVxucmVzdGEgPC0gdmVjdG9yMS12ZWN0b3IyXG5wcmludChyZXN0YSlcbmBgYCJ9 -->
+<pre class="r"><code># Resta
+resta &lt;- vector1-vector2
+print(resta)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiWzFdICA5IDE5ICAwICAwIC00XG4ifQ== -->
+<pre><code>[1]  9 19  0  0 -4</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuIyBNdWx0aXBsaWNhY2lvblxubXVsdGkgPC0gdmVjdG9yMSp2ZWN0b3IyXG5wcmludChtdWx0aSlcbmBgYCJ9 -->
+<pre class="r"><code># Multiplicacion
+multi &lt;- vector1*vector2
+print(multi)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiWzFdIDEwIDQyICA5IDE2ICA1XG4ifQ== -->
+<pre><code>[1] 10 42  9 16  5</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuIyBEaXZpc2lvblxuZGl2IDwtIHZlY3RvcjEvdmVjdG9yMlxucHJpbnQoZGl2KVxuYGBgIn0= -->
+<pre class="r"><code># Division
+div &lt;- vector1/vector2
+print(div)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiWzFdIDEwLjAgMTAuNSAgMS4wICAxLjAgIDAuMlxuIn0= -->
+<pre><code>[1] 10.0 10.5  1.0  1.0  0.2</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+</div>
 </div>
 <div id="listas-y-matrices" class="section level1">
 <h1>3. Listas y Matrices</h1>
+<div id="listas" class="section level3">
+<h3>3.1 Listas</h3>
+<p>Las listas son los objetos de R que contienen elementos de diferentes tipos como - números, cadenas, vectores y otra lista dentro de ella. Una lista también puede contener una matriz o una función como sus elementos. La lista se crea utilizando la función <em>list()</em>. Para crear listas se usa la función <em>list()</em>, donde se agregan los elementos que deseamos contenga la lista. A cada elemento de la lista se le puede asignar un nombre <em>list(“nombre_list”= elemento)</em>.</p>
+<p>Ejemplo:</p>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubGlzdGExIDwtIGxpc3QoXCJwZXJyb1wiLCBcImdhdG9cIiwgXCJ2YWNhXCIpXG5saXN0YTFcbmBgYCJ9 -->
+<pre class="r"><code>lista1 &lt;- list(&quot;perro&quot;, &quot;gato&quot;, &quot;vaca&quot;)
+lista1</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<p>Las listas también pueden contener otras listas y vectores, ejemplo:</p>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubGlzdGEyIDwtIGxpc3QoXCJsaXN0YV9hbmltYWxlc1wiPWxpc3RhMSwgXCJ2ZWN0b3JfMVwiPXZlY3RvcjEsIFwidmVjdG9yXzJcIj12ZWN0b3IyKVxubGlzdGEyXG5gYGAifQ== -->
+<pre class="r"><code>lista2 &lt;- list(&quot;lista_animales&quot;=lista1, &quot;vector_1&quot;=vector1, &quot;vector_2&quot;=vector2)
+lista2</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+</div>
+<div id="matrices" class="section level3">
+<h3>3.2 Matrices</h3>
+<p>Las matrices son los objetos R en los que los elementos están ordenados en una distribución rectangular bidimensional. Para la creación de matrices se utiliza la función <em>matrix()</em>. Para especificar el número de filas y columnas se usa <em>nrow</em> y <em>ncol</em> respectivamente. La sintaxis básica para crear una matriz en R es:</p>
+<pre><code>matrix(data, nrow, ncol, byrow, dimnames)</code></pre>
+<ul>
+<li><strong>data</strong> es el vector de entrada que se convierte en los elementos de datos de la matriz.</li>
+<li><strong>nrow</strong> es el número de filas a crear.</li>
+<li><strong>ncol</strong> es el número de columnas a crear.</li>
+<li><strong>byrow</strong> Si es TRUE, los elementos del vector de entrada se ordenan por filas.</li>
+<li><strong>dimnames</strong> son los nombres asignados a las filas y columnas.</li>
+</ul>
+<p>Ejemplo 1, se crea una matriz 3x3 con números del 1 al 9:</p>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubWF0cml4KDE6OSwgbnJvdz0zLCBuY29sPTMpXG5gYGAifQ== -->
+<pre class="r"><code>matrix(1:9, nrow=3, ncol=3)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<p>Otra forma para crear matrices es uniendo vectores, con <em>rbind()</em> usando cada vector como una fila. Ejemplo 2:</p>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuI2NyZWFtb3MgZG9zIHZlY3RvcmVzXG52MSA8LWMoMSwyKVxudjIgPC1jKDMsNClcbiN1c2Ftb3MgbGEgZnVuY2nDs24gcmJpbmQoKVxubWF0cml6IDwtIHJiaW5kKHYxLCB2Milcbm1hdHJpelxuYGBgIn0= -->
+<pre class="r"><code>#creamos dos vectores
+v1 &lt;-c(1,2)
+v2 &lt;-c(3,4)
+#usamos la función rbind()
+matriz &lt;- rbind(v1, v2)
+matriz</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<p>También para crear matrices uniendo vectores se puede usar la función <em>cbind()</em> usando cada vector como una columna. Ejemplo 3:</p>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuI3VzYW1vcyBsYSBmdW5jacOzbiByYmluZCgpIHkgbG9zIHZlY3RvcmUgdjEgeSB2MlxubWF0cml6IDwtIGNiaW5kKHYxLCB2Milcbm1hdHJpelxuYGBgIn0= -->
+<pre class="r"><code>#usamos la función rbind() y los vectore v1 y v2
+matriz &lt;- cbind(v1, v2)
+matriz</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<div id="operaciones-básicas-matriciales" class="section level5">
+<h5><strong>Operaciones básicas matriciales </strong></h5>
+<p>En las matrices se realizan diversas operaciones matemáticas con los operadores R. El resultado de la operación es también una matriz. Las dimensiones (número de filas y columnas) deben ser las mismas para las matrices involucradas en la operación.</p>
+</div>
+<div id="suma-y-resta-de-dos-matrices" class="section level5">
+<h5><strong>Suma y resta de dos matrices</strong></h5>
+<p>Se tienen dos matrices de igual dimensión y se procede a realizar la suma y resta con <em>+</em> y <em>-</em> respectivamente.</p>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuI21hdHJpeiAxXG5tMSA8LW1hdHJpeCgxOjQsIG5yb3c9MiwgbmNvbD0yKVxubTFcbiNtYXRyaXogMlxubTIgPC1tYXRyaXgoNTo4LCBucm93PTIsIG5jb2w9Milcbm0yXG4jc3VtYSBtMSttMlxuc3VtYT1tMSttMlxuc3VtYVxuI3Jlc3RhIG0xLW0yXG5yZXN0YT1tMS1tMlxucmVzdGFcbmBgYCJ9 -->
+<pre class="r"><code>#matriz 1
+m1 &lt;-matrix(1:4, nrow=2, ncol=2)
+m1
+#matriz 2
+m2 &lt;-matrix(5:8, nrow=2, ncol=2)
+m2
+#suma m1+m2
+suma=m1+m2
+suma
+#resta m1-m2
+resta=m1-m2
+resta</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+</div>
+<div id="multiplicación-de-matriz" class="section level5">
+<h5><strong>Multiplicación de matriz</strong></h5>
+<p>Para multiplicación matricial de igual tamaño se usa %*%. Si se quiere multiplicar dos matrices elemento por elemento se usa <em>matriz1</em> * <em>matriz2</em>.</p>
+<p>Ejemplo:</p>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuI21hdHJpeiAxXG5tMSA8LW1hdHJpeCgxOjQsIG5yb3c9MiwgbmNvbD0yKVxubTFcbiNtYXRyaXogMlxubTIgPC1tYXRyaXgoNTo4LCBucm93PTIsIG5jb2w9Milcbm0yXG4jbXVsdGlwbGljYWNpb24gbWF0cmljaWFsXG5tdWx0PW0xJSolbTJcbm11bHRcbmBgYCJ9 -->
+<pre class="r"><code>#matriz 1
+m1 &lt;-matrix(1:4, nrow=2, ncol=2)
+m1
+#matriz 2
+m2 &lt;-matrix(5:8, nrow=2, ncol=2)
+m2
+#multiplicacion matricial
+mult=m1%*%m2
+mult</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+</div>
+<div id="matriz-traspuesta" class="section level5">
+<h5><strong>Matriz Traspuesta</strong></h5>
+<p>Para trasponer una matriz se una la función <em>t()</em>.</p>
+<p>Ejemplo:</p>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuI21hdHJpeiAxXG5tMSA8LW1hdHJpeCgxOjQsIG5yb3c9MiwgbmNvbD0yKVxubTFcbiN1c2Ftb3MgbGEgbWF0cml6IDEgbTFcbnQobTEpXG5gYGAifQ== -->
+<pre class="r"><code>#matriz 1
+m1 &lt;-matrix(1:4, nrow=2, ncol=2)
+m1
+#usamos la matriz 1 m1
+t(m1)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+</div>
+<div id="potencia-de-una-matriz" class="section level5">
+<h5><strong>Potencia de una matriz</strong></h5>
+<p>Para calcular la potencia de una matriz se usa <em>%^%</em>, o simplemete multiplicamos la matriz por ella misma.</p>
+<p>Ejemplo:</p>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubGlicmFyeShleHBtKVxuI21hdHJpeiAxXG5tMSA8LW1hdHJpeCgxOjQsIG5yb3c9MiwgbmNvbD0yKVxubTFcbmBgYCJ9 -->
+<pre class="r"><code>library(expm)
+#matriz 1
+m1 &lt;-matrix(1:4, nrow=2, ncol=2)
+m1</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiICAgICBbLDFdIFssMl1cblsxLF0gICAgMSAgICAzXG5bMixdICAgIDIgICAgNFxuIn0= -->
+<pre><code>     [,1] [,2]
+[1,]    1    3
+[2,]    2    4</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuI3BvdGVuY2lhICVeJVxucG90MT1tMSAlXiUgMlxucG90MVxuYGBgIn0= -->
+<pre class="r"><code>#potencia %^%
+pot1=m1 %^% 2
+pot1</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiICAgICBbLDFdIFssMl1cblsxLF0gICAgNyAgIDE1XG5bMixdICAgMTAgICAyMlxuIn0= -->
+<pre><code>     [,1] [,2]
+[1,]    7   15
+[2,]   10   22</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuI3BvdGVuY2lhIG0xKm0xXG5wb3QyPW0xJSolbTFcbnBvdDJcbmBgYCJ9 -->
+<pre class="r"><code>#potencia m1*m1
+pot2=m1%*%m1
+pot2</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiICAgICBbLDFdIFssMl1cblsxLF0gICAgNyAgIDE1XG5bMixdICAgMTAgICAyMlxuIn0= -->
+<pre><code>     [,1] [,2]
+[1,]    7   15
+[2,]   10   22</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+</div>
+<div id="determinante-de-una-matriz" class="section level5">
+<h5><strong>Determinante de una matriz</strong></h5>
+<p>Para calcular el determinante de una matriz se usa <em>det()</em></p>
+<p>Ejemplo:</p>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuI21hdHJpeiAxXG5tMSA8LW1hdHJpeCgxOjQsIG5yb3c9MiwgbmNvbD0yKVxubTFcbmBgYCJ9 -->
+<pre class="r"><code>#matriz 1
+m1 &lt;-matrix(1:4, nrow=2, ncol=2)
+m1</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiICAgICBbLDFdIFssMl1cblsxLF0gICAgMSAgICAzXG5bMixdICAgIDIgICAgNFxuIn0= -->
+<pre><code>     [,1] [,2]
+[1,]    1    3
+[2,]    2    4</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuI2RldGVybWluYW50ZVxuZGV0KG0xKVxuYGBgIn0= -->
+<pre class="r"><code>#determinante
+det(m1)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiWzFdIC0yXG4ifQ== -->
+<pre><code>[1] -2</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+</div>
+<div id="inversa-de-una-matriz" class="section level5">
+<h5><strong>Inversa de una matriz</strong></h5>
+<p>Para calcular la inversa de una matriz se usa <em>solve()</em></p>
+<p>Ejemplo:</p>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuI21hdHJpeiAxXG5tMSA8LW1hdHJpeCgxOjQsIG5yb3c9MiwgbmNvbD0yKVxubTFcbmBgYCJ9 -->
+<pre class="r"><code>#matriz 1
+m1 &lt;-matrix(1:4, nrow=2, ncol=2)
+m1</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiICAgICBbLDFdIFssMl1cblsxLF0gICAgMSAgICAzXG5bMixdICAgIDIgICAgNFxuIn0= -->
+<pre><code>     [,1] [,2]
+[1,]    1    3
+[2,]    2    4</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuI2ludmVyc2EgXG5zb2x2ZShtMSlcbmBgYCJ9 -->
+<pre class="r"><code>#inversa 
+solve(m1)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiICAgICBbLDFdIFssMl1cblsxLF0gICAtMiAgMS41XG5bMixdICAgIDEgLTAuNVxuIn0= -->
+<pre><code>     [,1] [,2]
+[1,]   -2  1.5
+[2,]    1 -0.5</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+</div>
+</div>
 </div>
 <div id="dataframes" class="section level1">
 <h1>4. Dataframes</h1>
+<p>Un dataframe es una tabla o una estructura bidimensional tipo array en la que cada columna contiene valores de una variable y cada fila contiene un conjunto de valores de cada columna. Son características de un dataframe:</p>
+<ul>
+<li>Los nombres de las columnas no deben ser vacíos.</li>
+<li>Los nombres de las filas deben ser únicos.</li>
+<li>Los datos almacenados en un data frame pueden ser de tipo numérico, factor o carácter.</li>
+<li>Cada columna debe contener el mismo número de datos.</li>
+</ul>
+<p>Para crear un dataframe utilizamos la funcion <em>data.frame()</em></p>
+<p>Ejemplo:</p>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuIyBDcmVhdGUgYSBkYXRhIGZyYW1lXG5kZiA8LSBkYXRhLmZyYW1lIChcbiAgVHJhaW5pbmcgPSBjKFwiU3RyZW5ndGhcIiwgXCJTdGFtaW5hXCIsIFwiT3RoZXJcIiksXG4gIFB1bHNlID0gYygxMDAsIDE1MCwgMTIwKSxcbiAgRHVyYXRpb24gPSBjKDYwLCAzMCwgNDUpXG4pXG5cbiMgUHJpbnQgdGhlIGRhdGEgZnJhbWVcbmRmIFxuYGBgIn0= -->
+<pre class="r"><code># Create a data frame
+df &lt;- data.frame (
+  Training = c(&quot;Strength&quot;, &quot;Stamina&quot;, &quot;Other&quot;),
+  Pulse = c(100, 150, 120),
+  Duration = c(60, 30, 45)
+)
+
+# Print the data frame
+df </code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<div id="dplyr" class="section level3">
+<h3><strong>dplyr</strong></h3>
+<p>El paquete <em>dplyr</em> es una gramática de la manipulación de datos, que proporciona un conjunto de funciones para manipulacion de datos.</p>
+<!-- rnb-text-end -->
+<!-- rnb-text-begin -->
+<p>Para demostrar las funciones de este paquete se usa el dataset mammals sleep, el cual contiene los tiempos de sueño y los pesos de un conjunto de mamíferos.</p>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuZGYgPC0gcmVhZF9jc3YoJ2h0dHBzOi8vcmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbS9nZW5vbWljc2NsYXNzL2RhZ2RhdGEvbWFzdGVyL2luc3QvZXh0ZGF0YS9tc2xlZXBfZ2dwbG90Mi5jc3YnKVxuYGBgIn0= -->
+<pre class="r"><code>df &lt;- read_csv(&#39;https://raw.githubusercontent.com/genomicsclass/dagdata/master/inst/extdata/msleep_ggplot2.csv&#39;)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiUm93czogODMgQ29sdW1uczogMTFcbuKUgOKUgCBDb2x1bW4gc3BlY2lmaWNhdGlvbiDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIBcbkRlbGltaXRlcjogXCIsXCJcbmNociAoNSk6IG5hbWUsIGdlbnVzLCB2b3JlLCBvcmRlciwgY29uc2VydmF0aW9uXG5kYmwgKDYpOiBzbGVlcF90b3RhbCwgc2xlZXBfcmVtLCBzbGVlcF9jeWNsZSwgYXdha2UsIGJyYWlud3QsIGJvZHl3dFxuXG7ihLkgVXNlIGBzcGVjKClgIHRvIHJldHJpZXZlIHRoZSBmdWxsIGNvbHVtbiBzcGVjaWZpY2F0aW9uIGZvciB0aGlzIGRhdGEuXG7ihLkgU3BlY2lmeSB0aGUgY29sdW1uIHR5cGVzIG9yIHNldCBgc2hvd19jb2xfdHlwZXMgPSBGQUxTRWAgdG8gcXVpZXQgdGhpcyBtZXNzYWdlLlxuIn0= -->
+<pre><code>Rows: 83 Columns: 11
+── Column specification ───────────────────────────────────────────────────────────────────────────
+Delimiter: &quot;,&quot;
+chr (5): name, genus, vore, order, conservation
+dbl (6): sleep_total, sleep_rem, sleep_cycle, awake, brainwt, bodywt
+
+ℹ Use `spec()` to retrieve the full column specification for this data.
+ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<div id="select" class="section level4">
+<h4><strong>select()</strong></h4>
+<p>Seleccionar un conjunto de columnas</p>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuc2VsMSA8LSBzZWxlY3QoZGYsIG5hbWUsIHNsZWVwX3RvdGFsKVxuaGVhZChzZWwxKVxuYGBgIn0= -->
+<pre class="r"><code>sel1 &lt;- select(df, name, sleep_total)
+head(sel1)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-frame-begin eyJtZXRhZGF0YSI6eyJjbGFzc2VzIjpbInRibF9kZiIsInRibCIsImRhdGEuZnJhbWUiXSwibnJvdyI6NiwibmNvbCI6Miwic3VtbWFyeSI6eyJBIHRpYmJsZSI6WyI2IMOXIDIiXX19LCJyZGYiOiJINHNJQUFBQUFBQUFBMTJRUFUvRE1CQ0dMMSt0R3RRUGlZMHBJd09KaE1yQUdLa0lKb1NFaXRRTnVlMUJvcnAyNWJnVU5uNGcvQ0dHQmpzNVM1Q1RFdDg5dnRmbjE0ODNpMm04aUFFZ2dOQUxJSWhNQ3RIVC9EYTlCZ2g5VTNnUXdzQ3U3NmJwMUNRV1RzelhvNDMrckVEVXJLQXlmamp3WkN2RkJqK0lqTy9sWG1oV2ltU0o3QTBWNGJNN2hVeWpTcXBDS3AyYUJvNXJVeWc4VUVjd2t5NmR6QTNIVkV2YndxVXVEQnZaUytUbjB5YnlTMmdpdi9peThaMm50RTcrODQ2clNMQXRWdVRJSnhoYVNQbEp4UkYzejFwcXhqdmFnWktIek9tSFZ2OXBmblZkLzNTSHJEaXIzQkFINHpYVExIdFJkaFRBc1NQcHk1MHVwVEFpMzc1NTFCRjdxZ1BHZTJGdnNrNVh4VjVzMGlzN29ObHVZMGg1NzAvdXR5UDltbzZLNktnZWl0ZFNPUDhSWjB2a1ZJeU00OFp3dGxPbDBNNkpvVlhXdmhDUmxlU09OTjdnK0FzeTZJV1dhZ0lBQUE9PSJ9 -->
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":["name"],"name":[1],"type":["chr"],"align":["left"]},{"label":["sleep_total"],"name":[2],"type":["dbl"],"align":["right"]}],"data":[{"1":"Cheetah","2":"12.1"},{"1":"Owl monkey","2":"17.0"},{"1":"Mountain beaver","2":"14.4"},{"1":"Greater short-tailed shrew","2":"14.9"},{"1":"Cow","2":"4.0"},{"1":"Three-toed sloth","2":"14.4"}],"options":{"columns":{"min":{},"max":[10],"total":[2]},"rows":{"min":[10],"max":[10],"total":[6]},"pages":{}}}
+  </script>
+</div>
+<!-- rnb-frame-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<p>Selecciona todas las columnas excepto una columna especifica</p>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuc2VsMiA8LSBzZWxlY3QoZGYsIC1uYW1lKVxuaGVhZChzZWwyKVxuYGBgIn0= -->
+<pre class="r"><code>sel2 &lt;- select(df, -name)
+head(sel2)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-frame-begin eyJtZXRhZGF0YSI6eyJjbGFzc2VzIjpbInRibF9kZiIsInRibCIsImRhdGEuZnJhbWUiXSwibnJvdyI6NiwibmNvbCI6MTAsInN1bW1hcnkiOnsiQSB0aWJibGUiOlsiNiDDlyAxMCJdfX0sInJkZiI6Ikg0c0lBQUFBQUFBQUE0VlV2WXNUUVJTZnpXYnpzV3JNYVNHSVdDaWloUWxJRkxUYVRSVEJ5dk0wRUN1WnpNNWR4dHZNTExPYjVOS28rQUZwUk5CQ3RMVHlEeEM1UWtRN0N3WDdBNjBVd2NiR1FwRTdaM1puOXJKcjRZUGRtZmViOS9GN2I5N3UwcmxleSs3WkFBQVRGQTBUbUpiWUFxdDc1WHpqTkFERmdsQU1VQVJWdWE0Sm83MWlJNjNyNGltcGcwb2JFY3JvZEUzcFZwdEZvMUFwZGp2d21jZG9SS0JDeWgwZmNrSzFhbmFZdHExME9QU21nZkROSnJBUTVKUW9wY2lHNmQ0YVlONy83NEZTc2pHcloyWE1NZU9hUjJXUmt5R01jRXBtaVhsNGp2Yk95NHdUeElhTUI0TVVhL09JTUEraWFPcHJyTFJJZkJiQ1hMcUNqMlRTTFNFYW9kSGNtWXJuc1NFT0k0SUVEeSsxQjZBbUk3bkhXckc0SjBBczd2SDNVajY0RGJYV3M3ajJ1L2xEb3VWbnpoOWxaNm80aGVWWW5LL0o2aHBQcER6TisrVlg1KzNDUXYzcXg0Zk9sMjYzZStmSXlQazJtODFlOXA2blBJK3FQQWNVbjhNcTN5RzFuc3ppLy9CODhIcjg3c1daWHFxM0RPOXViZDkrWjJNUGZYei80bWVOcC9rdUpQR2NUK3VYdnQ4N3VPNzhUT3B3SGtXdnJ0LzR0ZUhlZnBQa3ErbStaTWJhb2xEMFhGMlhyY0VWVE5NUkxvb3B3ZnFBY1E5emZWMkkwUkR6TVJSRFFCVzJJL1F4RHE1RkxJSytIclVFNG5pWXRVRlQ1S2R4NFFTdWFxWGM1NURRaVo2UFVwOTVVNkZsZVZjNW16UTE5MTF5akc2Smw1aVgzL2tDa1E5RFhhQUdiUTlHc0xuTWhiL1FObk11WlJiSWtvUlRRWDd3VnM3WjREbGc5NGhLSmw0RERVWjB0WEVLSkQ4Skk3bVltSjBSZnd6YmV6dEpXZGhTb1N4ZExLWXJoS1p0OFdFZjZ6N1dSTVZ4d2MxQS9EOTBkMnlCaHMzNWZ0dUkrUnFKYXdPYmZ3Rzdwdlp2NXdRQUFBPT0ifQ== -->
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":["genus"],"name":[1],"type":["chr"],"align":["left"]},{"label":["vore"],"name":[2],"type":["chr"],"align":["left"]},{"label":["order"],"name":[3],"type":["chr"],"align":["left"]},{"label":["conservation"],"name":[4],"type":["chr"],"align":["left"]},{"label":["sleep_total"],"name":[5],"type":["dbl"],"align":["right"]},{"label":["sleep_rem"],"name":[6],"type":["dbl"],"align":["right"]},{"label":["sleep_cycle"],"name":[7],"type":["dbl"],"align":["right"]},{"label":["awake"],"name":[8],"type":["dbl"],"align":["right"]},{"label":["brainwt"],"name":[9],"type":["dbl"],"align":["right"]},{"label":["bodywt"],"name":[10],"type":["dbl"],"align":["right"]}],"data":[{"1":"Acinonyx","2":"carni","3":"Carnivora","4":"lc","5":"12.1","6":"NA","7":"NA","8":"11.9","9":"NA","10":"50.000"},{"1":"Aotus","2":"omni","3":"Primates","4":"NA","5":"17.0","6":"1.8","7":"NA","8":"7.0","9":"0.01550","10":"0.480"},{"1":"Aplodontia","2":"herbi","3":"Rodentia","4":"nt","5":"14.4","6":"2.4","7":"NA","8":"9.6","9":"NA","10":"1.350"},{"1":"Blarina","2":"omni","3":"Soricomorpha","4":"lc","5":"14.9","6":"2.3","7":"0.1333333","8":"9.1","9":"0.00029","10":"0.019"},{"1":"Bos","2":"herbi","3":"Artiodactyla","4":"domesticated","5":"4.0","6":"0.7","7":"0.6666667","8":"20.0","9":"0.42300","10":"600.000"},{"1":"Bradypus","2":"herbi","3":"Pilosa","4":"NA","5":"14.4","6":"2.2","7":"0.7666667","8":"9.6","9":"NA","10":"3.850"}],"options":{"columns":{"min":{},"max":[10],"total":[10]},"rows":{"min":[10],"max":[10],"total":[6]},"pages":{}}}
+  </script>
+</div>
+<!-- rnb-frame-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<p>Selecciona un rango de columnas por nombre</p>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuc2VsMyA8LSBzZWxlY3QoZGYsIG5hbWU6b3JkZXIpXG5oZWFkKHNlbDMpXG5gYGAifQ== -->
+<pre class="r"><code>sel3 &lt;- select(df, name:order)
+head(sel3)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-frame-begin eyJtZXRhZGF0YSI6eyJjbGFzc2VzIjpbInRibF9kZiIsInRibCIsImRhdGEuZnJhbWUiXSwibnJvdyI6NiwibmNvbCI6NCwic3VtbWFyeSI6eyJBIHRpYmJsZSI6WyI2IMOXIDQiXX19LCJyZGYiOiJINHNJQUFBQUFBQUFBNFZTUFUvRE1CQjFtNlMwRVlWS2JFejlBK25Dd3RvV3dZU28rSkJZM2NRUXE0NHZ1cmd0M2ZqZERKUkw4VVUwQzVFYzMzdjM5YzcyNDgzclZmd2FDeUVDRVhZQ0VVUmtpdWpsK1RhNUZpTHNFdWlJVUF6cS9ZT0NMc2dJYVkxbzliempaSjRyNVdUdVlmeXdOZU1DN0VydFBITitEMnZycExianBaSWJoWjYrdkVNbG5jSnhsUU82aEFLTXlnaWcydnFJWUE1c2pwNkpWNG1ET3NTQXkxc2krdE5VVzdDN0Q0K2pLYmgxeFpLbXBZRU1yTk9TTmMrTVJHMFpCalBnMlA0TVpiWXJLZmU0UVpSS3ROcURFSXJHam5LRnkzOGRIaHpYSE16cm1odEExdEZmb0M3b1RCb3hqNUNwUDdKUG53QjFDZ1ZnbVRmY0ZKMkdUS1p1WjVqckxiU0JTclp1TUxLeVVEeFh5SXBya2dQZWxXME9MU1JkalFNd28zczdMamRBMkU2NDVKQlc5NU4rKy8zK3E5MDNOYkxpdmt6R21YUnk4b1oxZHlHK1d5a25VTkpRbHBLNjlaT0xXc2tkYkJIbmExc3J5WkkwWDl0VmNsVTNPTGgvdjZHM2UzL3M4TGRsZCs5TFJYeDJ5cjVyMjB4dTVGSVpEODVvNHNQQWs1SWVqK05KaUswbURwemt1RGdGdzh4aE52SDlBeW5PdDZCcEF3QUEifQ== -->
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":["name"],"name":[1],"type":["chr"],"align":["left"]},{"label":["genus"],"name":[2],"type":["chr"],"align":["left"]},{"label":["vore"],"name":[3],"type":["chr"],"align":["left"]},{"label":["order"],"name":[4],"type":["chr"],"align":["left"]}],"data":[{"1":"Cheetah","2":"Acinonyx","3":"carni","4":"Carnivora"},{"1":"Owl monkey","2":"Aotus","3":"omni","4":"Primates"},{"1":"Mountain beaver","2":"Aplodontia","3":"herbi","4":"Rodentia"},{"1":"Greater short-tailed shrew","2":"Blarina","3":"omni","4":"Soricomorpha"},{"1":"Cow","2":"Bos","3":"herbi","4":"Artiodactyla"},{"1":"Three-toed sloth","2":"Bradypus","3":"herbi","4":"Pilosa"}],"options":{"columns":{"min":{},"max":[10],"total":[4]},"rows":{"min":[10],"max":[10],"total":[6]},"pages":{}}}
+  </script>
+</div>
+<!-- rnb-frame-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<p>Selecciona todas las columnas que comienzan con el string ‘sl’</p>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuc2VsNCA8LSBzZWxlY3QoZGYsIHN0YXJ0c193aXRoKCdzbCcpKVxuaGVhZChzZWw0KVxuYGBgIn0= -->
+<pre class="r"><code>sel4 &lt;- select(df, starts_with(&#39;sl&#39;))
+head(sel4)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-frame-begin eyJtZXRhZGF0YSI6eyJjbGFzc2VzIjpbInRibF9kZiIsInRibCIsImRhdGEuZnJhbWUiXSwibnJvdyI6NiwibmNvbCI6Mywic3VtbWFyeSI6eyJBIHRpYmJsZSI6WyI2IMOXIDMiXX19LCJyZGYiOiJINHNJQUFBQUFBQUFBd3R5aVREbWl1QmlZR0JnWm1CaFpHWmdaZ1V5R1ZoRFE5eDBMUmdZV0ppQUhFWUdGZ1pPRUYwQlZDUU1Wc25Bd0FmRWJBNGF4bURnWU1nQUJnNDZaMERncklNdWxCWkFGWWZwcS84QUVtVmZaUDhIcW80WmFnNVRHaGpZUDRQUURvd3pRV0FXdWo1MDJ2NmdvS0JBNUlWSjlrOURRME9iVlV2dFgzUjBkR3lMV0lIbUFkYTh4TnpVWWlCREFPSmRzQ0IzY1U1cWFrRjhTWDVKWWc1VWlCTWlWSlNhaTZvbXVUSTVKeFhOVE02aS9ISTltTG04UU16VUFDVCsvLy8vQzkzeTVKekVZcGpsTUVHdWxNU1NSTDIwSXFCK0lPOGZtaGIyL0lLU3pQdzhvQ1ltVUxDem9tbG1MRUlUNEMvTkE3a2tSVGM1b3pRdld4Y1VLVnhnYVFqZ2hiTFprTmpNRUN1Wi9rT05Zb1VheFphYWw1Nlpsd3B6ZTA1aVVpb3NkUGlBUGdaN1dLK2dLRE92Qk9ZVG9HaXhIbklvY2lYbjU4QkV3SDVqK0FjQS82dFZDMjBDQUFBPSJ9 -->
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":["sleep_total"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["sleep_rem"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["sleep_cycle"],"name":[3],"type":["dbl"],"align":["right"]}],"data":[{"1":"12.1","2":"NA","3":"NA"},{"1":"17.0","2":"1.8","3":"NA"},{"1":"14.4","2":"2.4","3":"NA"},{"1":"14.9","2":"2.3","3":"0.1333333"},{"1":"4.0","2":"0.7","3":"0.6666667"},{"1":"14.4","2":"2.2","3":"0.7666667"}],"options":{"columns":{"min":{},"max":[10],"total":[3]},"rows":{"min":[10],"max":[10],"total":[6]},"pages":{}}}
+  </script>
+</div>
+<!-- rnb-frame-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+</div>
+<div id="filter" class="section level4">
+<h4><strong>filter()</strong></h4>
+<p>Filtra las filas donde un valor cumpla una condicion especifica.</p>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuZmlsdGVyKGRmLCBzbGVlcF90b3RhbCA+PSAxNilcbmBgYCJ9 -->
+<pre class="r"><code>filter(df, sleep_total &gt;= 16)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-frame-begin eyJtZXRhZGF0YSI6eyJjbGFzc2VzIjpbInNwZWNfdGJsX2RmIiwidGJsX2RmIiwidGJsIiwiZGF0YS5mcmFtZSJdLCJucm93Ijo4LCJuY29sIjoxMSwic3VtbWFyeSI6eyJBIHRpYmJsZSI6WyI4IMOXIDExIl19fSwicmRmIjoiSDRzSUFBQUFBQUFBQTVWVVQwZ1ZRUmhmOVQzZmM5VzBGTk1vV2VoV1BWSGZwWWpZTlMwSi9GT21JQjJTZWJ2amU1T3pNK3ZzUGwrdm9EcFVlSW1PWWNjNmVmR1NnWWZxWEZBZHBGQW9renBFRUVIZGtrU2JmVHV6NlJwRUgrek9mTC92KzM3Zjl3M3p6VkRQYUZvZFZSVkZxVkJpWlJWS1JaeHZsZmpJOE9uVVVVV0psWE9sVElrcFZmNTZtVHMxOEUwMS8rcjVseFFHZGJDQU5adVNDVmdVU0dNZkpka1VvUzYwTk1Cc1lDR01xYkExRFZEbTViUXVHekprQXFJTk90UjE4N2F3MXA1RVdTM0RhSUZvR2VCSnV1RWNNaWRTSGtDWUUxS0hSNFFCOVgzSTh6RGNFVlBYaXdEeGRtYnZZcWFIVEMzTGFKNVltanVaUjR4QkhPa28za1c5dkN1VVJBOXdpMDZvVnZVZ0MySW5oMExnbE9OQkY1bWhoOXFYOXhpa0dCRWdrTXIrSXZYQ0FQVXNROVNpaEVjSnBPYThBNWxOT1NubUxOdHJpVkdiSUZtWENWaW9iRFVrRUhFaGIreHZmaEZiMURVSFdRWkZjaVo1aFRiNFUxOVZOeUxaUEFhZWJLaE9Ib0pOR2Y5TFdPM09JVWI1Y2JEL2R0eVJJamxFTFVnOEhpSnI0MDZiWElTOUhKdi8yRVg4SWRsbTIrVnpHaDFLU1l5TzhaSVluVUpQUDByN1lxUUZudjRzN0MwelhPNGI3VE9sVmZMbzZ5OTllV1VreGRvUTJJMjZkTUN6VC9Bb2dyODUwSzkvOTdYRUE4a2pkWDE1ZW5yNnlKY3ordHVSa2VHMXgwMzYwNVdWMWI2TDcwUDdpNEJmNmxFZVk3L0lJL00yQzMyM3FHZVB3T3ZGdWxmVWV5RFMxOTFuVTgvbmo0M3F0MXNIcDhhVzUvVGk2OFFZWGRUMDlPeWg5cEZPRU5iVG51bGYvREc3cnM4L3VYUnQ3ZDFCdlRENnFRVWVmaFB5ZkZnNDkvVlc2NEpSRTlTaC93cnEwTy9kR1Z3OWJsM1FsK1lhcjN6c25kTnYrdi9HcThhQThQdm1QRnhTVDB4R25xSTRBVGFVZzFJdDU4RUhwVU1Xa25BZVkxT1VoUWJLTE1qazJKbVV6d0tiQWg2aThuSlV1eGhDWjh5akhzRHlhZ1lRZy9aMkg3Tm80cEFYRk1DRVZCSVpCaEFweUtlb01rT3RJdGUyOTFERkg2dzIyVWV0ZnkxdjhCKy9yeitqelpvWXVMSlpDYW9XbjVTMmNlYTNyQ2dia1pBRUh5M2VFZzhxOXgvc2VDUzRqRVdBdWp6eEs3RlNaaTVQSmxMK1VLZ2xjeUMxWXAvY3NxOE9VcFp2Q3FxNGJCYVNMQ0xoc1dDUWdmSWNkL2xQdE45d204TVFrYWVqY3RSdDIzcmVxa214UkVxOUtSdS9BZlEycXNtbkJnQUEifQ== -->
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":["name"],"name":[1],"type":["chr"],"align":["left"]},{"label":["genus"],"name":[2],"type":["chr"],"align":["left"]},{"label":["vore"],"name":[3],"type":["chr"],"align":["left"]},{"label":["order"],"name":[4],"type":["chr"],"align":["left"]},{"label":["conservation"],"name":[5],"type":["chr"],"align":["left"]},{"label":["sleep_total"],"name":[6],"type":["dbl"],"align":["right"]},{"label":["sleep_rem"],"name":[7],"type":["dbl"],"align":["right"]},{"label":["sleep_cycle"],"name":[8],"type":["dbl"],"align":["right"]},{"label":["awake"],"name":[9],"type":["dbl"],"align":["right"]},{"label":["brainwt"],"name":[10],"type":["dbl"],"align":["right"]},{"label":["bodywt"],"name":[11],"type":["dbl"],"align":["right"]}],"data":[{"1":"Owl monkey","2":"Aotus","3":"omni","4":"Primates","5":"NA","6":"17.0","7":"1.8","8":"NA","9":"7.0","10":"0.01550","11":"0.480"},{"1":"Long-nosed armadillo","2":"Dasypus","3":"carni","4":"Cingulata","5":"lc","6":"17.4","7":"3.1","8":"0.3833333","9":"6.6","10":"0.01080","11":"3.500"},{"1":"North American Opossum","2":"Didelphis","3":"omni","4":"Didelphimorphia","5":"lc","6":"18.0","7":"4.9","8":"0.3333333","9":"6.0","10":"0.00630","11":"1.700"},{"1":"Big brown bat","2":"Eptesicus","3":"insecti","4":"Chiroptera","5":"lc","6":"19.7","7":"3.9","8":"0.1166667","9":"4.3","10":"0.00030","11":"0.023"},{"1":"Thick-tailed opposum","2":"Lutreolina","3":"carni","4":"Didelphimorphia","5":"lc","6":"19.4","7":"6.6","8":"NA","9":"4.6","10":"NA","11":"0.370"},{"1":"Little brown bat","2":"Myotis","3":"insecti","4":"Chiroptera","5":"NA","6":"19.9","7":"2.0","8":"0.2000000","9":"4.1","10":"0.00025","11":"0.010"},{"1":"Giant armadillo","2":"Priodontes","3":"insecti","4":"Cingulata","5":"en","6":"18.1","7":"6.1","8":"NA","9":"5.9","10":"0.08100","11":"60.000"},{"1":"Arctic ground squirrel","2":"Spermophilus","3":"herbi","4":"Rodentia","5":"lc","6":"16.6","7":"NA","8":"NA","9":"7.4","10":"0.00570","11":"0.920"}],"options":{"columns":{"min":{},"max":[10],"total":[11]},"rows":{"min":[10],"max":[10],"total":[8]},"pages":{}}}
+  </script>
+</div>
+<!-- rnb-frame-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuZmlsdGVyKGRmLCBzbGVlcF90b3RhbCA+PSAxNiwgYm9keXd0ID49IDEpXG5gYGAifQ== -->
+<pre class="r"><code>filter(df, sleep_total &gt;= 16, bodywt &gt;= 1)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-frame-begin eyJtZXRhZGF0YSI6eyJjbGFzc2VzIjpbInNwZWNfdGJsX2RmIiwidGJsX2RmIiwidGJsIiwiZGF0YS5mcmFtZSJdLCJucm93IjozLCJuY29sIjoxMSwic3VtbWFyeSI6eyJBIHRpYmJsZSI6WyIzIMOXIDExIl19fSwicmRmIjoiSDRzSUFBQUFBQUFBQTJWVFQyL1RNQlIzMjRUUWRIK1Foc2JnZ0NweHBaVzJYYmdsaUFxRWhEYUVWbW0zeWsyODFzeXhJenRwNldYamhQb1Z5cEVQd0FsdWZBVGdnSVEwaVMvQWtldUVXTEVUTzJxeUo4VjU3L2ZlNzltLzUrUlY3M2pmUFhZQkFBMWcxUnFnWVVzWDJQMmpwNTFIQUZoMUdkU0FCWnJxL1VZV2JVbW5KWjliT1NOTDNIN0I2S2hEbVVCaEcvSUlocGdRcG5QYkI0d240L2JqQ0hFY1FObytqSmtRYWFTem04OHdwTWtLcWR6WTZVRXhpMU9odzJZUGg0akVZMndBOXlYSExHUTBRYUxDdEFQSUtkYUJ4YUxDZHpBVktFaHdwYjc1Qk5OUlNtQUN6Y25NWGhIamNvWFg2OG9ONmlTNDdpRXExdzFWNWUrZVpPYnZnY3o4dmJzTGFlK0wvTTJ2eXI3NVc0c005M2Z5ZXBQM0x1YnorY1BmejcyZi9mN1I1ZWZ0OHorcWkvT2g0Ti9UL1hkMC96dUxVbi92M2YzRHllRGlvemY3N2d6WWo3YjM2Y3Zyczh0ZkR3citXczd6L3U1bjVoOEFiYVZQd0tZd0ttYmRNdU5Wb0NrWUlWcmNselZodkVnd0hpS3VnN1dBeVZ2Z0U1aGdSalhXRWdTaGVKQ3dCQkl6N0J6aUtDclhCTE9BRkgzaEZKNmF3Qmx5aU9rMDBlR05JUXRuTWlwcmFISTI3Um9kNitxYTNzcGx1VnorcTRvTkNCUkdyQUhkVU41OTk0UXJ5UUJjVlNnT2k1VWtTYXFySDhXdWtHdThBbXltVkowazdBVGpsSjUyZHRVR1dUcTNkZTAzVnZ4V3ZtVjlxVnZaUml5aUkweUxzUkE0UkdhT0cxSnhKcmdiYzB6TmRGeUppdTdxdk4yQUVZTmsyc0RWZitYMnlPSWZCQUFBIn0= -->
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":["name"],"name":[1],"type":["chr"],"align":["left"]},{"label":["genus"],"name":[2],"type":["chr"],"align":["left"]},{"label":["vore"],"name":[3],"type":["chr"],"align":["left"]},{"label":["order"],"name":[4],"type":["chr"],"align":["left"]},{"label":["conservation"],"name":[5],"type":["chr"],"align":["left"]},{"label":["sleep_total"],"name":[6],"type":["dbl"],"align":["right"]},{"label":["sleep_rem"],"name":[7],"type":["dbl"],"align":["right"]},{"label":["sleep_cycle"],"name":[8],"type":["dbl"],"align":["right"]},{"label":["awake"],"name":[9],"type":["dbl"],"align":["right"]},{"label":["brainwt"],"name":[10],"type":["dbl"],"align":["right"]},{"label":["bodywt"],"name":[11],"type":["dbl"],"align":["right"]}],"data":[{"1":"Long-nosed armadillo","2":"Dasypus","3":"carni","4":"Cingulata","5":"lc","6":"17.4","7":"3.1","8":"0.3833333","9":"6.6","10":"0.0108","11":"3.5"},{"1":"North American Opossum","2":"Didelphis","3":"omni","4":"Didelphimorphia","5":"lc","6":"18.0","7":"4.9","8":"0.3333333","9":"6.0","10":"0.0063","11":"1.7"},{"1":"Giant armadillo","2":"Priodontes","3":"insecti","4":"Cingulata","5":"en","6":"18.1","7":"6.1","8":"NA","9":"5.9","10":"0.0810","11":"60.0"}],"options":{"columns":{"min":{},"max":[10],"total":[11]},"rows":{"min":[10],"max":[10],"total":[3]},"pages":{}}}
+  </script>
+</div>
+<!-- rnb-frame-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuZmlsdGVyKGRmLCBvcmRlciAlaW4lIGMoXCJQZXJpc3NvZGFjdHlsYVwiLCBcIlByaW1hdGVzXCIpKVxuYGBgIn0= -->
+<pre class="r"><code>filter(df, order %in% c(&quot;Perissodactyla&quot;, &quot;Primates&quot;))</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-frame-begin eyJtZXRhZGF0YSI6eyJjbGFzc2VzIjpbInNwZWNfdGJsX2RmIiwidGJsX2RmIiwidGJsIiwiZGF0YS5mcmFtZSJdLCJucm93IjoxNSwibmNvbCI6MTEsInN1bW1hcnkiOnsiQSB0aWJibGUiOlsiMTUgw5cgMTEiXX19LCJyZGYiOiJINHNJQUFBQUFBQUFBOFZXUzRnVVJ4anVuWjNlMmUxOWpLOUxNT2pnQ3pYT0VsMkRDa3EzcjdnRUgydldoVDBFdEthbm5DbTJ1MnUydW52RzJSd1V4SU1uUWJ3WXlFRTlCUGFRUXdoQkNJb0tQakdRUTBDVUVCQmpWQlJjRVVWRTExUk4vMVhPdER2dTBZTGVxdityNzM5OVhUMjEzMjRaN2pPR0RVM1RXclZrUzZ2V3F2T2xwZy90K1RxN1Z0T1NDVzYwYUVtdFE4d0hPR2syWDNUeVp3Wi8wckJoN0tvNEdaZDZJN2dLU05zMlJzbzRBRXZ2cDh6SGNtdExQYkZyQUFYSWp6c2pCeFdvY2c1ZDVJSFJzNE42QlVwOW5IR3dHekpBVXp1UWpVWkRtY0VZZEdnbDQxQkdmSWxzTGhLM2hMd3hyS3JZaEhLVXlyRDZBQTBDbVRBOU9Cb1N4bkNzcGZRbWhzYUlRNUNYQ1ZDSnNKZ0cra1lhaERKZjkyYk1iRm9pUVJIYkN0UzNqb1pURzExYldUVW9NbXJqbk1JYVJVajJVMWNKc3IydTlUYlJ1bzNBNnRoWnRRT1N3eXBLNndCNjN5T3ZtaXJaTWFONXdzbnY2MHNOSXVJU1JxUzVSM1RKZHh2N1RGTFhJMU9zOVNKbXVTbU5aaDVOdlJzMmJNU205WjRtYW1NRDdRT011Q2pBZmhPN2gwdERmSi9ta1IxVUhmUlJkTHBZbjlxT1Z5MlY0Q2ZsSFIvQVNqaTJQQlo1Nm1LZkh3b2VJLzhSVEhqSUdMRlk1ZkNEblNiTXVoajF2ajJpUW11bFZodldJcGhUZmJWaHRkOFU0dzlyTWN3TFQ0cnhnNVVCM2tMcEIvd2xFdDlmRzlZQzhGTTQ4R1pHY1dSKzgwM0VNLytML014N0VjKzhIZkhNWjdGNUVuaFB3Tzk1eEQ4NEliS2tUcHN2WVg4aXl0c01sL25sdnVMRi9CUitGL0svaXNWOUdNOHpQajUrOGZqdjV2MmhvYUhEaThNUDRrRGRTdi9QUVo4Vk1ILzFXYVR6NmtnUWF6bm90Z0owL1JKNFdaaS9BSjJYeXpqd25yTGdwM0RnOWNYMFAzYStmTzNYZGNPcXZuOWZYRHIyM2RLWDVwMC83Ky9iZUhTTmVhNTA1cGF4WWRRTXh1NXUrM25POSthTGVXZDNQejR5WC9HdlBEcncxOXZudjVsSFFaKy9sNG9BeTh5cnhnYmhxWGdud1AveXFSc1hEcytpS3Y4L0l0eThzOVpzcVBOUWZ6UVg5c0g1aW5Eek92UzFDK3pYNERjWHpndThYK3NiMEcvZCtsb2g2dHc4dVBMVDB4OS95VnBrb24zbGtrZlYySTJyZTRoL2UxcjAyWGJLWHpnQlNrSUJlK29IUEZtbVRHMVFsc2Z5a3VpeXFlZGpWa1lCVVZkZXArOWdYTm9iMEFBNTh2YUlJSWJkUm81ZHRSMFZGMVhRaURSU09ZYUlWNUhYZkZ1TzVxdmNhdXloZzlGS3IreWpteitKUS93UC8rcWZ4WnUxSGVUTFppVm81UG4vQjczN21XaFoweVpqTGlsYUVpMXhwNFI0VVhyTXVZWEZnSFRvaVVyeVdic1llaVBaVlNKQmJUc2EzYkJPMTYwN281U0pkeEJLbDgxaXIwQThKWXVEY2xqcTJNTTdyalhjVzJMRWsrb1lIUFY3Ni9VMmJPcElwTmFiTnZrL3pEeTcxbzRKQUFBPSJ9 -->
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":["name"],"name":[1],"type":["chr"],"align":["left"]},{"label":["genus"],"name":[2],"type":["chr"],"align":["left"]},{"label":["vore"],"name":[3],"type":["chr"],"align":["left"]},{"label":["order"],"name":[4],"type":["chr"],"align":["left"]},{"label":["conservation"],"name":[5],"type":["chr"],"align":["left"]},{"label":["sleep_total"],"name":[6],"type":["dbl"],"align":["right"]},{"label":["sleep_rem"],"name":[7],"type":["dbl"],"align":["right"]},{"label":["sleep_cycle"],"name":[8],"type":["dbl"],"align":["right"]},{"label":["awake"],"name":[9],"type":["dbl"],"align":["right"]},{"label":["brainwt"],"name":[10],"type":["dbl"],"align":["right"]},{"label":["bodywt"],"name":[11],"type":["dbl"],"align":["right"]}],"data":[{"1":"Owl monkey","2":"Aotus","3":"omni","4":"Primates","5":"NA","6":"17.0","7":"1.8","8":"NA","9":"7.0","10":"0.0155","11":"0.480"},{"1":"Grivet","2":"Cercopithecus","3":"omni","4":"Primates","5":"lc","6":"10.0","7":"0.7","8":"NA","9":"14.0","10":"NA","11":"4.750"},{"1":"Horse","2":"Equus","3":"herbi","4":"Perissodactyla","5":"domesticated","6":"2.9","7":"0.6","8":"1.0000000","9":"21.1","10":"0.6550","11":"521.000"},{"1":"Donkey","2":"Equus","3":"herbi","4":"Perissodactyla","5":"domesticated","6":"3.1","7":"0.4","8":"NA","9":"20.9","10":"0.4190","11":"187.000"},{"1":"Patas monkey","2":"Erythrocebus","3":"omni","4":"Primates","5":"lc","6":"10.9","7":"1.1","8":"NA","9":"13.1","10":"0.1150","11":"10.000"},{"1":"Galago","2":"Galago","3":"omni","4":"Primates","5":"NA","6":"9.8","7":"1.1","8":"0.5500000","9":"14.2","10":"0.0050","11":"0.200"},{"1":"Human","2":"Homo","3":"omni","4":"Primates","5":"NA","6":"8.0","7":"1.9","8":"1.5000000","9":"16.0","10":"1.3200","11":"62.000"},{"1":"Mongoose lemur","2":"Lemur","3":"herbi","4":"Primates","5":"vu","6":"9.5","7":"0.9","8":"NA","9":"14.5","10":"NA","11":"1.670"},{"1":"Macaque","2":"Macaca","3":"omni","4":"Primates","5":"NA","6":"10.1","7":"1.2","8":"0.7500000","9":"13.9","10":"0.1790","11":"6.800"},{"1":"Slow loris","2":"Nyctibeus","3":"carni","4":"Primates","5":"NA","6":"11.0","7":"NA","8":"NA","9":"13.0","10":"0.0125","11":"1.400"},{"1":"Chimpanzee","2":"Pan","3":"omni","4":"Primates","5":"NA","6":"9.7","7":"1.4","8":"1.4166667","9":"14.3","10":"0.4400","11":"52.200"},{"1":"Baboon","2":"Papio","3":"omni","4":"Primates","5":"NA","6":"9.4","7":"1.0","8":"0.6666667","9":"14.6","10":"0.1800","11":"25.235"},{"1":"Potto","2":"Perodicticus","3":"omni","4":"Primates","5":"lc","6":"11.0","7":"NA","8":"NA","9":"13.0","10":"NA","11":"1.100"},{"1":"Squirrel monkey","2":"Saimiri","3":"omni","4":"Primates","5":"NA","6":"9.6","7":"1.4","8":"NA","9":"14.4","10":"0.0200","11":"0.743"},{"1":"Brazilian tapir","2":"Tapirus","3":"herbi","4":"Perissodactyla","5":"vu","6":"4.4","7":"1.0","8":"0.9000000","9":"19.6","10":"0.1690","11":"207.501"}],"options":{"columns":{"min":{},"max":[10],"total":[11]},"rows":{"min":[10],"max":[10],"total":[15]},"pages":{}}}
+  </script>
+</div>
+<!-- rnb-frame-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+</div>
+<div id="arrange" class="section level4">
+<h4><strong>arrange()</strong></h4>
+<p>Ordena filas por una columna especifica.</p>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-frame-begin eyJtZXRhZGF0YSI6eyJjbGFzc2VzIjpbInRibF9kZiIsInRibCIsImRhdGEuZnJhbWUiXSwibnJvdyI6NiwibmNvbCI6MTEsInN1bW1hcnkiOnsiQSB0aWJibGUiOlsiNiDDlyAxMSJdfX0sInJkZiI6Ikg0c0lBQUFBQUFBQUE2MVV2Mi9UUUJTK09MYlRPRzFBSUFZbUtpRUdoZ1NwTFlnRjJWQkVCNUFxbFVicWdGUmR6dWZHaW5NWHprNU1KaENzSUJZa29HSXFmd0lUQXhKaVlJSVpJUVlHQkJNREN3d01LWGUrTzZzMmxBSHhKT2U5Ny9QN2NkL2x6bXNYTnhhZERRY0FVQVZtcFFxcUZnK0IxVm0vMURvTGdHbHdVQUVtcUF0L2d5Y2Q1a0dEUHdmNVk2c1g5am9tRENPRnFzczBWZUhNR3NYelBzWk1ZWE9Gd2tURnRaV1F3U0RBQ2xwWGV4Z1AvOTc0QW8xVldGK0dRNFpwTk5LRUpZaXcyQnJxcWF2ak1DNTFOdW1BNkhTcmgxbjMzMEN4NmV6NWdOR1lzaENGUHN3NWxvVFVoeWlaUlArZjAvUDVqdXh5MHprK0hlQTRDUkZNc0s4NEkwSy9SOGovWXdVQVRkSFZPN1dZbVNkbWNQTm1sRDhpZVhjYVpPWTFwYy9yREluZEw5TGYvQ2FxYWp2dUoxWDMvckd3YlkxMVhaNzN1ZFBwM0RreDBuZy9uOCtiZnlQc3JiZWsxbmRhK1lWbmN2MW5qbWJ6dktYaVBCZGZlYlJwLzNqZ2ZqaEVIdDViL2VnK1A3N3pKTjN1dXkrR1Q5ODU1NjduNjNsZDFPZCtWZk51djVSeldsS1A1eWw4OTlqM1YvZXZuZlF1UzF5NlJoYUJmSy9WWDlmUTUxR1FPbUVMay94Z20yUEs4aGVVK2ZsZG1rV1V4SmlOSVQ4T1JIR05PT0tYYURPaENZejBUWkVVdzROaURwcWdLTzhMVTlqWG9OWmxNQ1NwdnFaMmwvb1Rqb29hNm95bWJhMWpUaHlsVy95SG44Q2ZaYkVvZ3JFV3Ewbkhod2xzQjB4SUJtQmFLcW5Sb1pERWl3enhzYkZLeFJWV0lnNk1pRmlKMzBLOUVlbTNGc1NBN0xXME9SWGJlK0tHSEduc3FsYVdGb3ZKVmtqeWJZbGdGK3Q5YkhMRm1lQTIvODRRdlRzT1orUDIzdjEyRUkwMGsya0QwMTllNEhDSVl3VUFBQT09In0= -->
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":["name"],"name":[1],"type":["chr"],"align":["left"]},{"label":["genus"],"name":[2],"type":["chr"],"align":["left"]},{"label":["vore"],"name":[3],"type":["chr"],"align":["left"]},{"label":["order"],"name":[4],"type":["chr"],"align":["left"]},{"label":["conservation"],"name":[5],"type":["chr"],"align":["left"]},{"label":["sleep_total"],"name":[6],"type":["dbl"],"align":["right"]},{"label":["sleep_rem"],"name":[7],"type":["dbl"],"align":["right"]},{"label":["sleep_cycle"],"name":[8],"type":["dbl"],"align":["right"]},{"label":["awake"],"name":[9],"type":["dbl"],"align":["right"]},{"label":["brainwt"],"name":[10],"type":["dbl"],"align":["right"]},{"label":["bodywt"],"name":[11],"type":["dbl"],"align":["right"]}],"data":[{"1":"Tenrec","2":"Tenrec","3":"omni","4":"Afrosoricida","5":"NA","6":"15.6","7":"2.3","8":"NA","9":"8.4","10":"0.0026","11":"0.900"},{"1":"Cow","2":"Bos","3":"herbi","4":"Artiodactyla","5":"domesticated","6":"4.0","7":"0.7","8":"0.6666667","9":"20.0","10":"0.4230","11":"600.000"},{"1":"Roe deer","2":"Capreolus","3":"herbi","4":"Artiodactyla","5":"lc","6":"3.0","7":"NA","8":"NA","9":"21.0","10":"0.0982","11":"14.800"},{"1":"Goat","2":"Capri","3":"herbi","4":"Artiodactyla","5":"lc","6":"5.3","7":"0.6","8":"NA","9":"18.7","10":"0.1150","11":"33.500"},{"1":"Giraffe","2":"Giraffa","3":"herbi","4":"Artiodactyla","5":"cd","6":"1.9","7":"0.4","8":"NA","9":"22.1","10":"NA","11":"899.995"},{"1":"Sheep","2":"Ovis","3":"herbi","4":"Artiodactyla","5":"domesticated","6":"3.8","7":"0.6","8":"NA","9":"20.2","10":"0.1750","11":"55.500"}],"options":{"columns":{"min":{},"max":[10],"total":[11]},"rows":{"min":[10],"max":[10],"total":[6]},"pages":{}}}
+  </script>
+</div>
+<!-- rnb-frame-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuIyBTZWxlY2Npb25hIGNvbHVtbmFzLCBsdWVnbyBvcmRlbmFzIGxhcyBmaWxhc1xuZGYgJT4lIFxuICAgIHNlbGVjdChuYW1lLCBvcmRlciwgc2xlZXBfdG90YWwpICU+JVxuICAgIGFycmFuZ2Uob3JkZXIsIHNsZWVwX3RvdGFsKSAlPiUgXG4gICAgaGVhZFxuYGBgIn0= -->
+<pre class="r"><code># Selecciona columnas, luego ordenas las filas
+df %&gt;% 
+    select(name, order, sleep_total) %&gt;%
+    arrange(order, sleep_total) %&gt;% 
+    head</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-frame-begin eyJtZXRhZGF0YSI6eyJjbGFzc2VzIjpbInRibF9kZiIsInRibCIsImRhdGEuZnJhbWUiXSwibnJvdyI6NiwibmNvbCI6Mywic3VtbWFyeSI6eyJBIHRpYmJsZSI6WyI2IMOXIDMiXX19LCJyZGYiOiJINHNJQUFBQUFBQUFBNjFTeTA3RE1CRGN2UG9JdEZSQzNQbUJoa09GeEkwaUVMMlhJdldHVE9MUUNHTkhqcXZDamUvbTBHQTc2d2o1ekVwT2RzYnJuY3c2NjRmdEl0Mm1BQkJCSEVRUUpUcUY1SG56T0w4QmlFTU5Bb2hoYk42ZnV1amNWZ0xNOUJyZ3htQkR1YVE1b3VHcWtxUXNLY0xSV3RETGdsS0pPSG5hVVZvamlPN0ZBZE40SllqeUdwL2VsVkkwUWxaNVZaQ2VrNm9TQmNuVkYvdC9EbUJxOUpkWEN4dTN4OUxHY2dRMmxsUEVNOFFYWFowM3FZU1REOXFnbWNnWk5LUXJFTExvSjNMU01EMlJGeVVVWVY2anNSU0h6RFdiNkJWKzYwZmJ0aisrWXM1STR4UWRtUlpFa2F5VVJoZmc2QjBaaWxvYjUvcFFhQzQxOFE0SDBpUE85dHg4U1RIUGQzditQcjgyQW5hN2l3bm1nejk1MUVtR0xiWkszQTlEK1Z2RisyRXc4a29aZ3FsMmJBMW50YXk0Y2s0MDIyVGRoSkRKQlhPTTlRYkhYeExMZ29UTEFnQUEifQ== -->
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":["name"],"name":[1],"type":["chr"],"align":["left"]},{"label":["order"],"name":[2],"type":["chr"],"align":["left"]},{"label":["sleep_total"],"name":[3],"type":["dbl"],"align":["right"]}],"data":[{"1":"Tenrec","2":"Afrosoricida","3":"15.6"},{"1":"Giraffe","2":"Artiodactyla","3":"1.9"},{"1":"Roe deer","2":"Artiodactyla","3":"3.0"},{"1":"Sheep","2":"Artiodactyla","3":"3.8"},{"1":"Cow","2":"Artiodactyla","3":"4.0"},{"1":"Goat","2":"Artiodactyla","3":"5.3"}],"options":{"columns":{"min":{},"max":[10],"total":[3]},"rows":{"min":[10],"max":[10],"total":[6]},"pages":{}}}
+  </script>
+</div>
+<!-- rnb-frame-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuIyBTZWxlY2Npb25hIGNvbHVtbmFzLCBsYXMgcmVvcmRlbmFzIHkgbGFzIGZpbHRyYSBiYWpvIHVuIGNyaXRlcmlvXG5kZiAlPiUgXG4gICAgc2VsZWN0KG5hbWUsIG9yZGVyLCBzbGVlcF90b3RhbCkgJT4lXG4gICAgYXJyYW5nZShvcmRlciwgc2xlZXBfdG90YWwpICU+JSBcbiAgICBmaWx0ZXIoc2xlZXBfdG90YWwgPj0gMTYpXG5gYGAifQ== -->
+<pre class="r"><code># Selecciona columnas, las reordenas y las filtra bajo un criterio
+df %&gt;% 
+    select(name, order, sleep_total) %&gt;%
+    arrange(order, sleep_total) %&gt;% 
+    filter(sleep_total &gt;= 16)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-frame-begin eyJtZXRhZGF0YSI6eyJjbGFzc2VzIjpbInRibF9kZiIsInRibCIsImRhdGEuZnJhbWUiXSwibnJvdyI6OCwibmNvbCI6Mywic3VtbWFyeSI6eyJBIHRpYmJsZSI6WyI4IMOXIDMiXX19LCJyZGYiOiJINHNJQUFBQUFBQUFBNFZTelc3VU1CQ2UzV3hnTjJpN2xVQkkzUElDV2RGR1FoeFRXc0dsb3FncVVtL0ltM2lUMFRwMmNCd1ZicnhHZVEzZWlXZmcxR1djMkJWS1ZUR1NmK2I3N0c4ODQ3azh1MDZqNndnQUFwaE5BZ2hDMmtMNCtlcDk4aFpnTmlWbkFqTlkyUFViSFhyZW53UTRwREYzeFBJZGx2RkdxeHNaYjVoeDRPRTVHaVA0QS96RnVaSmxJbFhMaTVqcG1oVW9oSExjNmdNeWFSN0FMejhxYmFyNHBPWWFjeWJqaTBhMWJWZDd3YXNLODExaUdBcVNWQTJSOTF4MGNTUGlXc2tkLys2MVRuUnVNSTlMclRwWnhPM1hEclhtWXBSUmRGcWhWbzNobWoyS0xFNVJscDFnNWxGZ2RZWUZGMDJGdGRJMC93ZWVmOUpZTThOYjcxK3Fna3REUE1DQjliUDBWMm90UzM5dnJXVkgyMkU5Zm5WTDlqTTdodDZ5MU9GSHpuOTkyL09qN3d3bHF5bllrSGpnd0prRi9RR2xDNjZkODZ3Vm5EZGZqREpNaklRVzlNTnJMN2FrTWYxQjAzNi8vek9PbUF2VytvZ2VqQW9xMkhxcmJWeUF1OUdWcDFSeVZKSXVUVzNuaGFQTEV6MENWcDIwTHltU3ZPcmtMbmxqQS9UMFlFdTNuLyt6RDRhUTA3MlRDcDNVRXk1TGxQZkZFR3hEYlRJNEI3YW5iY0xyUnFQMG5SMFIycTZIQ2pra1Y4SWpmVzV3OXhkZWZVZUNjQU1BQUE9PSJ9 -->
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":["name"],"name":[1],"type":["chr"],"align":["left"]},{"label":["order"],"name":[2],"type":["chr"],"align":["left"]},{"label":["sleep_total"],"name":[3],"type":["dbl"],"align":["right"]}],"data":[{"1":"Big brown bat","2":"Chiroptera","3":"19.7"},{"1":"Little brown bat","2":"Chiroptera","3":"19.9"},{"1":"Long-nosed armadillo","2":"Cingulata","3":"17.4"},{"1":"Giant armadillo","2":"Cingulata","3":"18.1"},{"1":"North American Opossum","2":"Didelphimorphia","3":"18.0"},{"1":"Thick-tailed opposum","2":"Didelphimorphia","3":"19.4"},{"1":"Owl monkey","2":"Primates","3":"17.0"},{"1":"Arctic ground squirrel","2":"Rodentia","3":"16.6"}],"options":{"columns":{"min":{},"max":[10],"total":[3]},"rows":{"min":[10],"max":[10],"total":[8]},"pages":{}}}
+  </script>
+</div>
+<!-- rnb-frame-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+</div>
+<div id="mutate" class="section level4">
+<h4><strong>mutate()</strong></h4>
+<p>Crea nuevas columnas en un data frame.</p>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuIyBDcmVhIHVuYSBudWV2YSBjb2x1bW5hIHJlbV9wcm9wb3J0aW9uXG5kZiAlPiUgXG4gICAgbXV0YXRlKHJlbV9wcm9wb3J0aW9uID0gc2xlZXBfcmVtIC8gc2xlZXBfdG90YWwpICU+JVxuICAgIGhlYWRcbmBgYCJ9 -->
+<pre class="r"><code># Crea una nueva columna rem_proportion
+df %&gt;% 
+    mutate(rem_proportion = sleep_rem / sleep_total) %&gt;%
+    head</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+</div>
+<div id="summarize" class="section level4">
+<h4><strong>summarize()</strong></h4>
+<p>La función <em>summarise()</em> crea estadísticas de resumen para una columna dada en el data frame, como por ejemplo encontrar la media, la desviación estándar, o la varianza.</p>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuZGYgJT4lIFxuICAgIHN1bW1hcmlzZShhdmdfc2xlZXAgPSBtZWFuKHNsZWVwX3RvdGFsKSwgXG4gICAgICAgICAgICAgIHNkX3NsZWVwID0gc2Qoc2xlZXBfdG90YWwpLFxuICAgICAgICAgICAgICB2YXJfc2xlZXAgPSB2YXIoc2xlZXBfdG90YWwpKVxuYGBgIn0= -->
+<pre class="r"><code>df %&gt;% 
+    summarise(avg_sleep = mean(sleep_total), 
+              sd_sleep = sd(sleep_total),
+              var_sleep = var(sleep_total))</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-frame-begin eyJtZXRhZGF0YSI6eyJjbGFzc2VzIjpbInRibF9kZiIsInRibCIsImRhdGEuZnJhbWUiXSwibnJvdyI6MSwibmNvbCI6Mywic3VtbWFyeSI6eyJBIHRpYmJsZSI6WyIxIMOXIDMiXX19LCJyZGYiOiJINHNJQUFBQUFBQUFBd3R5aVREbWl1QmlZR0JnWm1CaFpHWmdaZ1V5R1ZoRFE5eDBMUmdZV0ppQUhFWUdGZ1pPRUYwQlZDUU1Wc25Bd0FjU2NGQzVKOVRZZFhvaW5DOTRWaXVKUThvR3pqYys1M0R2WWs4U21rR3NlWW01cWNWQWhnREVXckFnWjJKWmVueHhUbXBxQVZTQW96Z0ZoYzlabGxnRUZVQTFqck1vdjF3UFppUXZFRE0xQUluL1FJQnViM0pPWWpITVhwZ2dWMHBpU2FKZVdoRlFQNUQzRDAwTGUzNUJTV1orSGxBVEU4am5yR2lhR1l2UUJQaEw4MEF1U2RGTnppak55OVkxQWxrQWxvWUFYaWliRVluTkRMR1M2VC9VS0Zhb1VXeXBlZW1aZWFrd3QrY2tKcVhtUURsOFFCK0RQYXhYVUpTWlZ3THpDVkMwV0s4a3Z5UVJwbzRyT1Q4SEpnTDJHOE0vQUEwOFB6SHdBUUFBIn0= -->
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":["avg_sleep"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["sd_sleep"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["var_sleep"],"name":[3],"type":["dbl"],"align":["right"]}],"data":[{"1":"10.43373","2":"4.450357","3":"19.80568"}],"options":{"columns":{"min":{},"max":[10],"total":[3]},"rows":{"min":[10],"max":[10],"total":[1]},"pages":{}}}
+  </script>
+</div>
+<!-- rnb-frame-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+</div>
+<div id="group_by" class="section level4">
+<h4><strong>group_by()</strong></h4>
+<p>Divide el data frame por una variable, aplica una funcion a los data frames y combina el resultado.</p>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-frame-begin eyJtZXRhZGF0YSI6eyJjbGFzc2VzIjpbInRibF9kZiIsInRibCIsImRhdGEuZnJhbWUiXSwibnJvdyI6MTksIm5jb2wiOjUsInN1bW1hcnkiOnsiQSB0aWJibGUiOlsiMTkgw5cgNSJdfX0sInJkZiI6Ikg0c0lBQUFBQUFBQUEzVlV6VzdUUUJEZS9MaHBYTGVoclloVWlVT0xBcW9FU1VuREFZa0RpeElRQjVDaUZxVGMwTmJlSkN1Y1hXdnRsUGJHaVhlQVI0QWo0bFFPUEFDOEJqZkVBeUFsck8wWk56RXcwbm84Myt6TWZEdjI3RkZ2MExFSE5pR2tSTXFGRWlsWjVwVllMNTQvYnQ0anBGdzBSb0dVU1RYV1oyYlRkdXcxNjRwWjIrQndIZzYxQ3BVV3J2QllodWxJS0krNTBibVBXTFhMdEJTblNpTlE2ZktJdVJ4TnV6c1dXZ1VSMTVjUlFvNm1Qb3NRcVBXRXgvMWdMQ1pLbXlmQzZ6MFJhQlVwVDhrb0F6Y2VhU0ZOZXBYc3pZbzhPZGZNVlNaTmhqeGxvK1U5YTgrVVZKSG1rOHZDRzMydVJSam1UclRTRjc0SzBWcnRhMkZDZUlocCtscWRxTkJkcUxWNnBEeSt3TkUrZHBsY1Fwemp1SkhJeHhTT0cwMFBPb25RcmMxRWFPUCtoWkV2ZElza1FqdmZFcUh0cjZsOStDbmR2dzk0WTVnSXJYK0k1U1BkVGVEdmRBL3lybDJrK1c0RGZnUHlPaEMvLyt2ejI5K0RnTzZCLzJZYWwrZjNZQVoxSElpMzNzWHlubmFBVHh2OGgrQ0hQTFFCK2lyb1BMOEthT1MzQy9FMjVMc0dOdktEK0wvNmR4MzBBZkNxUTN6bkIvRGFBYjZBM3dMZGdQMDcvK0czQ1g3azF3WStOZkRmQVQveWEyYjgxcE5CaXFmTS9FN3g5MDlHa1pEaVAxWUo5aFVXM2gzdzFjRzJjbE5yU1RZeGYyUTZzUmFDU250YzQ1Q3gwOUhMME9jOFFHQWlaQTVnWjB1QUZhbUkrYmxLVmExZXQ3QmFmS3ppRy9PWXorYy84NVJjbjRWSUNVSGJNOFBXR21vVGI2eFpMcVJpcmdXaHBBa3FMdDVBMmRXa2MwQnRLbU1tWHRNZFQrV3I1dDI0QURTSUFMc0NOQjdmb1hIRmVhNVhLMXlPaE9USTNXY24zTWRMd1p3NE9YQXJNRmROaENjeGFOaEtPd1NJcTN4RWtyT1IyUjlTWG5tZ2VBVUFBQT09In0= -->
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":["order"],"name":[1],"type":["chr"],"align":["left"]},{"label":["avg_sleep"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["min_sleep"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["max_sleep"],"name":[4],"type":["dbl"],"align":["right"]},{"label":["total"],"name":[5],"type":["int"],"align":["right"]}],"data":[{"1":"Afrosoricida","2":"15.600000","3":"15.6","4":"15.6","5":"1"},{"1":"Artiodactyla","2":"4.516667","3":"1.9","4":"9.1","5":"6"},{"1":"Carnivora","2":"10.116667","3":"3.5","4":"15.8","5":"12"},{"1":"Cetacea","2":"4.500000","3":"2.7","4":"5.6","5":"3"},{"1":"Chiroptera","2":"19.800000","3":"19.7","4":"19.9","5":"2"},{"1":"Cingulata","2":"17.750000","3":"17.4","4":"18.1","5":"2"},{"1":"Didelphimorphia","2":"18.700000","3":"18.0","4":"19.4","5":"2"},{"1":"Diprotodontia","2":"12.400000","3":"11.1","4":"13.7","5":"2"},{"1":"Erinaceomorpha","2":"10.200000","3":"10.1","4":"10.3","5":"2"},{"1":"Hyracoidea","2":"5.666667","3":"5.3","4":"6.3","5":"3"},{"1":"Lagomorpha","2":"8.400000","3":"8.4","4":"8.4","5":"1"},{"1":"Monotremata","2":"8.600000","3":"8.6","4":"8.6","5":"1"},{"1":"Perissodactyla","2":"3.466667","3":"2.9","4":"4.4","5":"3"},{"1":"Pilosa","2":"14.400000","3":"14.4","4":"14.4","5":"1"},{"1":"Primates","2":"10.500000","3":"8.0","4":"17.0","5":"12"},{"1":"Proboscidea","2":"3.600000","3":"3.3","4":"3.9","5":"2"},{"1":"Rodentia","2":"12.468182","3":"7.0","4":"16.6","5":"22"},{"1":"Scandentia","2":"8.900000","3":"8.9","4":"8.9","5":"1"},{"1":"Soricomorpha","2":"11.100000","3":"8.4","4":"14.9","5":"5"}],"options":{"columns":{"min":{},"max":[10],"total":[5]},"rows":{"min":[10],"max":[10],"total":[19]},"pages":{}}}
+  </script>
+</div>
+<!-- rnb-frame-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+</div>
+</div>
 </div>
 <div id="funciones" class="section level1">
 <h1>5. Funciones</h1>
+<p>Una función es un conjunto de instrucciones organizadas para realizar una tarea específica. R tiene un gran número de funciones incorporadas y un usuario puede crear sus propias funciones.</p>
+<div id="definicion-de-funciones" class="section level3">
+<h3>Definicion de Funciones</h3>
+<p>Una función R se crea utilizando la palabra clave <em>function()</em>. La sintaxis básica de la definición de una función en R es la siguiente:</p>
+<pre><code>function_name &lt;- function(arg_1, arg_2, ...) {
+   Function body 
+}</code></pre>
+</div>
+<div id="componentes-de-una-funcion" class="section level3">
+<h3>Componentes de una funcion</h3>
+<p>Las diferentes partes de una función son:</p>
+<ul>
+<li><strong>Nombre de la función</strong> Es el nombre real de la función. Se almacena en el entorno de R como un objeto con este nombre.</li>
+<li><strong>Argumentos</strong> Un argumento es un placeholder. Cuando se invoca una función, se le pasa un valor al argumento. Los argumentos son opcionales; es decir, una función puede no contener argumentos. También los argumentos pueden tener valores por defecto.</li>
+<li><strong>Cuerpo de la función</strong> El cuerpo de la función contiene una colección de declaraciones que definen lo que hace la función.</li>
+<li><strong>Valor de retorno</strong> El valor de retorno de una función es la última expresión del cuerpo de la función que se evalúa.</li>
+</ul>
+</div>
+<div id="llamada-a-una-funcion" class="section level3">
+<h3>Llamada a una funcion</h3>
+<p>Para llamar a una función, se utiliza el nombre de la función seguido de paréntesis, como <em>my_function()</em></p>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubXlfZnVuY3Rpb24gPC0gZnVuY3Rpb24oKSB7XG4gIHByaW50KFwiSGVsbG8gV29ybGQhXCIpXG59XG5cbm15X2Z1bmN0aW9uKClcbmBgYCJ9 -->
+<pre class="r"><code>my_function &lt;- function() {
+  print(&quot;Hello World!&quot;)
+}
+
+my_function()</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+</div>
+<div id="valores-de-retorno" class="section level3">
+<h3>Valores de retorno</h3>
+<p>Para que una función devuelva un resultado, utilice la función <em>return()</em></p>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuIG15X2Z1bmN0aW9uIDwtIGZ1bmN0aW9uKHgpIHtcbiAgcmV0dXJuICg1ICogeClcbiB9XG5cbnByaW50KG15X2Z1bmN0aW9uKDMpKVxuYGBgIn0= -->
+<pre class="r"><code> my_function &lt;- function(x) {
+  return (5 * x)
+ }
+
+print(my_function(3))</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+</div>
 </div>
 <div id="manejo-de-archivos" class="section level1">
 <h1>6. Manejo de Archivos</h1>
+<!-- rnb-text-end -->
+<!-- rnb-text-begin -->
+<div id="fs" class="section level3">
+<h3><strong>fs</strong></h3>
+<p>El paquete <strong>fs</strong> proporciona una interfaz uniforme y multiplataforma para las operaciones del sistema de archivos. Las funciones del paquete fs se dividen en cuatro categorias principales:</p>
+<ul>
+<li>path_: para manipular y contruir rutas</li>
+<li>file_: para manipular y construir archivos</li>
+<li>dir_: para manipular y construir directorios</li>
+<li>links_: para manipular y construir enlaces</li>
+</ul>
+<div id="copy-copia-archivos-directorios-o-enlaces" class="section level4">
+<h4>copy — Copia archivos, directorios o enlaces</h4>
+<div id="descripcion" class="section level5">
+<h5>Descripcion</h5>
+<ul>
+<li>file_copy() copia archivos.</li>
+<li>link_copy() crea un nuevo enlace apuntando a la misma ubicacion del enlace anterior.</li>
+<li>dir_copy() copia un directorio recursivamente en una nueva ubicacion.</li>
+</ul>
+</div>
+<div id="uso" class="section level5">
+<h5>Uso</h5>
+<ul>
+<li>file_copy(path, new_path, overwrite = FALSE)</li>
+<li>dir_copy(path, new_path, overwrite = FALSE)</li>
+<li>link_copy(path, new_path, overwrite = FALSE)</li>
+</ul>
+</div>
+<div id="argumentos" class="section level5">
+<h5>Argumentos</h5>
+<ul>
+<li>path Un vector de caracteres de una o mas rutas.</li>
+<li>new_path Un vector de caracteres de rutas a nuevas ubicaciones.</li>
+<li>overwrite Sobrescribe archivos si existen. Si es FALSE y el archivo existe generara un error.</li>
+</ul>
+</div>
+<div id="ejemplos" class="section level5">
+<h5>Ejemplos</h5>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuZmlsZV9jcmVhdGUoXCJmb29cIilcbmZpbGVfY29weShcImZvb1wiLCBcImJhclwiKVxuIyB0cnkoZmlsZV9jb3B5KFwiZm9vXCIsIFwiYmFyXCIpKVxuZmlsZV9jb3B5KFwiZm9vXCIsIFwiYmFyXCIsIG92ZXJ3cml0ZSA9IFRSVUUpXG5maWxlX2RlbGV0ZShjKFwiZm9vXCIsIFwiYmFyXCIpKVxuZGlyX2NyZWF0ZShcImZvb1wiKVxuXG4jIENyZWEgdW4gZGlyZWN0b3JpbyB5IHBvbmUgYXJjaGl2b3MgZW4gZWxcbmZpbGVzIDwtIGZpbGVfY3JlYXRlKGMoXCJmb28vYmFyXCIsIFwiZm9vL2JhelwiKSlcbmZpbGVfZXhpc3RzKGZpbGVzKVxuXG4jIENvcGlhIGRpcmVjdG9yaW9cbmRpcl9jb3B5KFwiZm9vXCIsIFwiZm9vMlwiKVxuZmlsZV9leGlzdHMocGF0aChcImZvbzJcIiwgcGF0aF9maWxlKGZpbGVzKSkpXG5cbiMgQ3JlYSB1biBlbmxhY2UgYWwgZGlyZWN0b3Jpb1xubGlua19jcmVhdGUocGF0aF9hYnMoXCJmb29cIiksIFwibG9vXCIpXG5saW5rX3BhdGgoXCJsb29cIilcbmxpbmtfY29weShcImxvb1wiLCBcImxvbzJcIilcbmxpbmtfcGF0aChcImxvbzJcIilcblxuIyBMaW1waWV6YVxuZGlyX2RlbGV0ZShjKFwiZm9vXCIsIFwiZm9vMlwiKSlcbmxpbmtfZGVsZXRlKGMoXCJsb29cIiwgXCJsb28yXCIpKVxuYGBgIn0= -->
+<pre class="r"><code>file_create(&quot;foo&quot;)
+file_copy(&quot;foo&quot;, &quot;bar&quot;)
+# try(file_copy(&quot;foo&quot;, &quot;bar&quot;))
+file_copy(&quot;foo&quot;, &quot;bar&quot;, overwrite = TRUE)
+file_delete(c(&quot;foo&quot;, &quot;bar&quot;))
+dir_create(&quot;foo&quot;)
+
+# Crea un directorio y pone archivos en el
+files &lt;- file_create(c(&quot;foo/bar&quot;, &quot;foo/baz&quot;))
+file_exists(files)
+
+# Copia directorio
+dir_copy(&quot;foo&quot;, &quot;foo2&quot;)
+file_exists(path(&quot;foo2&quot;, path_file(files)))
+
+# Crea un enlace al directorio
+link_create(path_abs(&quot;foo&quot;), &quot;loo&quot;)
+link_path(&quot;loo&quot;)
+link_copy(&quot;loo&quot;, &quot;loo2&quot;)
+link_path(&quot;loo2&quot;)
+
+# Limpieza
+dir_delete(c(&quot;foo&quot;, &quot;foo2&quot;))
+link_delete(c(&quot;loo&quot;, &quot;loo2&quot;))</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+</div>
+</div>
+<div id="create-crea-archivos-directorios-o-enlaces" class="section level4">
+<h4>create — Crea archivos, directorios, o enlaces</h4>
+<div id="descripcion-1" class="section level5">
+<h5>Descripcion</h5>
+<p>Las funciones <em>file_create()</em> y <em>dir_create()</em> se aseguran de que la ruta existe; si ya existe se se dejará sin modificar. Esto significa que en comparación con file.create(), <em>file_create()</em> no truncará un archivo existente, y en comparación con dir.create(), <em>dir_create()</em> ignorará silenciosamente los directorios existentes.</p>
+</div>
+<div id="uso-1" class="section level5">
+<h5>Uso</h5>
+<ul>
+<li>file_create(path, …, mode = “u=rw,go=r”)</li>
+<li>dir_create(path, …, mode = “u=rwx,go=rx”, recurse = TRUE, recursive)</li>
+<li>link_create(path, new_path, symbolic = TRUE)</li>
+</ul>
+</div>
+<div id="argumentos-1" class="section level5">
+<h5>Argumentos</h5>
+<ul>
+<li>path Un vector de caracteres de una o mas rutas. Para link_create(), este es el destino.</li>
+<li>… Argumentos adicionales pasados a path()</li>
+<li>mode Si se crea un archivo/directorio, ¿qué modo debe tener? Los enlaces no tienen modo; heredan el modo del archivo al que enlazan.</li>
+<li>recurse ¿se deben crear directorios intermedios si no existen?</li>
+<li>recursive (Deprecated) Si es TRUE se recurre completamente.</li>
+<li>new_path La ruta donde se debe crear el enlace.</li>
+<li>symbolic Valor booleano que determina si el enlace debe ser simbólico (por defecto) o fuerte.</li>
+</ul>
+</div>
+<div id="ejemplos-1" class="section level5">
+<h5>Ejemplos</h5>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuZmlsZV9jcmVhdGUoXCJmb29cIilcbmlzX2ZpbGUoXCJmb29cIilcbiMgZGlyX2NyZWF0ZSBhcGxpY2FkYSBhIGxhIG1pc21hIHJ1dGEgZmFsbGFyYVxudHJ5KGRpcl9jcmVhdGUoXCJmb29cIikpXG5kaXJfY3JlYXRlKFwiYmFyXCIpXG5pc19kaXIoXCJiYXJcIilcbiMgZmlsZV9jcmVhdGUgYXBsaWNhZGEgYSBsYSBtaXNtYSBydXRhIGZhbGxhcmFcbnRyeShmaWxlX2NyZWF0ZShcImJhclwiKSlcbiMgTGltcGllemFcbmZpbGVfZGVsZXRlKFwiZm9vXCIpXG5kaXJfZGVsZXRlKFwiYmFyXCIpXG5gYGAifQ== -->
+<pre class="r"><code>file_create(&quot;foo&quot;)
+is_file(&quot;foo&quot;)
+# dir_create aplicada a la misma ruta fallara
+try(dir_create(&quot;foo&quot;))
+dir_create(&quot;bar&quot;)
+is_dir(&quot;bar&quot;)
+# file_create aplicada a la misma ruta fallara
+try(file_create(&quot;bar&quot;))
+# Limpieza
+file_delete(&quot;foo&quot;)
+dir_delete(&quot;bar&quot;)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+</div>
+</div>
+<div id="delete-elimina-archivos-directorios-y-enlaces" class="section level4">
+<h4>delete — Elimina archivos, directorios y enlaces</h4>
+<div id="descripcion-2" class="section level5">
+<h5>Descripcion</h5>
+<p><em>file_delete()</em> y <em>link_delete()</em> elimina archivos y enlaces. En comparación con file.remove siempre falla si no pueden eliminar el objeto en lugar de cambiar el valor de retorno o señalar una advertencia. Si alguna de las entradas son directorios, se pasan a <em>dir_delete()</em>, por lo que <em>file_delete()</em> puede utilizarse para borrar cualquier objeto del sistema de archivos.</p>
+<p>dir_delete() borrará primero el contenido del directorio y luego eliminará el directorio.</p>
+</div>
+<div id="uso-2" class="section level5">
+<h5>Uso</h5>
+<ul>
+<li>file_delete(path)</li>
+<li>dir_delete(path)</li>
+<li>link_delete(path)</li>
+</ul>
+</div>
+<div id="argumentos-2" class="section level5">
+<h5>Argumentos</h5>
+<ul>
+<li>path Un vector de caracteres de una o mas rutas.</li>
+</ul>
+</div>
+<div id="ejemplos-2" class="section level5">
+<h5>Ejemplos</h5>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuIyBDcmVhIHVuIGRpcmVjdG9yaW8gY29uIGFsZ3Vub3MgYXJjaGl2b3MgeSBsb3MgZW5sYXphXG5kaXJfY3JlYXRlKFwiZGlyXCIpXG5maWxlcyA8LSBmaWxlX2NyZWF0ZShwYXRoKFwiZGlyXCIsIGxldHRlcnNbMTo1XSkpXG5saW5rIDwtIGxpbmtfY3JlYXRlKHBhdGhfYWJzKFwiZGlyXCIpLCBcImxpbmtcIilcbiMgQWxsIGZpbGVzIGNyZWF0ZWRcbmRpcl9leGlzdHMoXCJkaXJcIilcbmZpbGVfZXhpc3RzKGZpbGVzKVxubGlua19leGlzdHMoXCJsaW5rXCIpXG5maWxlX2V4aXN0cyhsaW5rX3BhdGgoXCJsaW5rXCIpKVxuIyBFbGltaW5hIHVuIGFyY2hpdm9cbmZpbGVfZGVsZXRlKGZpbGVzWzFdKVxuZmlsZV9leGlzdHMoZmlsZXNbMV0pXG4jIEVsaW1pbmEgdW4gZGlyZWN0b3JpbywgZWxpbWluYW5kbyBsb3MgYXJjaGl2b3MgZW4gZXN0ZVxuZGlyX2RlbGV0ZShcImRpclwiKVxuZmlsZV9leGlzdHMoZmlsZXMpXG5kaXJfZXhpc3RzKFwiZGlyXCIpXG4jIEVsIGVubGFjZSBleGlzdGUgcGVybyBubyBhIGxvIHF1ZSBlc3RlIGFwdW50YVxubGlua19leGlzdHMoXCJsaW5rXCIpXG5kaXJfZXhpc3RzKGxpbmtfcGF0aChcImxpbmtcIikpXG4jIEVsaW1pbmEgZWwgZW5sYWNlXG5saW5rX2RlbGV0ZShcImxpbmtcIilcbmxpbmtfZXhpc3RzKFwibGlua1wiKVxuYGBgIn0= -->
+<pre class="r"><code># Crea un directorio con algunos archivos y los enlaza
+dir_create(&quot;dir&quot;)
+files &lt;- file_create(path(&quot;dir&quot;, letters[1:5]))
+link &lt;- link_create(path_abs(&quot;dir&quot;), &quot;link&quot;)
+# All files created
+dir_exists(&quot;dir&quot;)
+file_exists(files)
+link_exists(&quot;link&quot;)
+file_exists(link_path(&quot;link&quot;))
+# Elimina un archivo
+file_delete(files[1])
+file_exists(files[1])
+# Elimina un directorio, eliminando los archivos en este
+dir_delete(&quot;dir&quot;)
+file_exists(files)
+dir_exists(&quot;dir&quot;)
+# El enlace existe pero no a lo que este apunta
+link_exists(&quot;link&quot;)
+dir_exists(link_path(&quot;link&quot;))
+# Elimina el enlace
+link_delete(&quot;link&quot;)
+link_exists(&quot;link&quot;)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+</div>
+</div>
+</div>
+<div id="readr" class="section level3">
+<h3><strong>readr</strong></h3>
+<p>El paquete <strong>readr</strong> ofrece funciones para leer data de archivos rectangulares en R. Este paquete hace parte del tidyverse base y sus funciones se ocupan de convertir archivos en data frames.</p>
+<!-- rnb-text-end -->
+<!-- rnb-text-begin -->
+<p>Para leer un conjunto de datos rectangulares con readr, se combinan dos partes: una función que analiza las líneas del archivo en campos individuales y una especificación de columna. Una especificación de columna describe cómo debe convertirse cada columna de un vector de caracteres a un tipo de datos específico (por ejemplo, carácter, numérico, fecha y hora, etc.). En ausencia de una especificación de columna, readr deducirá los tipos de columna a partir de los datos.</p>
+<p>readr soporta los siguientes formatos de archivo con estas funciones read_*():</p>
+<ul>
+<li>read_csv(): archivos de valores separados por comas (CSV)</li>
+<li>read_tsv(): archivos de valores separados por tabulaciones (TSV)</li>
+<li>read_delim(): archivos delimitados (CSV y TSV son casos especiales importantes)</li>
+<li>read_fwf(): archivos de ancho fijo</li>
+<li>read_table(): archivos separados por espacios en blanco</li>
+<li>read_log(): archivos de registro web</li>
+</ul>
+<p>Todas estas funciones tienen una sintaxis similar: una vez se domine una, se podran utilizar las demás con facilidad.</p>
+<p>El primer argumento de read_csv() es el más importante: es la ruta del archivo a leer. También se puede suministrar un archivo csv como argumento. Esto es útil para experimentar con readr y para crear ejemplos reproducibles:</p>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuIyBSZWFkaW5nIGRhdGEgZnJvbSBhIENWUyBmaWxlXG5yZWFkX2NzdignaHR0cHM6Ly92aW5jZW50YXJlbGJ1bmRvY2suZ2l0aHViLmlvL1JkYXRhc2V0cy9jc3YvQUVSL0d1bnMuY3N2JylcbmBgYCJ9 -->
+<pre class="r"><code># Reading data from a CVS file
+read_csv(&#39;https://vincentarelbundock.github.io/Rdatasets/csv/AER/Guns.csv&#39;)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuIyBSZWFkaW5nIGRhdGEgZnJvbSBpbmxpbmUgYXJndW1lbnRcbnJlYWRfY3N2KFwiYSxiLGNcbiAgICAgICAgICAxLDIsM1xuICAgICAgICAgIDQsNSw2XCIpXG5gYGAifQ== -->
+<pre class="r"><code># Reading data from inline argument
+read_csv(&quot;a,b,c
+          1,2,3
+          4,5,6&quot;)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<p>Cuando se ejecuta read_csv() se imprime una especificación de columna que da el nombre y el tipo de cada columna. A veces hay algunas líneas de metadatos en la parte superior del archivo. Se puede utilizar <em>skip = n</em> para omitir las primeras n líneas; o utilizar <em>comment = “#”</em> para eliminar todas las líneas que empiezan con #.</p>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxucmVhZF9jc3YoXCJUaGUgZmlyc3QgbGluZSBvZiBtZXRhZGF0YVxuICAgICAgICAgIFRoZSBzZWNvbmQgbGluZSBvZiBtZXRhZGF0YVxuICAgICAgICAgIHgseSx6XG4gICAgICAgICAgMSwyLDNcIiwgc2tpcCA9IDIpXG5gYGAifQ== -->
+<pre class="r"><code>read_csv(&quot;The first line of metadata
+          The second line of metadata
+          x,y,z
+          1,2,3&quot;, skip = 2)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxucmVhZF9jc3YoXCIjIEEgY29tbWVudCBJIHdhbnQgdG8gc2tpcFxuICAgICAgICAgIHgseSx6XG4gICAgICAgICAgMSwyLDNcIiwgY29tbWVudCA9IFwiI1wiKVxuYGBgIn0= -->
+<pre class="r"><code>read_csv(&quot;# A comment I want to skip
+          x,y,z
+          1,2,3&quot;, comment = &quot;#&quot;)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<p>Los datos pueden no tener nombres de columna. Se puede utilizar <em>col_names = FALSE</em> para indicar a <em>read_csv()</em> que no trate la primera fila como encabezados, y en su lugar los etiquete secuencialmente de <span class="math inline">\(X_{1}\)</span> a <span class="math inline">\(X_{n}\)</span>:</p>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxucmVhZF9jc3YoJ2h0dHBzOi8vdmluY2VudGFyZWxidW5kb2NrLmdpdGh1Yi5pby9SZGF0YXNldHMvY3N2L0FFUi9HdW5zLmNzdicsIGNvbF9uYW1lcyA9IEZBTFNFKVxuYGBgIn0= -->
+<pre class="r"><code>read_csv(&#39;https://vincentarelbundock.github.io/Rdatasets/csv/AER/Guns.csv&#39;, col_names = FALSE)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<p>Otra opción que suele necesitar ajustes es na: especifica el valor (o los valores) que se utilizan para representar los valores que faltan en el archivo:</p>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxucmVhZF9jc3YoXCJhLGIsY1xcbjEsMiwuXCIsIG5hID0gXCIuXCIpXG5gYGAifQ== -->
+<pre class="r"><code>read_csv(&quot;a,b,c\n1,2,.&quot;, na = &quot;.&quot;)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+</div>
 </div>
 <div id="visualizacion-de-datos" class="section level1">
 <h1>7. Visualizacion de Datos</h1>
+<div id="ggplot2" class="section level3">
+<h3>ggplot2</h3>
+<!-- rnb-text-end -->
+<!-- rnb-text-begin -->
+<p><strong>ggplot2</strong> es un paquete potente y flexible de R, implementado por Hadley Wickham, para producir gráficos elegantes. El concepto detrás de ggplot2 divide los gráficos en tres partes fundamentales: <strong>Plot = Datos + Estética + Geometría.</strong></p>
+<p>Los componentes principales de cada gráfico pueden definirse de la siguiente manera:</p>
+<ul>
+<li><strong>Datos</strong> es un dataframe</li>
+<li><strong>Estetica</strong> se utiliza para indicar las variables x e y. También se puede utilizar para controlar el color, el tamaño o la forma de los puntos, la altura de las barras, etc…..</li>
+<li><strong>Geometria</strong> define el tipo de gráfico (histograma, diagrama de caja, diagrama de líneas, diagrama de densidad, diagrama de puntos, ….)</li>
+</ul>
+<p>Hay dos funciones principales en el paquete ggplot2: las funciones <strong>qplot()</strong> y <strong>ggplot()</strong>.</p>
+<ul>
+<li><p><strong>qplot()</strong> se refiere a un gráfico rápido, que puede utilizarse para producir fácilmente gráficos sencillos.</p></li>
+<li><p>La función <strong>ggplot()</strong> es más flexible y robusta que <strong>qplot()</strong> para construir un gráfico pieza por pieza.</p></li>
+</ul>
+</div>
+<div id="qplot" class="section level3">
+<h3>qplot()</h3>
+<p>Un formato simplificado de qplot() es el siguiente:</p>
+<pre><code>qplot(x, y=NULL, data, geom=&quot;auto&quot;, xlim = c(NA, NA), ylim =c(NA, NA))</code></pre>
+<ul>
+<li>x : valores de x</li>
+<li>y : valores de y(opcional)</li>
+<li>data : data frame a usar (opcional).</li>
+<li>geom : Vector de caracteres que especifica la geometria(geom) a utilizar. Por defecto es “point” si se especifican x, y, e “histogram” si sólo se especifica x.</li>
+<li>xlim, ylim: limites del eje x, y</li>
+</ul>
+<div id="scatter-plots" class="section level4">
+<h4>Scatter Plots</h4>
+<p>El gráfico puede crearse utilizando datos de vectores numéricos o de un dataframe:</p>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuIyBVc2FuZG8gdmVjdG9yZXMgbnVtZXJpY29zXG54IDwtIDE6MTA7IHkgPSB4KnhcbiMgUGxvdCBiYXNpY29cbnFwbG90KHgseSlcbiMgUGxvdCBiYXNpY28gKyBsaW5lYVxucXBsb3QoeCwgeSwgZ2VvbT1jKFwicG9pbnRcIiwgXCJsaW5lXCIpKVxuIyBVc2FuZG8gZGF0YWZyYW1lc1xucXBsb3QobXBnLCB3dCwgZGF0YT1tdGNhcnMpXG5gYGAifQ== -->
+<pre class="r"><code># Usando vectores numericos
+x &lt;- 1:10; y = x*x
+# Plot basico
+qplot(x,y)
+# Plot basico + linea
+qplot(x, y, geom=c(&quot;point&quot;, &quot;line&quot;))
+# Usando dataframes
+qplot(mpg, wt, data=mtcars)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+</div>
+<div id="box-plot-dot-plot-y-violin-plot" class="section level4">
+<h4>Box plot, dot plot y violin plot</h4>
+<p>Para crear graficos diferentes a un scatter plot con <strong>qplot()</strong> es necesario especificar la geometria de la grafica:</p>
+<ul>
+<li>geom = “boxplot”: dibuja un boxplot</li>
+<li>geom = “dotplot”: dibuja un dot plot. Los argumentos suplementarios stackdir = “center” y binaxis = “y” son necesarios.</li>
+<li>geom = “violin”: dibuja un violin plot. El argumento trim se establece en FALSE.</li>
+</ul>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuIyBCb3hwbG90IGJhc2ljbyBhIHBhcnRpciBkZSB2ZWN0b3JlcyBudW1lcmljb3NcbnggPC0gXCIxXCJcbnkgPC0gcm5vcm0oMTAwKVxucXBsb3QoeCwgeSwgZ2VvbT1cImJveHBsb3RcIilcblxuIyBCb3hwbG90IGJhc2ljbyBhIHBhcnRpciBkZSB1biBkYXRhZnJhbWVcbnFwbG90KGdyb3VwLCB3ZWlnaHQsIGRhdGEgPSBQbGFudEdyb3d0aCwgXG4gICAgICBnZW9tPWMoXCJib3hwbG90XCIpKVxuXG4jIERvdCBwbG90XG5xcGxvdChncm91cCwgd2VpZ2h0LCBkYXRhID0gUGxhbnRHcm93dGgsIFxuICAgICAgZ2VvbT1jKFwiZG90cGxvdFwiKSwgXG4gICAgICBzdGFja2RpciA9IFwiY2VudGVyXCIsIGJpbmF4aXMgPSBcInlcIixcbiAgICAgIGJpbndpZHRoID0gMC4wOSlcblxuIyBWaW9saW4gcGxvdFxucXBsb3QoZ3JvdXAsIHdlaWdodCwgZGF0YSA9IFBsYW50R3Jvd3RoLCBcbiAgICAgIGdlb209YyhcInZpb2xpblwiKSwgdHJpbSA9IEZBTFNFKVxuYGBgIn0= -->
+<pre class="r"><code># Boxplot basico a partir de vectores numericos
+x &lt;- &quot;1&quot;
+y &lt;- rnorm(100)
+qplot(x, y, geom=&quot;boxplot&quot;)
+
+# Boxplot basico a partir de un dataframe
+qplot(group, weight, data = PlantGrowth, 
+      geom=c(&quot;boxplot&quot;))
+
+# Dot plot
+qplot(group, weight, data = PlantGrowth, 
+      geom=c(&quot;dotplot&quot;), 
+      stackdir = &quot;center&quot;, binaxis = &quot;y&quot;,
+      binwidth = 0.09)
+
+# Violin plot
+qplot(group, weight, data = PlantGrowth, 
+      geom=c(&quot;violin&quot;), trim = FALSE)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+</div>
+<div id="histogramas-y-gráficos-de-densidad" class="section level4">
+<h4>Histogramas y gráficos de densidad</h4>
+<p>De la misma manera que los graficos anteriores, para dibujar histogramas y graficos de densidad necesitamos definir la geometria de la grafica.</p>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuIyBCYXNpYyBoaXN0b2dyYW1cbnFwbG90KG1wZyRod3ksIGdlb20gPSBcImhpc3RvZ3JhbVwiLCBiaW5zID0gMTApXG4jIEJhc2ljIGRlbnNpdHkgcGxvdFxucXBsb3QoeCA9IG1wZyRod3ksIGdlb20gPSBcImRlbnNpdHlcIilcbmBgYCJ9 -->
+<pre class="r"><code># Basic histogram
+qplot(mpg$hwy, geom = &quot;histogram&quot;, bins = 10)
+# Basic density plot
+qplot(x = mpg$hwy, geom = &quot;density&quot;)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+</div>
+</div>
+<div id="ggplot" class="section level3">
+<h3>ggplot()</h3>
+<p>El punto de partida para crear un gráfico es utilizar la función ggplot con la siguiente estructura básica:</p>
+<pre><code>plot &lt;- ggplot(data, aes(x_variable, y_variable)) + geom_graph.type()
+print(plot)</code></pre>
+<ul>
+<li><strong>data</strong> es un dataframe que contiene las variables que se quieren graficar</li>
+<li><strong>aes</strong> especifica que variables se van a graficar. Aunque la palabra <em>aes</em> se refiere a la estética, en ggplot no se relaciona con el aspecto visual del gráfico, sino con los datos que se quieren ver en el gráfico. Especifica lo que el gráfico presenta en lugar de cómo se presenta.</li>
+<li><strong>geom_graph.type</strong> especifica que tipo de grafico se quiere hacer. Los graficos mas comunes son:
+<ul>
+<li><em>geom_point()</em> scatterplot</li>
+<li><em>geom_boxplot()</em> boxplot</li>
+<li><em>geom_histogram()</em> histograma</li>
+<li><em>geom_bar()</em> bar plot</li>
+</ul></li>
+</ul>
+<p>El tipo de gráfico que se quiere hacer tiene que coincidir con las clases de las entradas de la funcion. Por ejemplo, un scatterplot requiere que ambas variables sean numéricas. Un boxplot requiere que la variable <em>x</em> sea un factor y la variable <em>y</em> sea numérica.</p>
+<p>Una práctica útil al hacer ggplots es asignar el gráfico a un objeto y luego ‘imprimirlo’ por separado. A medida que un ggplot se complica, esto lo hará mucho más fácil de construir.</p>
+<div id="ejemplos-con-ggplot" class="section level5">
+<h5>Ejemplos con ggplot()</h5>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuIyAgRGF0YSBsb2FkXG5kYXRhKGlyaXMpXG5cbiMgQm94cGxvdFxucGxvdDEgPC0gZ2dwbG90KGlyaXMsIGFlcyhTcGVjaWVzLCBQZXRhbC5MZW5ndGgpKSArXG4gIGdlb21fYm94cGxvdCgpXG5wcmludChwbG90MSlcblxuIyBIaXN0b2dyYW1cbnBsb3QyIDwtIGdncGxvdChpcmlzLCBhZXMoUGV0YWwuTGVuZ3RoKSkgK1xuICBnZW9tX2hpc3RvZ3JhbShiaW53aWR0aCA9IDAuMjUpXG5wcmludChwbG90MilcblxuIyBTY2F0dGVyIFBsb3RcbnBsb3QzIDwtIGdncGxvdChpcmlzLCBhZXMoU2VwYWwuTGVuZ3RoLCBQZXRhbC5MZW5ndGgpKSArXG4gIGdlb21fcG9pbnQoKVxucHJpbnQocGxvdDMpXG5cbiMgU2NhdHRlciBQbG90ICsgQ2F0ZWdvcmljYWwgdmFyaWFibGVzXG5wbG90NCA8LSBnZ3Bsb3QoaXJpcywgYWVzKFNlcGFsLkxlbmd0aCwgUGV0YWwuTGVuZ3RoLCBjb2xvdXIgPSBTcGVjaWVzKSkgK1xuICBnZW9tX3BvaW50KClcbnByaW50KHBsb3Q0KVxuXG4jIFZpb2xpbiBQbG90XG5wbG90NSA8LSBnZ3Bsb3QoaXJpcywgYWVzKHggPSBTcGVjaWVzLCB5ID0gU2VwYWwuV2lkdGgpLCBjb2xvciA9IFNwZWNpZXMsIGZpbGw9U3BlY2llcywgYWxwaGEgPSAwLjI1KSArXG4gIGdlb21fdmlvbGluKClcbnByaW50KHBsb3Q1KVxuIyMgVjJcbmdncGxvdChpcmlzKSArIFxuICBnZW9tX3Zpb2xpbihhZXMoeCA9IFNwZWNpZXMsIHkgPSBTZXBhbC5XaWR0aCwgY29sb3IgPSBTcGVjaWVzLCBmaWxsPVNwZWNpZXMpLCBcbiAgICAgICAgICAgICAgYWxwaGEgPSAwLjI1KVxuYGBgIn0= -->
+<pre class="r"><code>#  Data load
+data(iris)
+
+# Boxplot
+plot1 &lt;- ggplot(iris, aes(Species, Petal.Length)) +
+  geom_boxplot()
+print(plot1)
+
+# Histogram
+plot2 &lt;- ggplot(iris, aes(Petal.Length)) +
+  geom_histogram(binwidth = 0.25)
+print(plot2)
+
+# Scatter Plot
+plot3 &lt;- ggplot(iris, aes(Sepal.Length, Petal.Length)) +
+  geom_point()
+print(plot3)
+
+# Scatter Plot + Categorical variables
+plot4 &lt;- ggplot(iris, aes(Sepal.Length, Petal.Length, colour = Species)) +
+  geom_point()
+print(plot4)
+
+# Violin Plot
+plot5 &lt;- ggplot(iris, aes(x = Species, y = Sepal.Width), color = Species, fill=Species, alpha = 0.25) +
+  geom_violin()
+print(plot5)
+## V2
+ggplot(iris) + 
+  geom_violin(aes(x = Species, y = Sepal.Width, color = Species, fill=Species), 
+              alpha = 0.25)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+</div>
+</div>
 </div>
 <div id="algoritmos-de-generacion-de-numeros-aleatorios" class="section level1">
-<h1>8. Algoritmos de generacion de numeros aleatorios?</h1>
+<h1>8. Algoritmos de generacion de numeros aleatorios</h1>
+<div id="generador-congruencial-lineal" class="section level3">
+<h3>Generador Congruencial Lineal</h3>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubGNnIDwtIGZ1bmN0aW9uKCl7XG4gIFxufVxuYGBgIn0= -->
+<pre class="r"><code>lcg &lt;- function(){
+  
+}</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+</div>
+<div id="metodo-de-los-cuadrados-medios" class="section level3">
+<h3>Metodo de los cuadrados medios</h3>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+</div>
+<div id="wichmann-hill" class="section level3">
+<h3>Wichmann-Hill</h3>
+</div>
+<div id="marsaglia-multicarry" class="section level3">
+<h3>Marsaglia-Multicarry</h3>
+</div>
+<div id="generador-tausworthe" class="section level3">
+<h3>Generador Tausworthe</h3>
+</div>
+<div id="lecuyer-cmrg" class="section level3">
+<h3>L’Ecuyer-CMRG</h3>
+</div>
+<div id="mersenne-twister" class="section level3">
+<h3>Mersenne-Twister</h3>
+</div>
+<div id="generador-de-fibonacci" class="section level3">
+<h3>Generador de Fibonacci</h3>
+</div>
+<div id="generador-randu" class="section level3">
+<h3>Generador RANDU</h3>
+</div>
 </div>
 <div id="distribuciones-de-probabilidad" class="section level1">
-<h1>9. Distribuciones de probabilidad?</h1>
+<h1>9. Distribuciones de probabilidad</h1>
+<div id="exponencial" class="section level3">
+<h3>Exponencial</h3>
+</div>
+<div id="multinomial" class="section level3">
+<h3>Multinomial</h3>
+</div>
+<div id="normal" class="section level3">
+<h3>Normal</h3>
+</div>
+<div id="geometrica" class="section level3">
+<h3>Geometrica</h3>
+</div>
+<div id="cauchy" class="section level3">
+<h3>Cauchy</h3>
+</div>
+<div id="poisson" class="section level3">
+<h3>Poisson</h3>
+</div>
+<div id="triangular" class="section level3">
+<h3>Triangular</h3>
+</div>
+<div id="binomial" class="section level3">
+<h3>Binomial</h3>
 <!-- rnb-text-end -->
 </div>
+</div>
 
-<div id="rmd-source-code">LS0tCnRpdGxlOiAiUiBUdXRvcmlhbCIKYXV0aG9yOiAiR3J1cG8gSjEiCmRhdGU6ICcyMDIyLTA3LTE2JwpvdXRwdXQ6IGh0bWxfbm90ZWJvb2sKLS0tCiMgMS4gRXN0cnVjdHVyYXMgZGUgQ29udHJvbAojIDIuIFZlY3RvcmVzCiMgMy4gTGlzdGFzIHkgTWF0cmljZXMKIyA0LiBEYXRhZnJhbWVzCiMgNS4gRnVuY2lvbmVzCiMgNi4gTWFuZWpvIGRlIEFyY2hpdm9zCiMgNy4gVmlzdWFsaXphY2lvbiBkZSBEYXRvcwojIDguIEFsZ29yaXRtb3MgZGUgZ2VuZXJhY2lvbiBkZSBudW1lcm9zIGFsZWF0b3Jpb3M/CiMgOS4gRGlzdHJpYnVjaW9uZXMgZGUgcHJvYmFiaWxpZGFkPw==</div>
+<div id="rmd-source-code">LS0tCnRpdGxlOiAiUiBUdXRvcmlhbCIKYXV0aG9yOiAiR3J1cG8gSjEiCmRhdGU6ICcyMDIyLTA3LTE2JwpvdXRwdXQ6IGh0bWxfbm90ZWJvb2sKLS0tCiMgMS4gRXN0cnVjdHVyYXMgZGUgQ29udHJvbAoKIyMjIDEuMSBJZi1lbHNlCkVzdGEgZXMgdW5hIGVzdHJ1Y3R1cmEgcXVlIG5vcyBwZXJtaXRlIGV2YWx1YXIgc2kgdW5hIGNvbmRpY2lvbiBzZSBjdW1wbGUgbyBuby4gTGEgZXN0cnVjdHVyYSBwYXJhIGVzdGUgY29uZGljaW9uYWwgZXMgbGEgc2lndWllbnRlOgpgYGAKaWYoY29uZGljaW9uKXsKICAgIG9wZXJhY2lvbmVzX3NpX3NlX2N1bXBsZQogIH0gZWxzZSB7CiAgICBvcGVyYWNpb25lc19ub19zZV9jdW1wbGUKICB9CmBgYApFamVtcGxvIGLDoXNpY28gdXNhbmRvIGxhIGVzdHJ1Y3R1cmEsIGNvbXBhcmFuZG8gZG9zIG7Dum1lcm9zOgpgYGB7ciBpZn0KaWYoND4zKXsKICAidmVyZGFkZXJvIgp9ZWxzZXsKICAiRmFsc28iCn0KYGBgCgojIyMgMS4yIEZvcgpFcyB1bmEgZXN0cnVjdHVyYSBkZSBjb250cm9sIHF1ZSBwZXJtaXRlIHJlcGV0aXIgaW5zdHJ1Y2Npb25lcyB1biBudW1lcm8gZXNwZWNpZmljbyBkZSB2ZWNlcy4KYGBgCmZvcih2YWxvciBpbiB2ZWN0b3IpewogIG9wZXJhY2lvbmVzX3BhcmFfYnVjbGUKICB9CmBgYApFamVtcGxvIHNlbmNpbGxvLCBkb25kZSBzZSBlbGV2YW4gYWwgY3VhZHJhZG8gbG9zIG7Dum1lcm9zIGRlbCAxIGFsIDU6CmBgYHtyIGZvcn0KZm9yKG51bWVybyBpbiAxOjUpewogIHByaW50KG51bWVyb14yKQp9CmBgYAoKIyMjIDEuMyBXaGlsZQpFbCBidWNsZSBXaGlsZSBlamVjdXRhIGVsIG1pc21vIGPDs2RpZ28gdW5hIHkgb3RyYSB2ZXogaGFzdGEgcXVlIHNlIGRlamUgZGUgY3VtcGxpciBsYSBjb25kaWNpw7NuIGRlZmluaWRhLgpgYGAKd2hpbGUoY29uZGljaW9uKXsKICBvcGVyYWNpb25lc19wYXJhX2J1Y2xlCiAgfQpgYGAKRWplbXBsbywgZW4gZXN0ZSBlamVyY2ljaW8gc2UgYnVzY2EgY29tcGFyYXIgc2kgdW4gbsO6bWVybyBlcyBtZW5vciBhIDUsIHNpIGxvIGVzIGltcHJpbWUgdmVyZGFkZXJvIHkgYXVtZW50YSAxLCBlbCBidWNsZSB0ZXJtaW5hIGN1YW5kbyBlc3RvIHlhIG5vIHNlIGN1bXBsZToKYGBge3Igd2hpbGV9Cm51bWVybyA8LSAwCndoaWxlKG51bWVybyA8IDUpewogIHByaW50KCJWZXJkYWRlcm8iKQogIG51bWVybyA8LSBudW1lcm8rMQp9CmBgYAojIyMgMS40IFJlcGVhdApFbCBidWNsZSBSZXBlYXQgZWplY3V0YSBlbCBtaXNtbyBjw7NkaWdvIHVuYSB5IG90cmEgdmV6IGhhc3RhIHF1ZSBzZSBjdW1wbGUgdW5hIGNvbmRpY2nDs24gZGUgcGFyYWRhLgpgYGAKcmVwZWF0IHsgCiAgIGNvbW1hbmRzIAogICBpZihjb25kaXRpb24pIHsKICAgICAgYnJlYWsKICAgfQp9CmBgYApFamVtcGxvOgpgYGB7cn0KdiA8LSBjKCJIZWxsbyIsIldvcmxkIikKY250IDwtIDIKCnJlcGVhdCB7CiAgIHByaW50KHYpCiAgIGNudCA8LSBjbnQrMQogICAKICAgaWYoY250ID4gNSkgewogICAgICBicmVhawogICB9Cn0KYGBgCgojIyMgMS41IEJyZWFrL05leHQKRXN0YXMgc29uIGluc3RydWNjaW9uZXMgcXVlIG5vcyBwZXJtaXRlbiBwYXJhciBjb21wbGV0YW1lbnRlIHVuIGJ1Y2xlIG8gaXIgYSB1bmEgc2lndWllbnRlIGl0ZXJhY2lvbi4KCi0gQ3VhbmRvIHNlIGVuY3VlbnRyYSBsYSBpbnN0cnVjY2nDs24gKipicmVhayoqIGRlbnRybyBkZSB1biBidWNsZSwgw6lzdGUgc2UgdGVybWluYSBpbm1lZGlhdGFtZW50ZSB5IGVsIGNvbnRyb2wgZGVsIHByb2dyYW1hIHNlIHJlYW51ZGEgZW4gbGEgc2lndWllbnRlIGluc3RydWNjacOzbiBxdWUgc2lndWUgYWwgYnVjbGUuCi0gTGEgaW5zdHJ1Y2Npw7NuICoqbmV4dCoqIGVuIGVsIGxlbmd1YWplIGRlIHByb2dyYW1hY2nDs24gUiBlcyDDunRpbCBjdWFuZG8gcXVlcmVtb3Mgc2FsdGFyIGxhIGl0ZXJhY2nDs24gYWN0dWFsIGRlIHVuIGJ1Y2xlIHNpbiB0ZXJtaW5hcmxvLgoKRWplbXBsbzoKYGBge3J9CmZvcihpIGluIDE6Nyl7CiAgaWYoaSA9PSAzKXsjQ3VhbmRvIGVsIG51bWVybyBsbGVnYSBhIGxhIGNvbmRpY2nDs24gc2Ugc2FsdGEgZXNlIHBhc28gZGVsIGNpY2xvCiAgICBuZXh0CiAgICB9CiAgaWYoaT09NSl7IyBDdWFuZG8gZWwgbnVtZXJvIGxsZWdhIGEgbGEgY29uZGljaW9uIHNlIGRldGllbmUgZWwgY2ljbG8KICBicmVhawogICAgfQpwcmludChpKQp9CiAgCmBgYAoKCiMgMi4gVmVjdG9yZXMKRWwgdmVjdG9yIGVzIHVuYSBlc3RydWN0dXJhIGRlIGRhdG9zIGLDoXNpY2EgZW4gUi4gQ29udGllbmUgZWxlbWVudG9zIGRlbCBtaXNtbyB0aXBvLiBMb3MgdGlwb3MgZGUgZGF0b3MgcHVlZGVuIHNlciBsb2dpY2FsLCBpbnRlZ2VyLCBkb3VibGUsIGNoYXJhY3RlciwgY29tcGxleCBvIHJhdy4gRWwgdGlwbyBkZSBkYXRvIGRlIHVuIHZlY3RvciBzZSBwdWVkZSBjb21wcm9iYXIgY29uIGxhIGZ1bmNpb24gKnR5cGVvZigpKgoKIyMjIDIuMSBDcmVhY2nDs24gZGUgdmVjdG9yZXMKUGFyYSBjcmVhciB2ZWN0b3JlcyBzZSB1dGlsaXphIGxhIHNpZ3VpZW50ZSBzaW50YXhpczogCmBgYApub21icmVfdmVjdG9yIDwtIGMoZWxlbWVudG9zKQpub21icmVfdmVjdG9yIDwtIHJhbmdvCmBgYApMb3MgZWxlbWVudG9zIGRlYmVuIGVzdGFyIHNlcGFyYWRvcyBwb3IgY29tYXMgeSBzaSBzb24gY2FkZW5hcyBkZSB0ZXh0b3MgZGViZW4gaXIgZW50cmUgY29taWxsYXMuCgpFamVtcGxvczoKYGBge3IgY3JlYWNpb24gdjF9CnZlY3RvcjEgPC1jKDEwLCAyMSwgMywgNCwgMSkKdmVjdG9yMiA8LSAxOjUKdmVjdG9yMQp2ZWN0b3IyCmBgYAoKIyMjIDIuMiBJbmRleGFjacOzbiBkZSB2ZWN0b3JlcwpMYSBzaW50YXhpcyBwYXJhIHZlciBlbGVtZW50b3MgZGUgdW4gdmVjdG9yIHBvciBzdSBwb3NpY2nDs24gZXMgbGEgc2lndWllbnRlOiAKYGBgCm5vbWJyZV92ZWN0b3JbYyhpbmRpY2VzLCBpbmRpY2VzKV0KYGBgClBhcmEgZXh0cmFlciBlbGVtZW50b3MgZGVzZGUgdW5hIHBvc2ljacOzbiBoYXN0YSBvdHJhIHNlIHV0aWxpemE6CmBgYApub21icmVfdmVjdG9yW2MoaW5kaWNlOmluZGljZSldCmBgYAoKRWplbXBsbyAxOiBzZSB1dGlsaXphIGVsIHZlY3RvciB5YSBjcmVhZG8gKnZlY3RvcjEqLCBwYXJhIHZlciBsb3MgZWxlbWVudG9zIGRlIGxvcyBpbmRpY2VzIGRlIGxhIHBvc2ljacOzbiAyIGEgbGEgcG9zaWNpw7NuIDU6CmBgYHtyIGluZGljZXMxfQp2ZWN0b3IxWzI6NV0KYGBgCgpFamVtcGxvIDI6IHNlIHV0aWxpemEgZWwgdmVjdG9yIHlhIGNyZWFkbyAqdmVjdG9yMSosIHBhcmEgdmVyIGxvcyBlbGVtZW50b3MgZGUgbG9zIGluZGljZXMgZGUgbGEgcG9zaWNpw7NuIDIgeSBsYSBwb3NpY2nDs24gNToKYGBge3IgaW5kaWNlc30KdmVjdG9yMVtjKDIsNSldCmBgYAoKIyMjIDIuMyBFZGljacOzbiBkZSB2ZWN0b3JlcwpQYXJhIGVkaXRhciB1biB2ZWN0b3Igc2UgaGFjZSBtdWVzdHJhIGVuIGVsIHNpZ3VpZW50ZSBlamVtcGxvIHV0aWxpemFuZG8gZWwgcHJpbWVyIHZlY3RvciBjcmVhZG86CmBgYHtyIGNyZWFjaW9uIGVkaXRhcl92ZWN0b3J9CnZlY3Rvcl9lZGl0YWRvIDwtIGModmVjdG9yMSwgNSkKdmVjdG9yX2VkaXRhZG8KYGBgCkFkaWNpb25hbG1lbnRlIGRvcyB2ZWN0b3JlcyBkZSBsYSBtaXNtYSBsb25naXR1ZCBzZSBwdWVkZW4gc3VtYXIsIHJlc3RhciwgbXVsdGlwbGljYXIgbyBkaXZpZGlyIGRhbmRvIGVsIHJlc3VsdGFkbyBjb21vIHVuYSBzYWxpZGEgdmVjdG9yaWFsLgpgYGB7cn0KIyBTdW1hCnN1bWEgPC0gdmVjdG9yMSt2ZWN0b3IyCnByaW50KHN1bWEpCgojIFJlc3RhCnJlc3RhIDwtIHZlY3RvcjEtdmVjdG9yMgpwcmludChyZXN0YSkKCiMgTXVsdGlwbGljYWNpb24KbXVsdGkgPC0gdmVjdG9yMSp2ZWN0b3IyCnByaW50KG11bHRpKQoKIyBEaXZpc2lvbgpkaXYgPC0gdmVjdG9yMS92ZWN0b3IyCnByaW50KGRpdikKYGBgCgoKIyAzLiBMaXN0YXMgeSBNYXRyaWNlcwojIyMgMy4xIExpc3RhcwpMYXMgbGlzdGFzIHNvbiBsb3Mgb2JqZXRvcyBkZSBSIHF1ZSBjb250aWVuZW4gZWxlbWVudG9zIGRlIGRpZmVyZW50ZXMgdGlwb3MgY29tbyAtIG7Dum1lcm9zLCBjYWRlbmFzLCB2ZWN0b3JlcyB5IG90cmEgbGlzdGEgZGVudHJvIGRlIGVsbGEuIFVuYSBsaXN0YSB0YW1iacOpbiBwdWVkZSBjb250ZW5lciB1bmEgbWF0cml6IG8gdW5hIGZ1bmNpw7NuIGNvbW8gc3VzIGVsZW1lbnRvcy4gTGEgbGlzdGEgc2UgY3JlYSB1dGlsaXphbmRvIGxhIGZ1bmNpw7NuICpsaXN0KCkqLgpQYXJhIGNyZWFyIGxpc3RhcyBzZSB1c2EgbGEgZnVuY2nDs24gKmxpc3QoKSosIGRvbmRlIHNlIGFncmVnYW4gbG9zIGVsZW1lbnRvcyBxdWUgZGVzZWFtb3MgY29udGVuZ2EgbGEgbGlzdGEuIEEgY2FkYSBlbGVtZW50byBkZSBsYSBsaXN0YSBzZSBsZSBwdWVkZSBhc2lnbmFyIHVuIG5vbWJyZSAqbGlzdCgibm9tYnJlX2xpc3QiPSBlbGVtZW50bykqLgoKRWplbXBsbzoKYGBge3IgbGlzdGFzMX0KbGlzdGExIDwtIGxpc3QoInBlcnJvIiwgImdhdG8iLCAidmFjYSIpCmxpc3RhMQpgYGAKCkxhcyBsaXN0YXMgdGFtYmnDqW4gcHVlZGVuIGNvbnRlbmVyIG90cmFzIGxpc3RhcyB5IHZlY3RvcmVzLCBlamVtcGxvOgpgYGB7ciBsaXN0YXMyfQpsaXN0YTIgPC0gbGlzdCgibGlzdGFfYW5pbWFsZXMiPWxpc3RhMSwgInZlY3Rvcl8xIj12ZWN0b3IxLCAidmVjdG9yXzIiPXZlY3RvcjIpCmxpc3RhMgpgYGAKCiMjIyAzLjIgTWF0cmljZXMKTGFzIG1hdHJpY2VzIHNvbiBsb3Mgb2JqZXRvcyBSIGVuIGxvcyBxdWUgbG9zIGVsZW1lbnRvcyBlc3TDoW4gb3JkZW5hZG9zIGVuIHVuYSBkaXN0cmlidWNpw7NuIHJlY3Rhbmd1bGFyIGJpZGltZW5zaW9uYWwuClBhcmEgbGEgY3JlYWNpw7NuIGRlIG1hdHJpY2VzIHNlIHV0aWxpemEgbGEgZnVuY2nDs24gKm1hdHJpeCgpKi4gUGFyYSBlc3BlY2lmaWNhciBlbCBuw7ptZXJvIGRlIGZpbGFzIHkgY29sdW1uYXMgc2UgdXNhICpucm93KiB5ICpuY29sKiByZXNwZWN0aXZhbWVudGUuCkxhIHNpbnRheGlzIGLDoXNpY2EgcGFyYSBjcmVhciB1bmEgbWF0cml6IGVuIFIgZXM6CmBgYAptYXRyaXgoZGF0YSwgbnJvdywgbmNvbCwgYnlyb3csIGRpbW5hbWVzKQpgYGAKLSAqKmRhdGEqKiBlcyBlbCB2ZWN0b3IgZGUgZW50cmFkYSBxdWUgc2UgY29udmllcnRlIGVuIGxvcyBlbGVtZW50b3MgZGUgZGF0b3MgZGUgbGEgbWF0cml6LgotICoqbnJvdyoqIGVzIGVsIG7Dum1lcm8gZGUgZmlsYXMgYSBjcmVhci4KLSAqKm5jb2wqKiBlcyBlbCBuw7ptZXJvIGRlIGNvbHVtbmFzIGEgY3JlYXIuCi0gKipieXJvdyoqIFNpIGVzIFRSVUUsIGxvcyBlbGVtZW50b3MgZGVsIHZlY3RvciBkZSBlbnRyYWRhIHNlIG9yZGVuYW4gcG9yIGZpbGFzLgotICoqZGltbmFtZXMqKiBzb24gbG9zIG5vbWJyZXMgYXNpZ25hZG9zIGEgbGFzIGZpbGFzIHkgY29sdW1uYXMuCgpFamVtcGxvIDEsIHNlIGNyZWEgdW5hIG1hdHJpeiAzeDMgY29uIG7Dum1lcm9zIGRlbCAxIGFsIDk6CmBgYHtyIG1hdHJpen0KbWF0cml4KDE6OSwgbnJvdz0zLCBuY29sPTMpCmBgYAoKT3RyYSBmb3JtYSBwYXJhIGNyZWFyIG1hdHJpY2VzIGVzIHVuaWVuZG8gdmVjdG9yZXMsIGNvbiAqcmJpbmQoKSogdXNhbmRvIGNhZGEgdmVjdG9yIGNvbW8gdW5hIGZpbGEuCkVqZW1wbG8gMjoKYGBge3IgbWF0cml6IGNvbiByYmluZH0KI2NyZWFtb3MgZG9zIHZlY3RvcmVzCnYxIDwtYygxLDIpCnYyIDwtYygzLDQpCiN1c2Ftb3MgbGEgZnVuY2nDs24gcmJpbmQoKQptYXRyaXogPC0gcmJpbmQodjEsIHYyKQptYXRyaXoKYGBgCgpUYW1iacOpbiBwYXJhIGNyZWFyIG1hdHJpY2VzIHVuaWVuZG8gdmVjdG9yZXMgc2UgcHVlZGUgdXNhciBsYSBmdW5jacOzbiAqY2JpbmQoKSogdXNhbmRvIGNhZGEgdmVjdG9yIGNvbW8gdW5hIGNvbHVtbmEuCkVqZW1wbG8gMzoKYGBge3IgbWF0cml6IGNvbiBjYmluZH0KI3VzYW1vcyBsYSBmdW5jacOzbiByYmluZCgpIHkgbG9zIHZlY3RvcmUgdjEgeSB2MgptYXRyaXogPC0gY2JpbmQodjEsIHYyKQptYXRyaXoKYGBgCgoKIyMjIyMgKipPcGVyYWNpb25lcyBiw6FzaWNhcyBtYXRyaWNpYWxlcyAqKgpFbiBsYXMgbWF0cmljZXMgc2UgcmVhbGl6YW4gZGl2ZXJzYXMgb3BlcmFjaW9uZXMgbWF0ZW3DoXRpY2FzIGNvbiBsb3Mgb3BlcmFkb3JlcyBSLiBFbCByZXN1bHRhZG8gZGUgbGEgb3BlcmFjacOzbiBlcyB0YW1iacOpbiB1bmEgbWF0cml6LgpMYXMgZGltZW5zaW9uZXMgKG7Dum1lcm8gZGUgZmlsYXMgeSBjb2x1bW5hcykgZGViZW4gc2VyIGxhcyBtaXNtYXMgcGFyYSBsYXMgbWF0cmljZXMgaW52b2x1Y3JhZGFzIGVuIGxhIG9wZXJhY2nDs24uCgojIyMjIyAqKlN1bWEgeSByZXN0YSBkZSBkb3MgbWF0cmljZXMqKgpTZSB0aWVuZW4gZG9zIG1hdHJpY2VzIGRlIGlndWFsIGRpbWVuc2nDs24geSBzZSBwcm9jZWRlIGEgcmVhbGl6YXIgbGEgc3VtYSB5IHJlc3RhIGNvbiAqKyogeSAqLSogcmVzcGVjdGl2YW1lbnRlLgpgYGB7ciBzdW1hICB5cmVzdGEgbWF0cmljZXMgaWd1YWwgZGltZW5zacOzbn0KI21hdHJpeiAxCm0xIDwtbWF0cml4KDE6NCwgbnJvdz0yLCBuY29sPTIpCm0xCiNtYXRyaXogMgptMiA8LW1hdHJpeCg1OjgsIG5yb3c9MiwgbmNvbD0yKQptMgojc3VtYSBtMSttMgpzdW1hPW0xK20yCnN1bWEKI3Jlc3RhIG0xLW0yCnJlc3RhPW0xLW0yCnJlc3RhCmBgYAoKIyMjIyMgKipNdWx0aXBsaWNhY2nDs24gZGUgbWF0cml6KioKUGFyYSBtdWx0aXBsaWNhY2nDs24gbWF0cmljaWFsIGRlIGlndWFsIHRhbWHDsW8gc2UgdXNhICVcKiUuIFNpIHNlIHF1aWVyZSBtdWx0aXBsaWNhciBkb3MgbWF0cmljZXMgZWxlbWVudG8gcG9yIGVsZW1lbnRvIHNlIHVzYSAqbWF0cml6MSogXCogKm1hdHJpejIqLgoKRWplbXBsbzoKYGBge3IgbXVsdGlwbGljYWNpw7NufQojbWF0cml6IDEKbTEgPC1tYXRyaXgoMTo0LCBucm93PTIsIG5jb2w9MikKbTEKI21hdHJpeiAyCm0yIDwtbWF0cml4KDU6OCwgbnJvdz0yLCBuY29sPTIpCm0yCiNtdWx0aXBsaWNhY2lvbiBtYXRyaWNpYWwKbXVsdD1tMSUqJW0yCm11bHQKYGBgCgojIyMjIyAqKk1hdHJpeiBUcmFzcHVlc3RhKioKUGFyYSB0cmFzcG9uZXIgdW5hIG1hdHJpeiBzZSB1bmEgbGEgZnVuY2nDs24gKnQoKSouCgpFamVtcGxvOgpgYGB7ciBtYXRyaXogdHJhcHVlc3RhfQojbWF0cml6IDEKbTEgPC1tYXRyaXgoMTo0LCBucm93PTIsIG5jb2w9MikKbTEKI3VzYW1vcyBsYSBtYXRyaXogMSBtMQp0KG0xKQpgYGAKCiMjIyMjICoqUG90ZW5jaWEgZGUgdW5hIG1hdHJpeioqClBhcmEgY2FsY3VsYXIgbGEgcG90ZW5jaWEgZGUgdW5hIG1hdHJpeiBzZSB1c2EgKiVeJSosIG8gc2ltcGxlbWV0ZSBtdWx0aXBsaWNhbW9zIGxhIG1hdHJpeiBwb3IgZWxsYSBtaXNtYS4KCkVqZW1wbG86CmBgYHtyIHBvdGVuY2lhIG1hdHJpen0KbGlicmFyeShleHBtKQojbWF0cml6IDEKbTEgPC1tYXRyaXgoMTo0LCBucm93PTIsIG5jb2w9MikKbTEKI3BvdGVuY2lhICVeJQpwb3QxPW0xICVeJSAyCnBvdDEKI3BvdGVuY2lhIG0xKm0xCnBvdDI9bTElKiVtMQpwb3QyCmBgYAoKIyMjIyMgKipEZXRlcm1pbmFudGUgZGUgdW5hIG1hdHJpeioqClBhcmEgY2FsY3VsYXIgZWwgZGV0ZXJtaW5hbnRlIGRlIHVuYSBtYXRyaXogc2UgdXNhICpkZXQoKSoKCkVqZW1wbG86CmBgYHtyIGRldGVybWluYXRlIG1hdHJpen0KI21hdHJpeiAxCm0xIDwtbWF0cml4KDE6NCwgbnJvdz0yLCBuY29sPTIpCm0xCiNkZXRlcm1pbmFudGUKZGV0KG0xKQpgYGAKCiMjIyMjICoqSW52ZXJzYSBkZSB1bmEgbWF0cml6KioKUGFyYSBjYWxjdWxhciBsYSBpbnZlcnNhIGRlIHVuYSBtYXRyaXogc2UgdXNhICpzb2x2ZSgpKgoKRWplbXBsbzoKYGBge3IgaW52ZXJzYSBtYXRyaXp9CiNtYXRyaXogMQptMSA8LW1hdHJpeCgxOjQsIG5yb3c9MiwgbmNvbD0yKQptMQojaW52ZXJzYSAKc29sdmUobTEpCmBgYCAKIyA0LiBEYXRhZnJhbWVzClVuIGRhdGFmcmFtZSBlcyB1bmEgdGFibGEgbyB1bmEgZXN0cnVjdHVyYSBiaWRpbWVuc2lvbmFsIHRpcG8gYXJyYXkgZW4gbGEgcXVlIGNhZGEgY29sdW1uYSBjb250aWVuZSB2YWxvcmVzIGRlIHVuYSB2YXJpYWJsZSB5IGNhZGEgZmlsYSBjb250aWVuZSB1biBjb25qdW50byBkZSB2YWxvcmVzIGRlIGNhZGEgY29sdW1uYS4KU29uIGNhcmFjdGVyw61zdGljYXMgZGUgdW4gZGF0YWZyYW1lOgoKLSBMb3Mgbm9tYnJlcyBkZSBsYXMgY29sdW1uYXMgbm8gZGViZW4gc2VyIHZhY8Otb3MuCi0gTG9zIG5vbWJyZXMgZGUgbGFzIGZpbGFzIGRlYmVuIHNlciDDum5pY29zLgotIExvcyBkYXRvcyBhbG1hY2VuYWRvcyBlbiB1biBkYXRhIGZyYW1lIHB1ZWRlbiBzZXIgZGUgdGlwbyBudW3DqXJpY28sIGZhY3RvciBvIGNhcsOhY3Rlci4KLSBDYWRhIGNvbHVtbmEgZGViZSBjb250ZW5lciBlbCBtaXNtbyBuw7ptZXJvIGRlIGRhdG9zLgoKUGFyYSBjcmVhciB1biBkYXRhZnJhbWUgdXRpbGl6YW1vcyBsYSBmdW5jaW9uICpkYXRhLmZyYW1lKCkqCgpFamVtcGxvOgpgYGB7cn0KIyBDcmVhdGUgYSBkYXRhIGZyYW1lCmRmIDwtIGRhdGEuZnJhbWUgKAogIFRyYWluaW5nID0gYygiU3RyZW5ndGgiLCAiU3RhbWluYSIsICJPdGhlciIpLAogIFB1bHNlID0gYygxMDAsIDE1MCwgMTIwKSwKICBEdXJhdGlvbiA9IGMoNjAsIDMwLCA0NSkKKQoKIyBQcmludCB0aGUgZGF0YSBmcmFtZQpkZiAKYGBgCgojIyMgKipkcGx5cioqCkVsIHBhcXVldGUgKmRwbHlyKiBlcyB1bmEgZ3JhbcOhdGljYSBkZSBsYSBtYW5pcHVsYWNpw7NuIGRlIGRhdG9zLCBxdWUgcHJvcG9yY2lvbmEgdW4gY29uanVudG8gZGUgZnVuY2lvbmVzIHBhcmEgbWFuaXB1bGFjaW9uIGRlIGRhdG9zLgpgYGB7ciBpbmNsdWRlPUZBTFNFfQpsaWJyYXJ5KGRwbHlyKQpgYGAKClBhcmEgZGVtb3N0cmFyIGxhcyBmdW5jaW9uZXMgZGUgZXN0ZSBwYXF1ZXRlIHNlIHVzYSBlbCBkYXRhc2V0IG1hbW1hbHMgc2xlZXAsIGVsIGN1YWwgY29udGllbmUgbG9zIHRpZW1wb3MgZGUgc3Vlw7FvIHkgbG9zIHBlc29zIGRlIHVuIGNvbmp1bnRvIGRlIG1hbcOtZmVyb3MuCmBgYHtyfQpkZiA8LSByZWFkX2NzdignaHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL2dlbm9taWNzY2xhc3MvZGFnZGF0YS9tYXN0ZXIvaW5zdC9leHRkYXRhL21zbGVlcF9nZ3Bsb3QyLmNzdicpCmBgYAoKIyMjIyAqKnNlbGVjdCgpKioKClNlbGVjY2lvbmFyIHVuIGNvbmp1bnRvIGRlIGNvbHVtbmFzCmBgYHtyfQpzZWwxIDwtIHNlbGVjdChkZiwgbmFtZSwgc2xlZXBfdG90YWwpCmhlYWQoc2VsMSkKYGBgClNlbGVjY2lvbmEgdG9kYXMgbGFzIGNvbHVtbmFzIGV4Y2VwdG8gdW5hIGNvbHVtbmEgZXNwZWNpZmljYQpgYGB7cn0Kc2VsMiA8LSBzZWxlY3QoZGYsIC1uYW1lKQpoZWFkKHNlbDIpCmBgYApTZWxlY2Npb25hIHVuIHJhbmdvIGRlIGNvbHVtbmFzIHBvciBub21icmUKYGBge3J9CnNlbDMgPC0gc2VsZWN0KGRmLCBuYW1lOm9yZGVyKQpoZWFkKHNlbDMpCmBgYAoKU2VsZWNjaW9uYSB0b2RhcyBsYXMgY29sdW1uYXMgcXVlIGNvbWllbnphbiBjb24gZWwgc3RyaW5nICdzbCcKYGBge3J9CnNlbDQgPC0gc2VsZWN0KGRmLCBzdGFydHNfd2l0aCgnc2wnKSkKaGVhZChzZWw0KQpgYGAKCiMjIyMgKipmaWx0ZXIoKSoqCgpGaWx0cmEgbGFzIGZpbGFzIGRvbmRlIHVuIHZhbG9yIGN1bXBsYSB1bmEgY29uZGljaW9uIGVzcGVjaWZpY2EuCmBgYHtyfQpmaWx0ZXIoZGYsIHNsZWVwX3RvdGFsID49IDE2KQpgYGAKYGBge3J9CmZpbHRlcihkZiwgc2xlZXBfdG90YWwgPj0gMTYsIGJvZHl3dCA+PSAxKQpgYGAKYGBge3J9CmZpbHRlcihkZiwgb3JkZXIgJWluJSBjKCJQZXJpc3NvZGFjdHlsYSIsICJQcmltYXRlcyIpKQpgYGAKIyMjIyAqKmFycmFuZ2UoKSoqCgpPcmRlbmEgZmlsYXMgcG9yIHVuYSBjb2x1bW5hIGVzcGVjaWZpY2EuCmBgYHtyfQpkZiAlPiUgYXJyYW5nZShvcmRlcikgJT4lIGhlYWQKYGBgCmBgYHtyfQojIFNlbGVjY2lvbmEgY29sdW1uYXMsIGx1ZWdvIG9yZGVuYXMgbGFzIGZpbGFzCmRmICU+JSAKICAgIHNlbGVjdChuYW1lLCBvcmRlciwgc2xlZXBfdG90YWwpICU+JQogICAgYXJyYW5nZShvcmRlciwgc2xlZXBfdG90YWwpICU+JSAKICAgIGhlYWQKYGBgCmBgYHtyfQojIFNlbGVjY2lvbmEgY29sdW1uYXMsIGxhcyByZW9yZGVuYXMgeSBsYXMgZmlsdHJhIGJham8gdW4gY3JpdGVyaW8KZGYgJT4lIAogICAgc2VsZWN0KG5hbWUsIG9yZGVyLCBzbGVlcF90b3RhbCkgJT4lCiAgICBhcnJhbmdlKG9yZGVyLCBzbGVlcF90b3RhbCkgJT4lIAogICAgZmlsdGVyKHNsZWVwX3RvdGFsID49IDE2KQpgYGAKCiMjIyMgKiptdXRhdGUoKSoqCgpDcmVhIG51ZXZhcyBjb2x1bW5hcyBlbiB1biBkYXRhIGZyYW1lLgpgYGB7cn0KIyBDcmVhIHVuYSBudWV2YSBjb2x1bW5hIHJlbV9wcm9wb3J0aW9uCmRmICU+JSAKICAgIG11dGF0ZShyZW1fcHJvcG9ydGlvbiA9IHNsZWVwX3JlbSAvIHNsZWVwX3RvdGFsKSAlPiUKICAgIGhlYWQKYGBgCgojIyMjICoqc3VtbWFyaXplKCkqKgoKTGEgZnVuY2nDs24gKnN1bW1hcmlzZSgpKiBjcmVhIGVzdGFkw61zdGljYXMgZGUgcmVzdW1lbiBwYXJhIHVuYSBjb2x1bW5hIGRhZGEgZW4gZWwgZGF0YSBmcmFtZSwgY29tbyBwb3IgZWplbXBsbyBlbmNvbnRyYXIgbGEgbWVkaWEsIGxhIGRlc3ZpYWNpw7NuIGVzdMOhbmRhciwgbyBsYSB2YXJpYW56YS4KYGBge3J9CmRmICU+JSAKICAgIHN1bW1hcmlzZShhdmdfc2xlZXAgPSBtZWFuKHNsZWVwX3RvdGFsKSwgCiAgICAgICAgICAgICAgc2Rfc2xlZXAgPSBzZChzbGVlcF90b3RhbCksCiAgICAgICAgICAgICAgdmFyX3NsZWVwID0gdmFyKHNsZWVwX3RvdGFsKSkKYGBgCiMjIyMgKipncm91cF9ieSgpKioKCkRpdmlkZSBlbCBkYXRhIGZyYW1lIHBvciB1bmEgdmFyaWFibGUsIGFwbGljYSB1bmEgZnVuY2lvbiBhIGxvcyBkYXRhIGZyYW1lcyB5IGNvbWJpbmEgZWwgcmVzdWx0YWRvLgoKYGBge3J9CmRmICU+JSAKICAgIGdyb3VwX2J5KG9yZGVyKSAlPiUKICAgIHN1bW1hcmlzZShhdmdfc2xlZXAgPSBtZWFuKHNsZWVwX3RvdGFsKSwgCiAgICAgICAgICAgICAgbWluX3NsZWVwID0gbWluKHNsZWVwX3RvdGFsKSwgCiAgICAgICAgICAgICAgbWF4X3NsZWVwID0gbWF4KHNsZWVwX3RvdGFsKSwKICAgICAgICAgICAgICB0b3RhbCA9IG4oKSkKYGBgCgojIDUuIEZ1bmNpb25lcwpVbmEgZnVuY2nDs24gZXMgdW4gY29uanVudG8gZGUgaW5zdHJ1Y2Npb25lcyBvcmdhbml6YWRhcyBwYXJhIHJlYWxpemFyIHVuYSB0YXJlYSBlc3BlY8OtZmljYS4gUiB0aWVuZSB1biBncmFuIG7Dum1lcm8gZGUgZnVuY2lvbmVzIGluY29ycG9yYWRhcyB5IHVuIHVzdWFyaW8gcHVlZGUgY3JlYXIgc3VzIHByb3BpYXMgZnVuY2lvbmVzLgoKIyMjIERlZmluaWNpb24gZGUgRnVuY2lvbmVzClVuYSBmdW5jacOzbiBSIHNlIGNyZWEgdXRpbGl6YW5kbyBsYSBwYWxhYnJhIGNsYXZlICpmdW5jdGlvbigpKi4gTGEgc2ludGF4aXMgYsOhc2ljYSBkZSBsYSBkZWZpbmljacOzbiBkZSB1bmEgZnVuY2nDs24gZW4gUiBlcyBsYSBzaWd1aWVudGU6CmBgYApmdW5jdGlvbl9uYW1lIDwtIGZ1bmN0aW9uKGFyZ18xLCBhcmdfMiwgLi4uKSB7CiAgIEZ1bmN0aW9uIGJvZHkgCn0KYGBgCiMjIyBDb21wb25lbnRlcyBkZSB1bmEgZnVuY2lvbgpMYXMgZGlmZXJlbnRlcyBwYXJ0ZXMgZGUgdW5hIGZ1bmNpw7NuIHNvbjoKCi0gKipOb21icmUgZGUgbGEgZnVuY2nDs24qKiBFcyBlbCBub21icmUgcmVhbCBkZSBsYSBmdW5jacOzbi4gU2UgYWxtYWNlbmEgZW4gZWwgZW50b3JubyBkZSBSIGNvbW8gdW4gb2JqZXRvIGNvbiBlc3RlIG5vbWJyZS4KLSAqKkFyZ3VtZW50b3MqKiBVbiBhcmd1bWVudG8gZXMgdW4gcGxhY2Vob2xkZXIuIEN1YW5kbyBzZSBpbnZvY2EgdW5hIGZ1bmNpw7NuLCBzZSBsZSBwYXNhIHVuIHZhbG9yIGFsIGFyZ3VtZW50by4gTG9zIGFyZ3VtZW50b3Mgc29uIG9wY2lvbmFsZXM7IGVzIGRlY2lyLCB1bmEgZnVuY2nDs24gcHVlZGUgbm8gY29udGVuZXIgYXJndW1lbnRvcy4gVGFtYmnDqW4gbG9zIGFyZ3VtZW50b3MgcHVlZGVuIHRlbmVyIHZhbG9yZXMgcG9yIGRlZmVjdG8uCi0gKipDdWVycG8gZGUgbGEgZnVuY2nDs24qKiBFbCBjdWVycG8gZGUgbGEgZnVuY2nDs24gY29udGllbmUgdW5hIGNvbGVjY2nDs24gZGUgZGVjbGFyYWNpb25lcyBxdWUgZGVmaW5lbiBsbyBxdWUgaGFjZSBsYSBmdW5jacOzbi4KLSAqKlZhbG9yIGRlIHJldG9ybm8qKiBFbCB2YWxvciBkZSByZXRvcm5vIGRlIHVuYSBmdW5jacOzbiBlcyBsYSDDumx0aW1hIGV4cHJlc2nDs24gZGVsIGN1ZXJwbyBkZSBsYSBmdW5jacOzbiBxdWUgc2UgZXZhbMO6YS4KCiMjIyBMbGFtYWRhIGEgdW5hIGZ1bmNpb24KUGFyYSBsbGFtYXIgYSB1bmEgZnVuY2nDs24sIHNlIHV0aWxpemEgZWwgbm9tYnJlIGRlIGxhIGZ1bmNpw7NuIHNlZ3VpZG8gZGUgcGFyw6ludGVzaXMsIGNvbW8gKm15X2Z1bmN0aW9uKCkqCmBgYHtyfQpteV9mdW5jdGlvbiA8LSBmdW5jdGlvbigpIHsKICBwcmludCgiSGVsbG8gV29ybGQhIikKfQoKbXlfZnVuY3Rpb24oKQpgYGAKIyMjIFZhbG9yZXMgZGUgcmV0b3JubwpQYXJhIHF1ZSB1bmEgZnVuY2nDs24gZGV2dWVsdmEgdW4gcmVzdWx0YWRvLCB1dGlsaWNlIGxhIGZ1bmNpw7NuICpyZXR1cm4oKSoKYGBge3J9CiBteV9mdW5jdGlvbiA8LSBmdW5jdGlvbih4KSB7CiAgcmV0dXJuICg1ICogeCkKIH0KCnByaW50KG15X2Z1bmN0aW9uKDMpKQpgYGAKIyA2LiBNYW5lam8gZGUgQXJjaGl2b3MKYGBge3IgaW5jbHVkZT1GQUxTRX0KbGlicmFyeShmcykKYGBgCiMjIyAqKmZzKioKRWwgcGFxdWV0ZSAqKmZzKiogcHJvcG9yY2lvbmEgdW5hIGludGVyZmF6IHVuaWZvcm1lIHkgbXVsdGlwbGF0YWZvcm1hIHBhcmEgbGFzIG9wZXJhY2lvbmVzIGRlbCBzaXN0ZW1hIGRlIGFyY2hpdm9zLiBMYXMgZnVuY2lvbmVzIGRlbCBwYXF1ZXRlIGZzIHNlIGRpdmlkZW4gZW4gY3VhdHJvIGNhdGVnb3JpYXMgcHJpbmNpcGFsZXM6IAoKLSBwYXRoXzogcGFyYSBtYW5pcHVsYXIgeSBjb250cnVpciBydXRhcwotIGZpbGVfOiBwYXJhIG1hbmlwdWxhciB5IGNvbnN0cnVpciBhcmNoaXZvcwotIGRpcl86IHBhcmEgbWFuaXB1bGFyIHkgY29uc3RydWlyIGRpcmVjdG9yaW9zCi0gbGlua3NfOiBwYXJhIG1hbmlwdWxhciB5IGNvbnN0cnVpciBlbmxhY2VzCgojIyMjIGNvcHkgLS0tIENvcGlhIGFyY2hpdm9zLCBkaXJlY3RvcmlvcyBvIGVubGFjZXMKCiMjIyMjIERlc2NyaXBjaW9uCi0gZmlsZV9jb3B5KCkgY29waWEgYXJjaGl2b3MuCi0gbGlua19jb3B5KCkgY3JlYSB1biBudWV2byBlbmxhY2UgYXB1bnRhbmRvIGEgbGEgbWlzbWEgdWJpY2FjaW9uIGRlbCBlbmxhY2UgYW50ZXJpb3IuCi0gZGlyX2NvcHkoKSBjb3BpYSB1biBkaXJlY3RvcmlvIHJlY3Vyc2l2YW1lbnRlIGVuIHVuYSBudWV2YSB1YmljYWNpb24uCgojIyMjIyBVc28KLSBmaWxlX2NvcHkocGF0aCwgbmV3X3BhdGgsIG92ZXJ3cml0ZSA9IEZBTFNFKQotIGRpcl9jb3B5KHBhdGgsIG5ld19wYXRoLCBvdmVyd3JpdGUgPSBGQUxTRSkKLSBsaW5rX2NvcHkocGF0aCwgbmV3X3BhdGgsIG92ZXJ3cml0ZSA9IEZBTFNFKQoKIyMjIyMgQXJndW1lbnRvcwotIHBhdGggVW4gdmVjdG9yIGRlIGNhcmFjdGVyZXMgZGUgdW5hIG8gbWFzIHJ1dGFzLgotIG5ld19wYXRoIFVuIHZlY3RvciBkZSBjYXJhY3RlcmVzIGRlIHJ1dGFzIGEgbnVldmFzIHViaWNhY2lvbmVzLgotIG92ZXJ3cml0ZSBTb2JyZXNjcmliZSBhcmNoaXZvcyBzaSBleGlzdGVuLiBTaSBlcyBGQUxTRSB5IGVsIGFyY2hpdm8gZXhpc3RlIGdlbmVyYXJhIHVuIGVycm9yLgoKIyMjIyMgRWplbXBsb3MKYGBge3J9CmZpbGVfY3JlYXRlKCJmb28iKQpmaWxlX2NvcHkoImZvbyIsICJiYXIiKQojIHRyeShmaWxlX2NvcHkoImZvbyIsICJiYXIiKSkKZmlsZV9jb3B5KCJmb28iLCAiYmFyIiwgb3ZlcndyaXRlID0gVFJVRSkKZmlsZV9kZWxldGUoYygiZm9vIiwgImJhciIpKQpkaXJfY3JlYXRlKCJmb28iKQoKIyBDcmVhIHVuIGRpcmVjdG9yaW8geSBwb25lIGFyY2hpdm9zIGVuIGVsCmZpbGVzIDwtIGZpbGVfY3JlYXRlKGMoImZvby9iYXIiLCAiZm9vL2JheiIpKQpmaWxlX2V4aXN0cyhmaWxlcykKCiMgQ29waWEgZGlyZWN0b3JpbwpkaXJfY29weSgiZm9vIiwgImZvbzIiKQpmaWxlX2V4aXN0cyhwYXRoKCJmb28yIiwgcGF0aF9maWxlKGZpbGVzKSkpCgojIENyZWEgdW4gZW5sYWNlIGFsIGRpcmVjdG9yaW8KbGlua19jcmVhdGUocGF0aF9hYnMoImZvbyIpLCAibG9vIikKbGlua19wYXRoKCJsb28iKQpsaW5rX2NvcHkoImxvbyIsICJsb28yIikKbGlua19wYXRoKCJsb28yIikKCiMgTGltcGllemEKZGlyX2RlbGV0ZShjKCJmb28iLCAiZm9vMiIpKQpsaW5rX2RlbGV0ZShjKCJsb28iLCAibG9vMiIpKQpgYGAKCiMjIyMgY3JlYXRlIC0tLSBDcmVhIGFyY2hpdm9zLCBkaXJlY3RvcmlvcywgbyBlbmxhY2VzCgojIyMjIyBEZXNjcmlwY2lvbgpMYXMgZnVuY2lvbmVzICpmaWxlX2NyZWF0ZSgpKiB5ICpkaXJfY3JlYXRlKCkqIHNlIGFzZWd1cmFuIGRlIHF1ZSBsYSBydXRhIGV4aXN0ZTsgc2kgeWEgZXhpc3RlIHNlIHNlIGRlamFyw6Egc2luIG1vZGlmaWNhci4gRXN0byBzaWduaWZpY2EgcXVlIGVuIGNvbXBhcmFjacOzbiBjb24gZmlsZS5jcmVhdGUoKSwgKmZpbGVfY3JlYXRlKCkqIG5vIHRydW5jYXLDoSB1biBhcmNoaXZvIGV4aXN0ZW50ZSwgeSBlbiBjb21wYXJhY2nDs24gY29uIGRpci5jcmVhdGUoKSwgKmRpcl9jcmVhdGUoKSogaWdub3JhcsOhIHNpbGVuY2lvc2FtZW50ZSBsb3MgZGlyZWN0b3Jpb3MgZXhpc3RlbnRlcy4KCiMjIyMjIFVzbwotIGZpbGVfY3JlYXRlKHBhdGgsIC4uLiwgbW9kZSA9ICJ1PXJ3LGdvPXIiKQotIGRpcl9jcmVhdGUocGF0aCwgLi4uLCBtb2RlID0gInU9cnd4LGdvPXJ4IiwgcmVjdXJzZSA9IFRSVUUsIHJlY3Vyc2l2ZSkKLSBsaW5rX2NyZWF0ZShwYXRoLCBuZXdfcGF0aCwgc3ltYm9saWMgPSBUUlVFKQoKIyMjIyMgQXJndW1lbnRvcwotIHBhdGggVW4gdmVjdG9yIGRlIGNhcmFjdGVyZXMgZGUgdW5hIG8gbWFzIHJ1dGFzLiBQYXJhIGxpbmtfY3JlYXRlKCksIGVzdGUgZXMgZWwgZGVzdGluby4KLSAuLi4gQXJndW1lbnRvcyBhZGljaW9uYWxlcyBwYXNhZG9zIGEgcGF0aCgpCi0gbW9kZSBTaSBzZSBjcmVhIHVuIGFyY2hpdm8vZGlyZWN0b3Jpbywgwr9xdcOpIG1vZG8gZGViZSB0ZW5lcj8gTG9zIGVubGFjZXMgbm8gdGllbmVuIG1vZG87IGhlcmVkYW4gZWwgbW9kbyBkZWwgYXJjaGl2byBhbCBxdWUgZW5sYXphbi4KLSByZWN1cnNlIMK/c2UgZGViZW4gY3JlYXIgZGlyZWN0b3Jpb3MgaW50ZXJtZWRpb3Mgc2kgbm8gZXhpc3Rlbj8KLSByZWN1cnNpdmUgKERlcHJlY2F0ZWQpIFNpIGVzIFRSVUUgc2UgcmVjdXJyZSBjb21wbGV0YW1lbnRlLgotIG5ld19wYXRoIExhIHJ1dGEgZG9uZGUgc2UgZGViZSBjcmVhciBlbCBlbmxhY2UuCi0gc3ltYm9saWMgVmFsb3IgYm9vbGVhbm8gcXVlIGRldGVybWluYSBzaSBlbCBlbmxhY2UgZGViZSBzZXIgc2ltYsOzbGljbyAocG9yIGRlZmVjdG8pIG8gZnVlcnRlLgoKIyMjIyMgRWplbXBsb3MKYGBge3J9CmZpbGVfY3JlYXRlKCJmb28iKQppc19maWxlKCJmb28iKQojIGRpcl9jcmVhdGUgYXBsaWNhZGEgYSBsYSBtaXNtYSBydXRhIGZhbGxhcmEKdHJ5KGRpcl9jcmVhdGUoImZvbyIpKQpkaXJfY3JlYXRlKCJiYXIiKQppc19kaXIoImJhciIpCiMgZmlsZV9jcmVhdGUgYXBsaWNhZGEgYSBsYSBtaXNtYSBydXRhIGZhbGxhcmEKdHJ5KGZpbGVfY3JlYXRlKCJiYXIiKSkKIyBMaW1waWV6YQpmaWxlX2RlbGV0ZSgiZm9vIikKZGlyX2RlbGV0ZSgiYmFyIikKYGBgCgojIyMjIGRlbGV0ZSAtLS0gRWxpbWluYSBhcmNoaXZvcywgZGlyZWN0b3Jpb3MgeSBlbmxhY2VzCgojIyMjIyBEZXNjcmlwY2lvbgoqZmlsZV9kZWxldGUoKSogeSAqbGlua19kZWxldGUoKSogZWxpbWluYSBhcmNoaXZvcyB5IGVubGFjZXMuIEVuIGNvbXBhcmFjacOzbiBjb24gZmlsZS5yZW1vdmUgc2llbXByZQpmYWxsYSBzaSBubyBwdWVkZW4gZWxpbWluYXIgZWwgb2JqZXRvIGVuIGx1Z2FyIGRlIGNhbWJpYXIgZWwgdmFsb3IgZGUgcmV0b3JubyBvIHNlw7FhbGFyIHVuYSBhZHZlcnRlbmNpYS4gU2kgYWxndW5hIGRlIGxhcyBlbnRyYWRhcyBzb24gZGlyZWN0b3Jpb3MsIHNlIHBhc2FuIGEgKmRpcl9kZWxldGUoKSosIHBvciBsbyBxdWUgKmZpbGVfZGVsZXRlKCkqIHB1ZWRlIHV0aWxpemFyc2UgcGFyYSBib3JyYXIgY3VhbHF1aWVyIG9iamV0byBkZWwgc2lzdGVtYSBkZSBhcmNoaXZvcy4KCmRpcl9kZWxldGUoKSBib3JyYXLDoSBwcmltZXJvIGVsIGNvbnRlbmlkbyBkZWwgZGlyZWN0b3JpbyB5IGx1ZWdvIGVsaW1pbmFyw6EgZWwgZGlyZWN0b3Jpby4KCiMjIyMjIFVzbwotIGZpbGVfZGVsZXRlKHBhdGgpCi0gZGlyX2RlbGV0ZShwYXRoKQotIGxpbmtfZGVsZXRlKHBhdGgpCgojIyMjIyBBcmd1bWVudG9zCi0gcGF0aCBVbiB2ZWN0b3IgZGUgY2FyYWN0ZXJlcyBkZSB1bmEgbyBtYXMgcnV0YXMuCgojIyMjIyBFamVtcGxvcwpgYGB7cn0KIyBDcmVhIHVuIGRpcmVjdG9yaW8gY29uIGFsZ3Vub3MgYXJjaGl2b3MgeSBsb3MgZW5sYXphCmRpcl9jcmVhdGUoImRpciIpCmZpbGVzIDwtIGZpbGVfY3JlYXRlKHBhdGgoImRpciIsIGxldHRlcnNbMTo1XSkpCmxpbmsgPC0gbGlua19jcmVhdGUocGF0aF9hYnMoImRpciIpLCAibGluayIpCiMgQWxsIGZpbGVzIGNyZWF0ZWQKZGlyX2V4aXN0cygiZGlyIikKZmlsZV9leGlzdHMoZmlsZXMpCmxpbmtfZXhpc3RzKCJsaW5rIikKZmlsZV9leGlzdHMobGlua19wYXRoKCJsaW5rIikpCiMgRWxpbWluYSB1biBhcmNoaXZvCmZpbGVfZGVsZXRlKGZpbGVzWzFdKQpmaWxlX2V4aXN0cyhmaWxlc1sxXSkKIyBFbGltaW5hIHVuIGRpcmVjdG9yaW8sIGVsaW1pbmFuZG8gbG9zIGFyY2hpdm9zIGVuIGVzdGUKZGlyX2RlbGV0ZSgiZGlyIikKZmlsZV9leGlzdHMoZmlsZXMpCmRpcl9leGlzdHMoImRpciIpCiMgRWwgZW5sYWNlIGV4aXN0ZSBwZXJvIG5vIGEgbG8gcXVlIGVzdGUgYXB1bnRhCmxpbmtfZXhpc3RzKCJsaW5rIikKZGlyX2V4aXN0cyhsaW5rX3BhdGgoImxpbmsiKSkKIyBFbGltaW5hIGVsIGVubGFjZQpsaW5rX2RlbGV0ZSgibGluayIpCmxpbmtfZXhpc3RzKCJsaW5rIikKYGBgCgojIyMgKipyZWFkcioqCgpFbCBwYXF1ZXRlICoqcmVhZHIqKiBvZnJlY2UgZnVuY2lvbmVzIHBhcmEgbGVlciBkYXRhIGRlIGFyY2hpdm9zIHJlY3Rhbmd1bGFyZXMgZW4gUi4gRXN0ZSBwYXF1ZXRlIGhhY2UgcGFydGUgZGVsIHRpZHl2ZXJzZSBiYXNlIHkgc3VzIGZ1bmNpb25lcyBzZSBvY3VwYW4gZGUgY29udmVydGlyIGFyY2hpdm9zIGVuIGRhdGEgZnJhbWVzLgpgYGB7ciBpbmNsdWRlPUZBTFNFfQpsaWJyYXJ5KHRpZHl2ZXJzZSkKYGBgClBhcmEgbGVlciB1biBjb25qdW50byBkZSBkYXRvcyByZWN0YW5ndWxhcmVzIGNvbiByZWFkciwgc2UgY29tYmluYW4gZG9zIHBhcnRlczogdW5hIGZ1bmNpw7NuIHF1ZSBhbmFsaXphIGxhcyBsw61uZWFzIGRlbCBhcmNoaXZvIGVuIGNhbXBvcyBpbmRpdmlkdWFsZXMgeSB1bmEgZXNwZWNpZmljYWNpw7NuIGRlIGNvbHVtbmEuIFVuYSBlc3BlY2lmaWNhY2nDs24gZGUgY29sdW1uYSBkZXNjcmliZSBjw7NtbyBkZWJlIGNvbnZlcnRpcnNlIGNhZGEgY29sdW1uYSBkZSB1biB2ZWN0b3IgZGUgY2FyYWN0ZXJlcyBhIHVuIHRpcG8gZGUgZGF0b3MgZXNwZWPDrWZpY28gKHBvciBlamVtcGxvLCBjYXLDoWN0ZXIsIG51bcOpcmljbywgZmVjaGEgeSBob3JhLCBldGMuKS4gRW4gYXVzZW5jaWEgZGUgdW5hIGVzcGVjaWZpY2FjacOzbiBkZSBjb2x1bW5hLCByZWFkciBkZWR1Y2lyw6EgbG9zIHRpcG9zIGRlIGNvbHVtbmEgYSBwYXJ0aXIgZGUgbG9zIGRhdG9zLgoKcmVhZHIgc29wb3J0YSBsb3Mgc2lndWllbnRlcyBmb3JtYXRvcyBkZSBhcmNoaXZvIGNvbiBlc3RhcyBmdW5jaW9uZXMgcmVhZF8qKCk6CgotIHJlYWRfY3N2KCk6IGFyY2hpdm9zIGRlIHZhbG9yZXMgc2VwYXJhZG9zIHBvciBjb21hcyAoQ1NWKQotIHJlYWRfdHN2KCk6IGFyY2hpdm9zIGRlIHZhbG9yZXMgc2VwYXJhZG9zIHBvciB0YWJ1bGFjaW9uZXMgKFRTVikKLSByZWFkX2RlbGltKCk6IGFyY2hpdm9zIGRlbGltaXRhZG9zIChDU1YgeSBUU1Ygc29uIGNhc29zIGVzcGVjaWFsZXMgaW1wb3J0YW50ZXMpCi0gcmVhZF9md2YoKTogYXJjaGl2b3MgZGUgYW5jaG8gZmlqbwotIHJlYWRfdGFibGUoKTogYXJjaGl2b3Mgc2VwYXJhZG9zIHBvciBlc3BhY2lvcyBlbiBibGFuY28KLSByZWFkX2xvZygpOiBhcmNoaXZvcyBkZSByZWdpc3RybyB3ZWIKClRvZGFzIGVzdGFzIGZ1bmNpb25lcyB0aWVuZW4gdW5hIHNpbnRheGlzIHNpbWlsYXI6IHVuYSB2ZXogc2UgZG9taW5lIHVuYSwgc2UgcG9kcmFuIHV0aWxpemFyIGxhcyBkZW3DoXMgY29uIGZhY2lsaWRhZC4KCkVsIHByaW1lciBhcmd1bWVudG8gZGUgcmVhZF9jc3YoKSBlcyBlbCBtw6FzIGltcG9ydGFudGU6IGVzIGxhIHJ1dGEgZGVsIGFyY2hpdm8gYSBsZWVyLiBUYW1iacOpbiBzZSBwdWVkZSBzdW1pbmlzdHJhciB1biBhcmNoaXZvIGNzdiBjb21vIGFyZ3VtZW50by4gRXN0byBlcyDDunRpbCBwYXJhIGV4cGVyaW1lbnRhciBjb24gcmVhZHIgeSBwYXJhIGNyZWFyIGVqZW1wbG9zIHJlcHJvZHVjaWJsZXM6CgpgYGB7cn0KIyBSZWFkaW5nIGRhdGEgZnJvbSBhIENWUyBmaWxlCnJlYWRfY3N2KCdodHRwczovL3ZpbmNlbnRhcmVsYnVuZG9jay5naXRodWIuaW8vUmRhdGFzZXRzL2Nzdi9BRVIvR3Vucy5jc3YnKQpgYGAKYGBge3J9CiMgUmVhZGluZyBkYXRhIGZyb20gaW5saW5lIGFyZ3VtZW50CnJlYWRfY3N2KCJhLGIsYwogICAgICAgICAgMSwyLDMKICAgICAgICAgIDQsNSw2IikKYGBgCgpDdWFuZG8gc2UgZWplY3V0YSByZWFkX2NzdigpIHNlIGltcHJpbWUgdW5hIGVzcGVjaWZpY2FjacOzbiBkZSBjb2x1bW5hIHF1ZSBkYSBlbCBub21icmUgeSBlbCB0aXBvIGRlIGNhZGEgY29sdW1uYS4gQSB2ZWNlcyBoYXkgYWxndW5hcyBsw61uZWFzIGRlIG1ldGFkYXRvcyBlbiBsYSBwYXJ0ZSBzdXBlcmlvciBkZWwgYXJjaGl2by4gU2UgcHVlZGUgdXRpbGl6YXIgKnNraXAgPSBuKiBwYXJhIG9taXRpciBsYXMgcHJpbWVyYXMgbiBsw61uZWFzOyBvIHV0aWxpemFyICpjb21tZW50ID0gIiMiKiBwYXJhIGVsaW1pbmFyIHRvZGFzIGxhcyBsw61uZWFzIHF1ZSBlbXBpZXphbiBjb24gIy4KCmBgYHtyfQpyZWFkX2NzdigiVGhlIGZpcnN0IGxpbmUgb2YgbWV0YWRhdGEKICAgICAgICAgIFRoZSBzZWNvbmQgbGluZSBvZiBtZXRhZGF0YQogICAgICAgICAgeCx5LHoKICAgICAgICAgIDEsMiwzIiwgc2tpcCA9IDIpCmBgYApgYGB7cn0KcmVhZF9jc3YoIiMgQSBjb21tZW50IEkgd2FudCB0byBza2lwCiAgICAgICAgICB4LHksegogICAgICAgICAgMSwyLDMiLCBjb21tZW50ID0gIiMiKQpgYGAKCkxvcyBkYXRvcyBwdWVkZW4gbm8gdGVuZXIgbm9tYnJlcyBkZSBjb2x1bW5hLiBTZSBwdWVkZSB1dGlsaXphciAqY29sX25hbWVzID0gRkFMU0UqIHBhcmEgaW5kaWNhciBhICpyZWFkX2NzdigpKiBxdWUgbm8gdHJhdGUgbGEgcHJpbWVyYSBmaWxhIGNvbW8gZW5jYWJlemFkb3MsIHkgZW4gc3UgbHVnYXIgbG9zIGV0aXF1ZXRlIHNlY3VlbmNpYWxtZW50ZSBkZSAkWF97MX0kIGEgJFhfe259JDoKYGBge3J9CnJlYWRfY3N2KCdodHRwczovL3ZpbmNlbnRhcmVsYnVuZG9jay5naXRodWIuaW8vUmRhdGFzZXRzL2Nzdi9BRVIvR3Vucy5jc3YnLCBjb2xfbmFtZXMgPSBGQUxTRSkKYGBgCgpPdHJhIG9wY2nDs24gcXVlIHN1ZWxlIG5lY2VzaXRhciBhanVzdGVzIGVzIG5hOiBlc3BlY2lmaWNhIGVsIHZhbG9yIChvIGxvcyB2YWxvcmVzKSBxdWUgc2UgdXRpbGl6YW4gcGFyYSByZXByZXNlbnRhciBsb3MgdmFsb3JlcyBxdWUgZmFsdGFuIGVuIGVsIGFyY2hpdm86CmBgYHtyfQpyZWFkX2NzdigiYSxiLGNcbjEsMiwuIiwgbmEgPSAiLiIpCmBgYAoKIyA3LiBWaXN1YWxpemFjaW9uIGRlIERhdG9zCiMjIyBnZ3Bsb3QyCmBgYHtyIGluY2x1ZGU9RkFMU0V9CmxpYnJhcnkodGlkeXZlcnNlKQpgYGAKKipnZ3Bsb3QyKiogZXMgdW4gcGFxdWV0ZSBwb3RlbnRlIHkgZmxleGlibGUgZGUgUiwgaW1wbGVtZW50YWRvIHBvciBIYWRsZXkgV2lja2hhbSwgcGFyYSBwcm9kdWNpciBncsOhZmljb3MgZWxlZ2FudGVzLiBFbCBjb25jZXB0byBkZXRyw6FzIGRlIGdncGxvdDIgZGl2aWRlIGxvcyBncsOhZmljb3MgZW4gdHJlcyBwYXJ0ZXMgZnVuZGFtZW50YWxlczogKipQbG90ID0gRGF0b3MgKyBFc3TDqXRpY2EgKyBHZW9tZXRyw61hLioqCgpMb3MgY29tcG9uZW50ZXMgcHJpbmNpcGFsZXMgZGUgY2FkYSBncsOhZmljbyBwdWVkZW4gZGVmaW5pcnNlIGRlIGxhIHNpZ3VpZW50ZSBtYW5lcmE6CgotICoqRGF0b3MqKiBlcyB1biBkYXRhZnJhbWUKLSAqKkVzdGV0aWNhKiogc2UgdXRpbGl6YSBwYXJhIGluZGljYXIgbGFzIHZhcmlhYmxlcyB4IGUgeS4gVGFtYmnDqW4gc2UgcHVlZGUgdXRpbGl6YXIgcGFyYSBjb250cm9sYXIgZWwgY29sb3IsIGVsIHRhbWHDsW8gbyBsYSBmb3JtYSBkZSBsb3MgcHVudG9zLCBsYSBhbHR1cmEgZGUgbGFzIGJhcnJhcywgZXRjLi4uLi4gCi0gKipHZW9tZXRyaWEqKiBkZWZpbmUgZWwgdGlwbyBkZSBncsOhZmljbyAoaGlzdG9ncmFtYSwgZGlhZ3JhbWEgZGUgY2FqYSwgZGlhZ3JhbWEgZGUgbMOtbmVhcywgZGlhZ3JhbWEgZGUgZGVuc2lkYWQsIGRpYWdyYW1hIGRlIHB1bnRvcywgLi4uLikKCkhheSBkb3MgZnVuY2lvbmVzIHByaW5jaXBhbGVzIGVuIGVsIHBhcXVldGUgZ2dwbG90MjogbGFzIGZ1bmNpb25lcyAqKnFwbG90KCkqKiB5ICoqZ2dwbG90KCkqKi4KCi0gKipxcGxvdCgpKiogc2UgcmVmaWVyZSBhIHVuIGdyw6FmaWNvIHLDoXBpZG8sIHF1ZSBwdWVkZSB1dGlsaXphcnNlIHBhcmEgcHJvZHVjaXIgZsOhY2lsbWVudGUgZ3LDoWZpY29zIHNlbmNpbGxvcy4KCi0gTGEgZnVuY2nDs24gKipnZ3Bsb3QoKSoqIGVzIG3DoXMgZmxleGlibGUgeSByb2J1c3RhIHF1ZSAqKnFwbG90KCkqKiBwYXJhIGNvbnN0cnVpciB1biBncsOhZmljbyBwaWV6YSBwb3IgcGllemEuCgojIyMgcXBsb3QoKQpVbiBmb3JtYXRvIHNpbXBsaWZpY2FkbyBkZSBxcGxvdCgpIGVzIGVsIHNpZ3VpZW50ZToKYGBgCnFwbG90KHgsIHk9TlVMTCwgZGF0YSwgZ2VvbT0iYXV0byIsIHhsaW0gPSBjKE5BLCBOQSksIHlsaW0gPWMoTkEsIE5BKSkKYGBgCi0geCA6IHZhbG9yZXMgZGUgeAotIHkgOiB2YWxvcmVzIGRlIHkob3BjaW9uYWwpCi0gZGF0YSA6IGRhdGEgZnJhbWUgYSB1c2FyIChvcGNpb25hbCkuCi0gZ2VvbSA6IFZlY3RvciBkZSBjYXJhY3RlcmVzIHF1ZSBlc3BlY2lmaWNhIGxhIGdlb21ldHJpYShnZW9tKSBhIHV0aWxpemFyLiBQb3IgZGVmZWN0byBlcyAicG9pbnQiIHNpIHNlIGVzcGVjaWZpY2FuIHgsIHksIGUgImhpc3RvZ3JhbSIgc2kgc8OzbG8gc2UgZXNwZWNpZmljYSB4LgotIHhsaW0sIHlsaW06IGxpbWl0ZXMgZGVsIGVqZSB4LCB5CgojIyMjIFNjYXR0ZXIgUGxvdHMKRWwgZ3LDoWZpY28gcHVlZGUgY3JlYXJzZSB1dGlsaXphbmRvIGRhdG9zIGRlIHZlY3RvcmVzIG51bcOpcmljb3MgbyBkZSB1biBkYXRhZnJhbWU6CmBgYHtyfQojIFVzYW5kbyB2ZWN0b3JlcyBudW1lcmljb3MKeCA8LSAxOjEwOyB5ID0geCp4CiMgUGxvdCBiYXNpY28KcXBsb3QoeCx5KQojIFBsb3QgYmFzaWNvICsgbGluZWEKcXBsb3QoeCwgeSwgZ2VvbT1jKCJwb2ludCIsICJsaW5lIikpCiMgVXNhbmRvIGRhdGFmcmFtZXMKcXBsb3QobXBnLCB3dCwgZGF0YT1tdGNhcnMpCmBgYAoKIyMjIyBCb3ggcGxvdCwgZG90IHBsb3QgeSB2aW9saW4gcGxvdApQYXJhIGNyZWFyIGdyYWZpY29zIGRpZmVyZW50ZXMgYSB1biAgc2NhdHRlciBwbG90IGNvbiAqKnFwbG90KCkqKiBlcyBuZWNlc2FyaW8gZXNwZWNpZmljYXIgbGEgZ2VvbWV0cmlhIGRlIGxhIGdyYWZpY2E6CgotIGdlb20gPSDigJxib3hwbG904oCdOiBkaWJ1amEgdW4gYm94cGxvdAotIGdlb20gPSDigJxkb3RwbG904oCdOiBkaWJ1amEgdW4gZG90IHBsb3QuIExvcyBhcmd1bWVudG9zIHN1cGxlbWVudGFyaW9zIHN0YWNrZGlyID0gImNlbnRlciIgeSBiaW5heGlzID0gInkiIHNvbiBuZWNlc2FyaW9zLgotIGdlb20gPSDigJx2aW9saW7igJ06IGRpYnVqYSB1biB2aW9saW4gcGxvdC4gRWwgYXJndW1lbnRvIHRyaW0gc2UgZXN0YWJsZWNlIGVuIEZBTFNFLgpgYGB7cn0KIyBCb3hwbG90IGJhc2ljbyBhIHBhcnRpciBkZSB2ZWN0b3JlcyBudW1lcmljb3MKeCA8LSAiMSIKeSA8LSBybm9ybSgxMDApCnFwbG90KHgsIHksIGdlb209ImJveHBsb3QiKQoKIyBCb3hwbG90IGJhc2ljbyBhIHBhcnRpciBkZSB1biBkYXRhZnJhbWUKcXBsb3QoZ3JvdXAsIHdlaWdodCwgZGF0YSA9IFBsYW50R3Jvd3RoLCAKICAgICAgZ2VvbT1jKCJib3hwbG90IikpCgojIERvdCBwbG90CnFwbG90KGdyb3VwLCB3ZWlnaHQsIGRhdGEgPSBQbGFudEdyb3d0aCwgCiAgICAgIGdlb209YygiZG90cGxvdCIpLCAKICAgICAgc3RhY2tkaXIgPSAiY2VudGVyIiwgYmluYXhpcyA9ICJ5IiwKICAgICAgYmlud2lkdGggPSAwLjA5KQoKIyBWaW9saW4gcGxvdApxcGxvdChncm91cCwgd2VpZ2h0LCBkYXRhID0gUGxhbnRHcm93dGgsIAogICAgICBnZW9tPWMoInZpb2xpbiIpLCB0cmltID0gRkFMU0UpCmBgYAoKIyMjIyBIaXN0b2dyYW1hcyB5IGdyw6FmaWNvcyBkZSBkZW5zaWRhZApEZSBsYSBtaXNtYSBtYW5lcmEgcXVlIGxvcyBncmFmaWNvcyBhbnRlcmlvcmVzLCBwYXJhIGRpYnVqYXIgaGlzdG9ncmFtYXMgeSBncmFmaWNvcyBkZSBkZW5zaWRhZCBuZWNlc2l0YW1vcyBkZWZpbmlyIGxhIGdlb21ldHJpYSBkZSBsYSBncmFmaWNhLgpgYGB7cn0KIyBCYXNpYyBoaXN0b2dyYW0KcXBsb3QobXBnJGh3eSwgZ2VvbSA9ICJoaXN0b2dyYW0iLCBiaW5zID0gMTApCiMgQmFzaWMgZGVuc2l0eSBwbG90CnFwbG90KHggPSBtcGckaHd5LCBnZW9tID0gImRlbnNpdHkiKQpgYGAKCiMjIyBnZ3Bsb3QoKQpFbCBwdW50byBkZSBwYXJ0aWRhIHBhcmEgY3JlYXIgdW4gZ3LDoWZpY28gZXMgdXRpbGl6YXIgbGEgZnVuY2nDs24gZ2dwbG90IGNvbiBsYSBzaWd1aWVudGUgZXN0cnVjdHVyYSBiw6FzaWNhOgpgYGAKcGxvdCA8LSBnZ3Bsb3QoZGF0YSwgYWVzKHhfdmFyaWFibGUsIHlfdmFyaWFibGUpKSArIGdlb21fZ3JhcGgudHlwZSgpCnByaW50KHBsb3QpCmBgYAotICoqZGF0YSoqIGVzIHVuIGRhdGFmcmFtZSBxdWUgY29udGllbmUgbGFzIHZhcmlhYmxlcyBxdWUgc2UgcXVpZXJlbiBncmFmaWNhcgotICoqYWVzKiogZXNwZWNpZmljYSBxdWUgdmFyaWFibGVzIHNlIHZhbiBhIGdyYWZpY2FyLiBBdW5xdWUgbGEgcGFsYWJyYSAqYWVzKiBzZSByZWZpZXJlIGEgbGEgZXN0w6l0aWNhLCBlbiBnZ3Bsb3Qgbm8gc2UgcmVsYWNpb25hIGNvbiBlbCBhc3BlY3RvIHZpc3VhbCBkZWwgZ3LDoWZpY28sIHNpbm8gY29uIGxvcyBkYXRvcyBxdWUgc2UgcXVpZXJlbiB2ZXIgZW4gZWwgZ3LDoWZpY28uIEVzcGVjaWZpY2EgbG8gcXVlIGVsIGdyw6FmaWNvIHByZXNlbnRhIGVuIGx1Z2FyIGRlIGPDs21vIHNlIHByZXNlbnRhLgotICoqZ2VvbV9ncmFwaC50eXBlKiogZXNwZWNpZmljYSBxdWUgdGlwbyBkZSBncmFmaWNvIHNlIHF1aWVyZSBoYWNlci4gTG9zIGdyYWZpY29zIG1hcyBjb211bmVzIHNvbjoKICAtICpnZW9tX3BvaW50KCkqIHNjYXR0ZXJwbG90CiAgLSAqZ2VvbV9ib3hwbG90KCkqIGJveHBsb3QKICAtICpnZW9tX2hpc3RvZ3JhbSgpKiBoaXN0b2dyYW1hCiAgLSAqZ2VvbV9iYXIoKSogYmFyIHBsb3QKCkVsIHRpcG8gZGUgZ3LDoWZpY28gcXVlIHNlIHF1aWVyZSBoYWNlciB0aWVuZSBxdWUgY29pbmNpZGlyIGNvbiBsYXMgY2xhc2VzIGRlIGxhcyBlbnRyYWRhcyBkZSBsYSBmdW5jaW9uLiBQb3IgZWplbXBsbywgdW4gc2NhdHRlcnBsb3QgcmVxdWllcmUgcXVlIGFtYmFzIHZhcmlhYmxlcyBzZWFuIG51bcOpcmljYXMuIFVuIGJveHBsb3QgcmVxdWllcmUgcXVlIGxhIHZhcmlhYmxlICp4KiBzZWEgdW4gZmFjdG9yIHkgbGEgdmFyaWFibGUgKnkqIHNlYSBudW3DqXJpY2EuCgpVbmEgcHLDoWN0aWNhIMO6dGlsIGFsIGhhY2VyIGdncGxvdHMgZXMgYXNpZ25hciBlbCBncsOhZmljbyBhIHVuIG9iamV0byB5IGx1ZWdvICdpbXByaW1pcmxvJyBwb3Igc2VwYXJhZG8uIEEgbWVkaWRhIHF1ZSB1biBnZ3Bsb3Qgc2UgY29tcGxpY2EsIGVzdG8gbG8gaGFyw6EgbXVjaG8gbcOhcyBmw6FjaWwgZGUgY29uc3RydWlyLgoKIyMjIyMgRWplbXBsb3MgY29uIGdncGxvdCgpCmBgYHtyfQojICBEYXRhIGxvYWQKZGF0YShpcmlzKQoKIyBCb3hwbG90CnBsb3QxIDwtIGdncGxvdChpcmlzLCBhZXMoU3BlY2llcywgUGV0YWwuTGVuZ3RoKSkgKwogIGdlb21fYm94cGxvdCgpCnByaW50KHBsb3QxKQoKIyBIaXN0b2dyYW0KcGxvdDIgPC0gZ2dwbG90KGlyaXMsIGFlcyhQZXRhbC5MZW5ndGgpKSArCiAgZ2VvbV9oaXN0b2dyYW0oYmlud2lkdGggPSAwLjI1KQpwcmludChwbG90MikKCiMgU2NhdHRlciBQbG90CnBsb3QzIDwtIGdncGxvdChpcmlzLCBhZXMoU2VwYWwuTGVuZ3RoLCBQZXRhbC5MZW5ndGgpKSArCiAgZ2VvbV9wb2ludCgpCnByaW50KHBsb3QzKQoKIyBTY2F0dGVyIFBsb3QgKyBDYXRlZ29yaWNhbCB2YXJpYWJsZXMKcGxvdDQgPC0gZ2dwbG90KGlyaXMsIGFlcyhTZXBhbC5MZW5ndGgsIFBldGFsLkxlbmd0aCwgY29sb3VyID0gU3BlY2llcykpICsKICBnZW9tX3BvaW50KCkKcHJpbnQocGxvdDQpCgojIFZpb2xpbiBQbG90CnBsb3Q1IDwtIGdncGxvdChpcmlzLCBhZXMoeCA9IFNwZWNpZXMsIHkgPSBTZXBhbC5XaWR0aCksIGNvbG9yID0gU3BlY2llcywgZmlsbD1TcGVjaWVzLCBhbHBoYSA9IDAuMjUpICsKICBnZW9tX3Zpb2xpbigpCnByaW50KHBsb3Q1KQojIyBWMgpnZ3Bsb3QoaXJpcykgKyAKICBnZW9tX3Zpb2xpbihhZXMoeCA9IFNwZWNpZXMsIHkgPSBTZXBhbC5XaWR0aCwgY29sb3IgPSBTcGVjaWVzLCBmaWxsPVNwZWNpZXMpLCAKICAgICAgICAgICAgICBhbHBoYSA9IDAuMjUpCmBgYAojIDguIEFsZ29yaXRtb3MgZGUgZ2VuZXJhY2lvbiBkZSBudW1lcm9zIGFsZWF0b3Jpb3MKCiMjIyBHZW5lcmFkb3IgQ29uZ3J1ZW5jaWFsIExpbmVhbAoKYGBge3J9CmxjZyA8LSBmdW5jdGlvbigpewogIAp9CmBgYAoKCiMjIyBNZXRvZG8gZGUgbG9zIGN1YWRyYWRvcyBtZWRpb3MKYGBge3J9CgpgYGAKCgojIyMgV2ljaG1hbm4tSGlsbAoKIyMjIE1hcnNhZ2xpYS1NdWx0aWNhcnJ5CgojIyMgR2VuZXJhZG9yIFRhdXN3b3J0aGUKCiMjIyBMJ0VjdXllci1DTVJHCgojIyMgTWVyc2VubmUtVHdpc3RlcgoKIyMjIEdlbmVyYWRvciBkZSBGaWJvbmFjY2kKCiMjIyBHZW5lcmFkb3IgUkFORFUKCiMgOS4gRGlzdHJpYnVjaW9uZXMgZGUgcHJvYmFiaWxpZGFkCgojIyMgRXhwb25lbmNpYWwKCiMjIyBNdWx0aW5vbWlhbAoKIyMjIE5vcm1hbAoKIyMjIEdlb21ldHJpY2EKCiMjIyBDYXVjaHkKCiMjIyBQb2lzc29uCgojIyMgVHJpYW5ndWxhcgoKIyMjIEJpbm9taWFs</div>
 
 
 
