@@ -5,9 +5,9 @@ date: '2022-07-16'
 output: html_notebook
 ---
 # 1. Estructuras de Control
-Las estructuras permiten establecer condicionales, las estructuras de control mas utilizadas son: if, else, for, while, etc. 
+
 ### 1.1 If-else
-La estructura para este condicional es la siguiente:
+Esta es una estructura que nos permite evaluar si una condicion se cumple o no. La estructura para este condicional es la siguiente:
 ```
 if(condicion){
     operaciones_si_se_cumple
@@ -25,10 +25,10 @@ if(4>3){
 ```
 
 ### 1.2 For
-Para esta estructura de control, la cual realiza un bucle, para mostrar el resultado de este se debe utilizar 'print()', así:
+Es una estructura de control que permite repetir instrucciones un numero especifico de veces.
 ```
-for(elemento in objeto){
-  print(operaciones_para_bucle)
+for(valor in vector){
+  operaciones_para_bucle
   }
 ```
 Ejemplo sencillo, donde se elevan al cuadrado los números del 1 al 5:
@@ -39,10 +39,10 @@ for(numero in 1:5){
 ```
 
 ### 1.3 While
-Esta estructura de control de igual modo realiza bucles pero con condición, para mostrar los resultados se debe usar 'print' y su sintaxis es la siguiente:
+El bucle While ejecuta el mismo código una y otra vez hasta que se deje de cumplir la condición definida.
 ```
 while(condicion){
-  print(operaciones_para_bucle)
+  operaciones_para_bucle
   }
 ```
 Ejemplo, en este ejercicio se busca comparar si un número es menor a 5, si lo es imprime verdadero y aumenta 1, el bucle termina cuando esto ya no se cumple:
@@ -53,47 +53,120 @@ while(numero < 5){
   numero <- numero+1
 }
 ```
-# 2. Vectores
-### 2.1 Creación de vectores
-Para crear vectores se utiliza la siguiente sintaxis: '*nombre_vector <- c(elementos)*' o '*nombre_vector <- rango*'. Los elemnetos deben estar separados por comas y si son cadenas de textos deben ir entre comillas.
+### 1.4 Repeat
+El bucle Repeat ejecuta el mismo código una y otra vez hasta que se cumple una condición de parada.
+```
+repeat { 
+   commands 
+   if(condition) {
+      break
+   }
+}
+```
+Ejemplo:
+```{r}
+v <- c("Hello","World")
+cnt <- 2
 
-Ejemplos:
-
-```{r creacion v1}
-vector1 <-c(10, 21, 3, 4, 1)
-vector1
+repeat {
+   print(v)
+   cnt <- cnt+1
+   
+   if(cnt > 5) {
+      break
+   }
+}
 ```
 
-```{r creacion v2}
+### 1.5 Break/Next
+Estas son instrucciones que nos permiten parar completamente un bucle o ir a una siguiente iteracion.
+
+- Cuando se encuentra la instrucción **break** dentro de un bucle, éste se termina inmediatamente y el control del programa se reanuda en la siguiente instrucción que sigue al bucle.
+- La instrucción **next** en el lenguaje de programación R es útil cuando queremos saltar la iteración actual de un bucle sin terminarlo.
+
+Ejemplo:
+```{r}
+for(i in 1:7){
+  if(i == 3){#Cuando el numero llega a la condición se salta ese paso del ciclo
+    next
+    }
+  if(i==5){# Cuando el numero llega a la condicion se detiene el ciclo
+  break
+    }
+print(i)
+}
+  
+```
+
+
+# 2. Vectores
+El vector es una estructura de datos básica en R. Contiene elementos del mismo tipo. Los tipos de datos pueden ser logical, integer, double, character, complex o raw. El tipo de dato de un vector se puede comprobar con la funcion *typeof()*
+
+### 2.1 Creación de vectores
+Para crear vectores se utiliza la siguiente sintaxis: 
+```
+nombre_vector <- c(elementos)
+nombre_vector <- rango
+```
+Los elementos deben estar separados por comas y si son cadenas de textos deben ir entre comillas.
+
+Ejemplos:
+```{r creacion v1}
+vector1 <-c(10, 21, 3, 4, 1)
 vector2 <- 1:5
+vector1
 vector2
 ```
 
 ### 2.2 Indexación de vectores
-La sintaxis para ver elementos de un vector por su posición es la siguiente: '*nombre_vector[c(indices, indices)]*'. Para extraer elementos desde una posición hasta otra se utiliza: '*nombre_vector[c(indice:indice)]*'
+La sintaxis para ver elementos de un vector por su posición es la siguiente: 
+```
+nombre_vector[c(indices, indices)]
+```
+Para extraer elementos desde una posición hasta otra se utiliza:
+```
+nombre_vector[c(indice:indice)]
+```
 
-Ejemplo 1: se utiliza el vector ya creado '*vector1*', para ver los elementos de los indices de la posición 2 a la posición 5:
-
+Ejemplo 1: se utiliza el vector ya creado *vector1*, para ver los elementos de los indices de la posición 2 a la posición 5:
 ```{r indices1}
 vector1[2:5]
 ```
 
-Ejemplo 2: se utiliza el vector ya creado '*vector1*', para ver los elementos de los indices de la posición 2 y la posición 5:
-
+Ejemplo 2: se utiliza el vector ya creado *vector1*, para ver los elementos de los indices de la posición 2 y la posición 5:
 ```{r indices}
 vector1[c(2,5)]
 ```
 
 ### 2.3 Edición de vectores
 Para editar un vector se hace muestra en el siguiente ejemplo utilizando el primer vector creado:
-
 ```{r creacion editar_vector}
 vector_editado <- c(vector1, 5)
 vector_editado
 ```
+Adicionalmente dos vectores de la misma longitud se pueden sumar, restar, multiplicar o dividir dando el resultado como una salida vectorial.
+```{r}
+# Suma
+suma <- vector1+vector2
+print(suma)
+
+# Resta
+resta <- vector1-vector2
+print(resta)
+
+# Multiplicacion
+multi <- vector1*vector2
+print(multi)
+
+# Division
+div <- vector1/vector2
+print(div)
+```
+
 
 # 3. Listas y Matrices
 ### 3.1 Listas
+Las listas son los objetos de R que contienen elementos de diferentes tipos como - números, cadenas, vectores y otra lista dentro de ella. Una lista también puede contener una matriz o una función como sus elementos. La lista se crea utilizando la función *list()*.
 Para crear listas se usa la función *list()*, donde se agregan los elementos que deseamos contenga la lista. A cada elemento de la lista se le puede asignar un nombre *list("nombre_list"= elemento)*.
 
 Ejemplo:
@@ -109,7 +182,17 @@ lista2
 ```
 
 ### 3.2 Matrices
+Las matrices son los objetos R en los que los elementos están ordenados en una distribución rectangular bidimensional.
 Para la creación de matrices se utiliza la función *matrix()*. Para especificar el número de filas y columnas se usa *nrow* y *ncol* respectivamente.
+La sintaxis básica para crear una matriz en R es:
+```
+matrix(data, nrow, ncol, byrow, dimnames)
+```
+- **data** es el vector de entrada que se convierte en los elementos de datos de la matriz.
+- **nrow** es el número de filas a crear.
+- **ncol** es el número de columnas a crear.
+- **byrow** Si es TRUE, los elementos del vector de entrada se ordenan por filas.
+- **dimnames** son los nombres asignados a las filas y columnas.
 
 Ejemplo 1, se crea una matriz 3x3 con números del 1 al 9:
 ```{r matriz}
@@ -135,11 +218,13 @@ matriz <- cbind(v1, v2)
 matriz
 ```
 
-##### Operaciones básicas matriciales 
-Las operaciones básicas son suma, resta, mulplicación, traspuesta, inversa etc.
 
-##### Suma y resta de dos matrices
-Se tienen dos matrices de igual dimensión y se procede a realizar la suma y resta con *+ y -* respectivamente.
+##### **Operaciones básicas matriciales **
+En las matrices se realizan diversas operaciones matemáticas con los operadores R. El resultado de la operación es también una matriz.
+Las dimensiones (número de filas y columnas) deben ser las mismas para las matrices involucradas en la operación.
+
+##### **Suma y resta de dos matrices**
+Se tienen dos matrices de igual dimensión y se procede a realizar la suma y resta con *+* y *-* respectivamente.
 ```{r suma  yresta matrices igual dimensión}
 #matriz 1
 m1 <-matrix(1:4, nrow=2, ncol=2)
@@ -155,8 +240,9 @@ resta=m1-m2
 resta
 ```
 
-##### Multiplicación de matriz
-Para multiplicación matricial de igual tamaño se usa '%*%'. Si se quiere multiplicar dos matrices elemento por elemento se usa 'matriz1 * matriz2'. 
+##### **Multiplicación de matriz**
+Para multiplicación matricial de igual tamaño se usa %\*%. Si se quiere multiplicar dos matrices elemento por elemento se usa *matriz1* \* *matriz2*.
+
 Ejemplo:
 ```{r multiplicación}
 #matriz 1
@@ -170,8 +256,9 @@ mult=m1%*%m2
 mult
 ```
 
-##### Matriz Traspuesta
+##### **Matriz Traspuesta**
 Para trasponer una matriz se una la función *t()*.
+
 Ejemplo:
 ```{r matriz trapuesta}
 #matriz 1
@@ -181,8 +268,9 @@ m1
 t(m1)
 ```
 
-##### Potencia de una matriz
+##### **Potencia de una matriz**
 Para calcular la potencia de una matriz se usa *%^%*, o simplemete multiplicamos la matriz por ella misma.
+
 Ejemplo:
 ```{r potencia matriz}
 library(expm)
@@ -197,8 +285,9 @@ pot2=m1%*%m1
 pot2
 ```
 
-##### Determinante de una matriz
-Para calcular el determinante de una matriz se usa *det()*.
+##### **Determinante de una matriz**
+Para calcular el determinante de una matriz se usa *det()*
+
 Ejemplo:
 ```{r determinate matriz}
 #matriz 1
@@ -208,8 +297,9 @@ m1
 det(m1)
 ```
 
-##### Inversa de una matriz
-Para calcular la inversa de una matriz se usa *solve()*.
+##### **Inversa de una matriz**
+Para calcular la inversa de una matriz se usa *solve()*
+
 Ejemplo:
 ```{r inversa matriz}
 #matriz 1
