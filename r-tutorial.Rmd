@@ -163,6 +163,19 @@ div <- vector1/vector2
 print(div)
 ```
 
+### Generador Congruencial Lineal
+
+```{r}
+lcm <- function(N, x0, a, c, m){
+   x <- rep(0,N)
+   x[1] <- x0
+   for (i in 2:N) x[i] <- (a*x[i-1]+c)%%m
+   u <- x/m
+   return(u)
+}
+
+lcm(10, 4, 13, 0, 64)
+```
 
 # 3. Listas y Matrices
 ### 3.1 Listas
@@ -790,20 +803,7 @@ ggplot(iris) +
 ```
 # 8. Algoritmos de generacion de numeros aleatorios
 
-### Generador Congruencial Lineal
-
-```{r}
-lcg <- function(){
-  
-}
-```
-
-
 ### Metodo de los cuadrados medios
-```{r}
-
-```
-
 
 ### Wichmann-Hill
 
