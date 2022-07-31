@@ -1,0 +1,57 @@
+---
+title: "Inverse Transform Method"
+output: html_notebook
+editor_options: 
+  chunk_output_type: console
+---
+
+## Exponential distribution
+
+```{r}
+expo <- function(lambda){
+  u <-runif(1)
+  s <- -log(1-u)/lambda
+}
+```
+
+```{r}
+n <- 1000
+lambda <- 3
+
+sample <- vector(length = n)
+
+for (i in 1:n){
+  sample[i] <- expo(lambda)
+}
+
+hist(sample)
+
+```
+
+## Triangular
+
+```{r}
+trian <- function(){
+  u <- runif(1)
+  if (u <= 0.5){
+    s <- sqrt(2*u)
+  }
+  else{
+    s <- (4-sqrt(8-8*u))/2
+  }
+}
+```
+
+```{r}
+n <- 1000
+
+sample <- vector(length = n)
+
+for (i in 1:n){
+  sample[i] <- trian()
+}
+
+hist(sample)
+```
+
+
