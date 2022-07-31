@@ -1,0 +1,147 @@
+---
+title: "Monte Carlo"
+output: html_notebook
+editor_options: 
+  chunk_output_type: console
+---
+# Montecarlo simulation example
+
+```{r pi}
+# Pi estimation
+
+num_darts <- 10000
+num_dart_circle <- 0
+
+# Hits
+for (i in 1:num_darts){
+  x <- runif(n = 1, min = -1, max = 1)
+  y <- runif(n = 1, min = -1, max = 1)
+  if(x^2 + y^2 <= 1) num_dart_circle = num_dart_circle + 1
+}
+
+print(4 *num_dart_circle / num_darts)
+
+```
+
+```{r pi2}
+# Pi estimation
+
+num_darts <- 10000
+num_dart_circle <- 0
+
+x <- runif(n = num_darts, min = -1, max = 1)
+y <- runif(n = num_darts, min = -1, max = 1)
+
+sum_squares <- x^2 + y^2
+index_darts_circle <- which(sum_squares <= 1)
+num_dart_circle <- length(index_darts_circle)
+
+
+print(4 *num_dart_circle / num_darts)
+
+```
+
+```{r}
+for (i in 1:10){
+  plot(x[1:i],y[1:i], xlim = c(-1,1), ylim = c(-1,1))
+  Sys.sleep(0.5)
+}
+
+```
+
+# Montecarlo integration example
+```{r}
+library(DescTools)
+```
+
+```{r}
+# Area estimation x^2 (-3, 3)
+fun <- function(x) x^2
+curve(fun, from = -3, to = 3)
+Shade(fun, breaks = c(-3, 3), col = 'red')
+grid()
+
+query_points = runif(n = 2000, min = -3, max = 3)
+6 * mean(fun(query_points)) # 6 is the lenght of the inverval between -3 and 3
+# (b - a)
+```
+
+```{r}
+area_estimates <- vector(length = 10000)
+for (i in 1:10000) {
+  query_points <- runif(n = i, min = -3, max = 3)
+  area_estimates[i] <- 6 * mean(fun(query_points))
+}
+
+plot(area_estimates)
+abline(h = 18, col= 'red', lwd = 2)
+
+```
+
+```{r}
+g <- function(x, y) x^2 + y^2
+x <- y <- seq(-3, 3, length = 100)
+z <- outer(x, y, g)
+persp(x, y, z)
+```
+
+```{r}
+library(plotly)
+plot_ly(x = x, y = y, z = z) %>% add_surface()
+```
+
+```{r}
+# 36 is the area of the surface (b - a)(b - a) 6 * 6
+query_points_x <- runif(n = 1000, min = -3, max = 3)
+query_points_y <- runif(n = 1000, min = -3, max = 3)
+36 * mean(g(query_points_x, query_points_y))
+```
+
+```{r}
+volume_estimates <- vector(length = 10000)
+for (i in 1:10000) {
+  query_points_x <- runif(n = i, min = -3, max = 3)
+  query_points_y <- runif(n = i, min = -3, max = 3)
+  volume_estimates[i] <- 36 * mean(g(query_points_x, query_points_y))
+}
+
+plot(volume_estimates)
+abline(h = 216, col = 'red', lwd = 2)
+
+```
+
+```{r}
+h <- Vectorize(function(x, y){
+  if(x^2 + y^2 <= 1){
+    return(1)
+  }
+  0
+}, vectorize.args = c('x', 'y'))
+
+x <- y <- seq(-1, 1, length = 400)
+z <- outer(x, y, h)
+
+plot_ly(x = x, y = y, z = z) %>% add_surface()
+
+```
+
+```{r}
+query_points_x <- runif(n = 2000, min = -1, max = 1)
+query_points_y <- runif(n = 2000, min = -1, max = 1)
+4 * mean(h(query_points_x, query_points_y))
+```
+
+```{r}
+volume_estimates <- vector(length = 4000)
+for(i in 1:4000){
+  query_points_x <- runif(n = i, min = -1, max = 1)
+  query_points_y <- runif(n = i, min = -1, max = 1)
+  volume_estimates[i] <- 4 * mean(h(query_points_x, query_points_y))
+}
+plot(volume_estimates)
+abline(h = pi, col = 'red', lwd = 2)
+```
+
+
+
+
