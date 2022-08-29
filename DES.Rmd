@@ -1,0 +1,64 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+# Using simmer
+```{r}
+install.packages('simmer')
+install.packages('simmer.plot')
+```
+
+
+```{r}
+library(simmer)
+library(simmer.plot)
+```
+
+```{r}
+# Declare model
+model <- simmer('example')
+
+# Add resources
+model %>% 
+  add_resource('Caja', capacity = 1) %>% 
+  add_resource('Control', capacity = 2)
+
+# Define trajectory
+cliente <- 
+  trajectory('Trayectoria de un cliente') %>% 
+  log_('Arribo de un cliente') %>% 
+  
+  seize('Caja') %>% 
+  log_('Inicio servicio de caja') %>% 
+  timeout(1) %>% 
+  release('Caja') %>% 
+  log_('Final servicio caja') %>% 
+  
+  seize('Control') %>% 
+  log_('Inicio control') %>% 
+  timeout(2) %>% 
+  release('Control') %>% 
+  log_('Final Control')
+
+# Client Generator
+model %>% 
+  add_generator('Cliente', cliente, function(){0.5})
+
+# Run Simulation
+model %>% 
+  run(until=50)
+
+# Get info resources
+recursos <- get_mon_resources(model)
+
+# Show state variables
+plot(recursos, metric = 'usage', items = c('queue', 'server'), steps = TRUE)
+
+# Show utilization
+plot(recursos, metric = 'utilization', items = c('queue','server'))
+
+# Show entity info
+entidades <- get_mon_arrivals(model)
+entidades
+```
+
