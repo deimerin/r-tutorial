@@ -6,11 +6,10 @@ editor_options:
 ---
 
 ## Exponential distribution
-
 ```{r}
 expo <- function(lambda){
   u <-runif(1)
-  s <- -log(1-u)/lambda
+  s <- -log(1-u)/lambda # -log(u) should be sufficient
 }
 ```
 
@@ -25,19 +24,64 @@ for (i in 1:n){
 }
 
 hist(sample)
-
 ```
 
-## Triangular
+## Uniform Distribution
+```{r}
+unif <- function(a, b){
+  u <- runif(1)
+  s <- a + (b - a)*u
+}
+```
+
+```{r}
+n <- 1000
+a <- 0
+b <- 7
+
+sample <- vector(length = n)
+
+for (i in 1:n){
+  sample[i] <- unif(a, b)
+}
+
+hist(sample)
+```
+
+
+## Weibull Distribution
+
+```{r}
+weib <- function(alpha, beta){
+  u <- runif(1)
+  s <- alpha*(-log(1-u))^(1/beta)
+}
+```
+
+```{r}
+n <- 1000
+alpha <- 5
+beta <- 9
+
+sample <- vector(length = n)
+
+for (i in 1:n){
+  sample[i] <- weib(alpha, beta)
+}
+
+hist(sample)
+```
+
+## Triangular Distribution
 
 ```{r}
 trian <- function(){
   u <- runif(1)
   if (u <= 0.5){
-    s <- sqrt(2*u)
+    s <- sqrt(2 * u)
   }
   else{
-    s <- (4-sqrt(8-8*u))/2
+    s <- 2 - sqrt(2*(1 - u))
   }
 }
 ```
@@ -53,39 +97,3 @@ for (i in 1:n){
 
 hist(sample)
 ```
-
-# Rejection Sampling
-
-```{r}
-curve((3/2)*x^3+(11/8)*x^2+(1/6)*x+(1/12), 0, 1)
-abline(a = 3.125, b = 0)
-
-
-n <- 5000
-
-U <- runif(n)
-X <- runif(n)
-
-pi_fun <- function(x) {
-  new_x = (3/2)*(x^3)+(11/8)*(x^2)+(1/6)*(x)+(1/12)
-  return(new_x)
-}
-
-count <- 1
-accepted_samples <- c()
-
-while(count <= n & length(accepted_samples) < 1000){
-  test_u = U[count]
-  test_x = pi_fun(X[count])/(3.125*dunif(X[count],0,1))
-  if (test_u <= test_x){
-    accepted_samples = rbind(accepted_samples, X[count])
-    count = count + 1
-  }
-  count = count + 1
-}
-
-hist(accepted_samples)
-
-```
-
-
