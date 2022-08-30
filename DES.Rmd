@@ -12,6 +12,7 @@ install.packages('simmer.plot')
 ```{r}
 library(simmer)
 library(simmer.plot)
+library(gridExtra)
 ```
 
 ```{r}
@@ -60,5 +61,164 @@ plot(recursos, metric = 'utilization', items = c('queue','server'))
 # Show entity info
 entidades <- get_mon_arrivals(model)
 entidades
+```
+```{r}
+# Declare model
+model <- simmer('example')
+
+# Add resources
+model %>% 
+  add_resource('Caja', capacity = 1, queue_size = 8) %>% 
+  add_resource('Control', capacity = 2)
+
+# Define trajectory client
+cliente <- 
+  trajectory('Trayectoria de un cliente') %>% 
+  log_('Arribo de un cliente') %>% 
+  
+  renege_in(5, 
+            out = trajectory('Impaciente') %>% 
+            set_attribute('Impaciente', 1) %>% 
+            log_('imp leave')) %>% 
+  
+  seize('Caja', 
+        continue = FALSE,
+        reject = 
+          trajectory('Obstaculizado') %>% 
+          set_attribute('obst', 1) %>% 
+          log_('No pudo entrar al sistema')) %>% 
+  
+  # Pudo entrar al sistema
+  set_attribute('obst', 0) %>% 
+  
+  # Abortar Impaciencia
+  renege_abort() %>% 
+  set_attribute('Impaciente', 0) %>% 
+  
+  log_('Inicio servicio de caja') %>% 
+  timeout(1) %>% 
+  release('Caja') %>% 
+  log_('Final servicio caja') %>% 
+  
+  seize('Control') %>% 
+  log_('Inicio control') %>% 
+  timeout(2) %>% 
+  release('Control') %>% 
+  log_('Final Control')
+
+# Define trajectory VIP Client
+
+vip <- 
+  trajectory('Trayectoria VIP') %>% 
+  log_('Arribo VIP') %>% 
+  
+  seize('Control') %>% 
+  log_('Inicio Control') %>% 
+  timeout(2) %>% 
+  release('Control') %>% 
+  log_('Fin Control')
+
+# Client Generator
+model %>% 
+  add_generator('Cliente', cliente, function(){0.5}, mon = 2) %>% 
+  add_generator('Cliente VIP', vip, function(){10}, priority = 1)
+
+# Run Simulation
+model %>% 
+  run(until=60)
+
+# Get info resources
+recursos <- get_mon_resources(model)
+
+# Show state variables
+plot(recursos, metric = 'usage', items = c('queue', 'server'), steps = TRUE)
+
+# Show utilization
+# plot(recursos, metric = 'utilization', items = c('queue','server'))
+
+# Show entity info
+# entidades <- get_mon_arrivals(model)
+# entidades
+
+# Atributos 
+atributos <- get_mon_attributes(model)
+atributos
+
+```
+
+```{r}
+
+set.seed(1337)
+
+# Define trajectory client
+cliente <- 
+  trajectory('Trayectoria de un cliente') %>%
+  
+  renege_in(function(){rexp(n = 1, rate = 1/5)}, 
+            out = trajectory('Impaciente') %>% 
+            set_attribute('Impaciente', 1)) %>% 
+  
+  seize('Caja', 
+        continue = FALSE,
+        reject = 
+          trajectory('Obstaculizado') %>% 
+          set_attribute('obst', 1)) %>% 
+  
+  # Pudo entrar al sistema
+  set_attribute('obst', 0) %>% 
+  
+  # Abortar Impaciencia
+  renege_abort() %>% 
+  set_attribute('Impaciente', 0) %>% 
+  
+  timeout(function(){rexp(n = 1, rate = 1)}) %>% 
+  release('Caja') %>% 
+  
+  seize('Control') %>%
+  timeout(function(){rexp(n = 1, rate = 1/2)}) %>% 
+  release('Control')
+
+# Define trajectory VIP Client
+
+vip <- 
+  trajectory('Trayectoria VIP') %>% 
+  
+  seize('Control') %>% 
+  timeout(function(){rexp(n = 1, rate = 1/2)}) %>% 
+  release('Control')
+
+# Run 100 times
+reps <- lapply(1:100, function(i){
+  simmer('model') %>% 
+    add_resource('Caja', capacity = 1, queue_size = 8) %>% 
+    add_resource('Control', capacity = 2) %>% 
+    add_generator('Cliente', cliente, function(){0.5}, mon = 2) %>% 
+    add_generator('Cliente VIP', vip, function(){10}, priority = 1) %>% 
+    
+    run(until = 60)
+})
+
+# Save resource info
+recursos <- get_mon_resources(reps)
+entidades <- get_mon_arrivals(reps)
+
+# Resource use
+p1 <- plot(recursos, metric = 'utilization')
+p1
+
+# State variables
+p2 <- plot(recursos, metric = 'usage', c('Caja', 'Control'), items = c('queue', 'server'))
+p2
+
+# Waiting times
+p3 <- plot(entidades, metric = 'waiting_time')
+p3
+
+# Total time
+p4 <- plot(entidades, metric = 'activity_time')
+p4
+
+grid.arrange(p1, p2, p3, p4)
+
 ```
 
