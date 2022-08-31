@@ -4,6 +4,14 @@ output: html_notebook
 editor_options: 
   chunk_output_type: console
 ---
+# Inverse Transform Method
+
+- The inverse transform technique can be used to sample from exponential, the uniform, the Weibull and the triangle distributions. 
+
+- The basic principle is to find the inverse function of $F$, $F^{-1}$ such that $F~ F^{-1} = F^{-1} ~ F = I$. 
+
+- $F^{-1}$ denotes the solution of the equation $r = F(x)$ in terms of r, not $1/F$. For example, the inverse of $y = x$ is $x = y$, the inverse of $y = 2 x + 1$ is $x = (y-1)/2$ 
+
 
 ## Exponential distribution
 ```{r}
